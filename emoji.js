@@ -1,0 +1,3381 @@
+var emoji = [{
+	"unicode": "1f600",
+	"utf16": "\uD83D\uDE00",
+	"text": ["grinning"]
+}, {
+	"unicode": "1f601",
+	"utf16": "\uD83D\uDE01",
+	"text": ["grin"]
+}, {
+	"unicode": "1f602",
+	"utf16": "\uD83D\uDE02",
+	"text": ["joy"]
+}, {
+	"unicode": "1f603",
+	"utf16": "\uD83D\uDE03",
+	"text": ["smiley"]
+}, {
+	"unicode": "1f604",
+	"utf16": "\uD83D\uDE04",
+	"text": ["smile"]
+}, {
+	"unicode": "1f605",
+	"utf16": "\uD83D\uDE05",
+	"text": ["sweat_smile"]
+}, {
+	"unicode": "1f606",
+	"utf16": "\uD83D\uDE06",
+	"text": ["laughing", "satisfied"]
+}, {
+	"unicode": "1f607",
+	"utf16": "\uD83D\uDE07",
+	"text": ["innocent"]
+}, {
+	"unicode": "1f608",
+	"utf16": "\uD83D\uDE08",
+	"text": ["smiling_imp"]
+}, {
+	"unicode": "1f609",
+	"utf16": "\uD83D\uDE09",
+	"text": ["wink"]
+}, {
+	"unicode": "1f60a",
+	"utf16": "\uD83D\uDE0A",
+	"text": ["blush"]
+}, {
+	"unicode": "1f60b",
+	"utf16": "\uD83D\uDE0B",
+	"text": ["yum"]
+}, {
+	"unicode": "1f60c",
+	"utf16": "\uD83D\uDE0C",
+	"text": ["relieved"]
+}, {
+	"unicode": "1f60d",
+	"utf16": "\uD83D\uDE0D",
+	"text": ["heart_eyes"]
+}, {
+	"unicode": "1f60e",
+	"utf16": "\uD83D\uDE0E",
+	"text": ["sunglasses"]
+}, {
+	"unicode": "1f60f",
+	"utf16": "\uD83D\uDE0F",
+	"text": ["smirk"]
+}, {
+	"unicode": "1f610",
+	"utf16": "\uD83D\uDE10",
+	"text": ["neutral_face"]
+}, {
+	"unicode": "1f611",
+	"utf16": "\uD83D\uDE11",
+	"text": ["expressionless"]
+}, {
+	"unicode": "1f612",
+	"utf16": "\uD83D\uDE12",
+	"text": ["unamused"]
+}, {
+	"unicode": "1f613",
+	"utf16": "\uD83D\uDE13",
+	"text": ["sweat"]
+}, {
+	"unicode": "1f614",
+	"utf16": "\uD83D\uDE14",
+	"text": ["pensive"]
+}, {
+	"unicode": "1f615",
+	"utf16": "\uD83D\uDE15",
+	"text": ["confused"]
+}, {
+	"unicode": "1f616",
+	"utf16": "\uD83D\uDE16",
+	"text": ["confounded"]
+}, {
+	"unicode": "1f617",
+	"utf16": "\uD83D\uDE17",
+	"text": ["kissing"]
+}, {
+	"unicode": "1f618",
+	"utf16": "\uD83D\uDE18",
+	"text": ["kissing_heart"]
+}, {
+	"unicode": "1f619",
+	"utf16": "\uD83D\uDE19",
+	"text": ["kissing_smiling_eyes"]
+}, {
+	"unicode": "1f61a",
+	"utf16": "\uD83D\uDE1A",
+	"text": ["kissing_closed_eyes"]
+}, {
+	"unicode": "1f61b",
+	"utf16": "\uD83D\uDE1B",
+	"text": ["stuck_out_tongue"]
+}, {
+	"unicode": "1f61c",
+	"utf16": "\uD83D\uDE1C",
+	"text": ["stuck_out_tongue_winking_eye"]
+}, {
+	"unicode": "1f61d",
+	"utf16": "\uD83D\uDE1D",
+	"text": ["stuck_out_tongue_closed_eyes"]
+}, {
+	"unicode": "1f61e",
+	"utf16": "\uD83D\uDE1E",
+	"text": ["disappointed"]
+}, {
+	"unicode": "1f61f",
+	"utf16": "\uD83D\uDE1F",
+	"text": ["worried"]
+}, {
+	"unicode": "1f620",
+	"utf16": "\uD83D\uDE20",
+	"text": ["angry"]
+}, {
+	"unicode": "1f621",
+	"utf16": "\uD83D\uDE21",
+	"text": ["rage"]
+}, {
+	"unicode": "1f622",
+	"utf16": "\uD83D\uDE22",
+	"text": ["cry"]
+}, {
+	"unicode": "1f623",
+	"utf16": "\uD83D\uDE23",
+	"text": ["persevere"]
+}, {
+	"unicode": "1f624",
+	"utf16": "\uD83D\uDE24",
+	"text": ["triumph"]
+}, {
+	"unicode": "1f625",
+	"utf16": "\uD83D\uDE25",
+	"text": ["disappointed_relieved"]
+}, {
+	"unicode": "1f626",
+	"utf16": "\uD83D\uDE26",
+	"text": ["frowning"]
+}, {
+	"unicode": "1f627",
+	"utf16": "\uD83D\uDE27",
+	"text": ["anguished"]
+}, {
+	"unicode": "1f628",
+	"utf16": "\uD83D\uDE28",
+	"text": ["fearful"]
+}, {
+	"unicode": "1f629",
+	"utf16": "\uD83D\uDE29",
+	"text": ["weary"]
+}, {
+	"unicode": "1f62a",
+	"utf16": "\uD83D\uDE2A",
+	"text": ["sleepy"]
+}, {
+	"unicode": "1f62b",
+	"utf16": "\uD83D\uDE2B",
+	"text": ["tired_face"]
+}, {
+	"unicode": "1f62c",
+	"utf16": "\uD83D\uDE2C",
+	"text": ["grimacing"]
+}, {
+	"unicode": "1f62d",
+	"utf16": "\uD83D\uDE2D",
+	"text": ["sob"]
+}, {
+	"unicode": "1f62e",
+	"utf16": "\uD83D\uDE2E",
+	"text": ["open_mouth"]
+}, {
+	"unicode": "1f62f",
+	"utf16": "\uD83D\uDE2F",
+	"text": ["hushed"]
+}, {
+	"unicode": "1f630",
+	"utf16": "\uD83D\uDE30",
+	"text": ["cold_sweat"]
+}, {
+	"unicode": "1f631",
+	"utf16": "\uD83D\uDE31",
+	"text": ["scream"]
+}, {
+	"unicode": "1f632",
+	"utf16": "\uD83D\uDE32",
+	"text": ["astonished"]
+}, {
+	"unicode": "1f633",
+	"utf16": "\uD83D\uDE33",
+	"text": ["flushed"]
+}, {
+	"unicode": "1f634",
+	"utf16": "\uD83D\uDE34",
+	"text": ["sleeping"]
+}, {
+	"unicode": "1f635",
+	"utf16": "\uD83D\uDE35",
+	"text": ["dizzy_face"]
+}, {
+	"unicode": "1f636",
+	"utf16": "\uD83D\uDE36",
+	"text": ["no_mouth"]
+}, {
+	"unicode": "1f637",
+	"utf16": "\uD83D\uDE37",
+	"text": ["mask"]
+}, {
+	"unicode": "1f638",
+	"utf16": "\uD83D\uDE38",
+	"text": ["smile_cat"]
+}, {
+	"unicode": "1f639",
+	"utf16": "\uD83D\uDE39",
+	"text": ["joy_cat"]
+}, {
+	"unicode": "1f63a",
+	"utf16": "\uD83D\uDE3A",
+	"text": ["smiley_cat"]
+}, {
+	"unicode": "1f63b",
+	"utf16": "\uD83D\uDE3B",
+	"text": ["heart_eyes_cat"]
+}, {
+	"unicode": "1f63c",
+	"utf16": "\uD83D\uDE3C",
+	"text": ["smirk_cat"]
+}, {
+	"unicode": "1f63d",
+	"utf16": "\uD83D\uDE3D",
+	"text": ["kissing_cat"]
+}, {
+	"unicode": "1f63e",
+	"utf16": "\uD83D\uDE3E",
+	"text": ["pouting_cat"]
+}, {
+	"unicode": "1f63f",
+	"utf16": "\uD83D\uDE3F",
+	"text": ["crying_cat_face"]
+}, {
+	"unicode": "1f640",
+	"utf16": "\uD83D\uDE40",
+	"text": ["scream_cat"]
+}, {
+	"unicode": "2049",
+	"utf16": "\u2049\uFE0F",
+	"text": ["interrobang"]
+}, {
+	"unicode": "2122",
+	"utf16": "\u2122",
+	"text": ["tm"]
+}, {
+	"unicode": "2139",
+	"utf16": "\u2139\uFE0F",
+	"text": ["information_source"]
+}, {
+	"unicode": "2194",
+	"utf16": "\u2194\uFE0F",
+	"text": ["left_right_arrow"]
+}, {
+	"unicode": "2195",
+	"utf16": "\u2195\uFE0F",
+	"text": ["arrow_up_down"]
+}, {
+	"unicode": "2196",
+	"utf16": "\u2196\uFE0F",
+	"text": ["arrow_upper_left"]
+}, {
+	"unicode": "2197",
+	"utf16": "\u2197\uFE0F",
+	"text": ["arrow_upper_right"]
+}, {
+	"unicode": "2198",
+	"utf16": "\u2198\uFE0F",
+	"text": ["arrow_lower_right"]
+}, {
+	"unicode": "2199",
+	"utf16": "\u2199\uFE0F",
+	"text": ["arrow_lower_left"]
+}, {
+	"unicode": "2600",
+	"utf16": "\u2600\uFE0F",
+	"text": ["sunny"]
+}, {
+	"unicode": "2601",
+	"utf16": "\u2601\uFE0F",
+	"text": ["cloud"]
+}, {
+	"unicode": "2611",
+	"utf16": "\u2611\uFE0F",
+	"text": ["ballot_box_with_check"]
+}, {
+	"unicode": "2614",
+	"utf16": "\u2614\uFE0F",
+	"text": ["umbrella"]
+}, {
+	"unicode": "2615",
+	"utf16": "\u2615\uFE0F",
+	"text": ["coffee"]
+}, {
+	"unicode": "2648",
+	"utf16": "\u2648\uFE0F",
+	"text": ["aries"]
+}, {
+	"unicode": "2649",
+	"utf16": "\u2649\uFE0F",
+	"text": ["taurus"]
+}, {
+	"unicode": "2650",
+	"utf16": "\u2650\uFE0F",
+	"text": ["sagittarius"]
+}, {
+	"unicode": "2651",
+	"utf16": "\u2651\uFE0F",
+	"text": ["capricorn"]
+}, {
+	"unicode": "2652",
+	"utf16": "\u2652\uFE0F",
+	"text": ["aquarius"]
+}, {
+	"unicode": "2653",
+	"utf16": "\u2653\uFE0F",
+	"text": ["pisces"]
+}, {
+	"unicode": "2660",
+	"utf16": "\u2660\uFE0F",
+	"text": ["spades"]
+}, {
+	"unicode": "2663",
+	"utf16": "\u2663\uFE0F",
+	"text": ["clubs"]
+}, {
+	"unicode": "2665",
+	"utf16": "\u2665\uFE0F",
+	"text": ["hearts"]
+}, {
+	"unicode": "2666",
+	"utf16": "\u2666\uFE0F",
+	"text": ["diamonds"]
+}, {
+	"unicode": "2668",
+	"utf16": "\u2668\uFE0F",
+	"text": ["hotsprings"]
+}, {
+	"unicode": "2693",
+	"utf16": "\u2693\uFE0F",
+	"text": ["anchor"]
+}, {
+	"unicode": "2702",
+	"utf16": "\u2702\uFE0F",
+	"text": ["scissors"]
+}, {
+	"unicode": "2705",
+	"utf16": "\u2705",
+	"text": ["white_check_mark"]
+}, {
+	"unicode": "2708",
+	"utf16": "\u2708\uFE0F",
+	"text": ["airplane"]
+}, {
+	"unicode": "2709",
+	"utf16": "\u2709\uFE0F",
+	"text": ["email", "envelope"]
+}, {
+	"unicode": "2712",
+	"utf16": "\u2712\uFE0F",
+	"text": ["black_nib"]
+}, {
+	"unicode": "2714",
+	"utf16": "\u2714\uFE0F",
+	"text": ["heavy_check_mark"]
+}, {
+	"unicode": "2716",
+	"utf16": "\u2716\uFE0F",
+	"text": ["heavy_multiplication_x"]
+}, {
+	"unicode": "2728",
+	"utf16": "\u2728",
+	"text": ["sparkles"]
+}, {
+	"unicode": "2733",
+	"utf16": "\u2733\uFE0F",
+	"text": ["eight_spoked_asterisk"]
+}, {
+	"unicode": "2734",
+	"utf16": "\u2734\uFE0F",
+	"text": ["eight_pointed_black_star"]
+}, {
+	"unicode": "2744",
+	"utf16": "\u2744\uFE0F",
+	"text": ["snowflake"]
+}, {
+	"unicode": "2747",
+	"utf16": "\u2747\uFE0F",
+	"text": ["sparkle"]
+}, {
+	"unicode": "2753",
+	"utf16": "\u2753",
+	"text": ["question"]
+}, {
+	"unicode": "2754",
+	"utf16": "\u2754",
+	"text": ["grey_question"]
+}, {
+	"unicode": "2755",
+	"utf16": "\u2755",
+	"text": ["grey_exclamation"]
+}, {
+	"unicode": "2757",
+	"utf16": "\u2757\uFE0F",
+	"text": ["exclamation", "heavy_exclamation_mark"]
+}, {
+	"unicode": "2764",
+	"utf16": "\u2764\uFE0F",
+	"text": ["heart"]
+}, {
+	"unicode": "2795",
+	"utf16": "\u2795",
+	"text": ["heavy_plus_sign"]
+}, {
+	"unicode": "2796",
+	"utf16": "\u2796",
+	"text": ["heavy_minus_sign"]
+}, {
+	"unicode": "2797",
+	"utf16": "\u2797",
+	"text": ["heavy_division_sign"]
+}, {
+	"unicode": "2934",
+	"utf16": "\u2934\uFE0F",
+	"text": ["arrow_heading_up"]
+}, {
+	"unicode": "2935",
+	"utf16": "\u2935\uFE0F",
+	"text": ["arrow_heading_down"]
+}, {
+	"unicode": "3030",
+	"utf16": "\u3030",
+	"text": ["wavy_dash"]
+}, {
+	"unicode": "3297",
+	"utf16": "\u3297\uFE0F",
+	"text": ["congratulations"]
+}, {
+	"unicode": "3299",
+	"utf16": "\u3299\uFE0F",
+	"text": ["secret"]
+}, {
+	"unicode": "00a9",
+	"utf16": "\u00A9",
+	"text": ["copyright"]
+}, {
+	"unicode": "00ae",
+	"utf16": "\u00AE",
+	"text": ["registered"]
+}, {
+	"unicode": "203c",
+	"utf16": "\u203C\uFE0F",
+	"text": ["bangbang"]
+}, {
+	"unicode": "21a9",
+	"utf16": "\u21A9\uFE0F",
+	"text": ["leftwards_arrow_with_hook"]
+}, {
+	"unicode": "21aa",
+	"utf16": "\u21AA\uFE0F",
+	"text": ["arrow_right_hook"]
+}, {
+	"unicode": "231a",
+	"utf16": "\u231A\uFE0F",
+	"text": ["watch"]
+}, {
+	"unicode": "231b",
+	"utf16": "\u231B\uFE0F",
+	"text": ["hourglass"]
+}, {
+	"unicode": "23e9",
+	"utf16": "\u23E9",
+	"text": ["fast_forward"]
+}, {
+	"unicode": "23ea",
+	"utf16": "\u23EA",
+	"text": ["rewind"]
+}, {
+	"unicode": "23eb",
+	"utf16": "\u23EB",
+	"text": ["arrow_double_up"]
+}, {
+	"unicode": "23ec",
+	"utf16": "\u23EC",
+	"text": ["arrow_double_down"]
+}, {
+	"unicode": "23f0",
+	"utf16": "\u23F0",
+	"text": ["alarm_clock"]
+}, {
+	"unicode": "23f3",
+	"utf16": "\u23F3",
+	"text": ["hourglass_flowing_sand"]
+}, {
+	"unicode": "24c2",
+	"utf16": "\u24C2\uFE0F",
+	"text": ["m"]
+}, {
+	"unicode": "25aa",
+	"utf16": "\u25AA\uFE0F",
+	"text": ["black_small_square"]
+}, {
+	"unicode": "25ab",
+	"utf16": "\u25AB\uFE0F",
+	"text": ["white_small_square"]
+}, {
+	"unicode": "25b6",
+	"utf16": "\u25B6\uFE0F",
+	"text": ["arrow_forward"]
+}, {
+	"unicode": "25c0",
+	"utf16": "\u25C0\uFE0F",
+	"text": ["arrow_backward"]
+}, {
+	"unicode": "25fb",
+	"utf16": "\u25FB\uFE0F",
+	"text": ["white_medium_square"]
+}, {
+	"unicode": "25fc",
+	"utf16": "\u25FC\uFE0F",
+	"text": ["black_medium_square"]
+}, {
+	"unicode": "25fd",
+	"utf16": "\u25FD\uFE0F",
+	"text": ["white_medium_small_square"]
+}, {
+	"unicode": "25fe",
+	"utf16": "\u25FE\uFE0F",
+	"text": ["black_medium_small_square"]
+}, {
+	"unicode": "260e",
+	"utf16": "\u260E\uFE0F",
+	"text": ["phone", "telephone"]
+}, {
+	"unicode": "261d",
+	"utf16": "\u261D\uFE0F",
+	"text": ["point_up"]
+}, {
+	"unicode": "263a",
+	"utf16": "\u263A\uFE0F",
+	"text": ["relaxed"]
+}, {
+	"unicode": "264a",
+	"utf16": "\u264A\uFE0F",
+	"text": ["gemini"]
+}, {
+	"unicode": "264b",
+	"utf16": "\u264B\uFE0F",
+	"text": ["cancer"]
+}, {
+	"unicode": "264c",
+	"utf16": "\u264C\uFE0F",
+	"text": ["leo"]
+}, {
+	"unicode": "264d",
+	"utf16": "\u264D\uFE0F",
+	"text": ["virgo"]
+}, {
+	"unicode": "264e",
+	"utf16": "\u264E\uFE0F",
+	"text": ["libra"]
+}, {
+	"unicode": "264f",
+	"utf16": "\u264F\uFE0F",
+	"text": ["scorpius"]
+}, {
+	"unicode": "267b",
+	"utf16": "\u267B\uFE0F",
+	"text": ["recycle"]
+}, {
+	"unicode": "267f",
+	"utf16": "\u267F\uFE0F",
+	"text": ["wheelchair"]
+}, {
+	"unicode": "26a0",
+	"utf16": "\u26A0\uFE0F",
+	"text": ["warning"]
+}, {
+	"unicode": "26a1",
+	"utf16": "\u26A1\uFE0F",
+	"text": ["zap"]
+}, {
+	"unicode": "26aa",
+	"utf16": "\u26AA\uFE0F",
+	"text": ["white_circle"]
+}, {
+	"unicode": "26ab",
+	"utf16": "\u26AB\uFE0F",
+	"text": ["black_circle"]
+}, {
+	"unicode": "26bd",
+	"utf16": "\u26BD\uFE0F",
+	"text": ["soccer"]
+}, {
+	"unicode": "26be",
+	"utf16": "\u26BE\uFE0F",
+	"text": ["baseball"]
+}, {
+	"unicode": "26c4",
+	"utf16": "\u26C4\uFE0F",
+	"text": ["snowman"]
+}, {
+	"unicode": "26c5",
+	"utf16": "\u26C5\uFE0F",
+	"text": ["partly_sunny"]
+}, {
+	"unicode": "26ce",
+	"utf16": "\u26CE",
+	"text": ["ophiuchus"]
+}, {
+	"unicode": "26d4",
+	"utf16": "\u26D4\uFE0F",
+	"text": ["no_entry"]
+}, {
+	"unicode": "26ea",
+	"utf16": "\u26EA\uFE0F",
+	"text": ["church"]
+}, {
+	"unicode": "26f2",
+	"utf16": "\u26F2\uFE0F",
+	"text": ["fountain"]
+}, {
+	"unicode": "26f3",
+	"utf16": "\u26F3\uFE0F",
+	"text": ["golf"]
+}, {
+	"unicode": "26f5",
+	"utf16": "\u26F5\uFE0F",
+	"text": ["boat", "sailboat"]
+}, {
+	"unicode": "26fa",
+	"utf16": "\u26FA\uFE0F",
+	"text": ["tent"]
+}, {
+	"unicode": "26fd",
+	"utf16": "\u26FD\uFE0F",
+	"text": ["fuelpump"]
+}, {
+	"unicode": "270a",
+	"utf16": "\u270A",
+	"text": ["fist"]
+}, {
+	"unicode": "270b",
+	"utf16": "\u270B",
+	"text": ["hand", "raised_hand"]
+}, {
+	"unicode": "270c",
+	"utf16": "\u270C\uFE0F",
+	"text": ["v"]
+}, {
+	"unicode": "270f",
+	"utf16": "\u270F\uFE0F",
+	"text": ["pencil2"]
+}, {
+	"unicode": "274c",
+	"utf16": "\u274C",
+	"text": ["x"]
+}, {
+	"unicode": "274e",
+	"utf16": "\u274E",
+	"text": ["negative_squared_cross_mark"]
+}, {
+	"unicode": "27a1",
+	"utf16": "\u27A1\uFE0F",
+	"text": ["arrow_right"]
+}, {
+	"unicode": "27b0",
+	"utf16": "\u27B0",
+	"text": ["curly_loop"]
+}, {
+	"unicode": "27bf",
+	"utf16": "\u27BF",
+	"text": ["loop"]
+}, {
+	"unicode": "2b05",
+	"utf16": "\u2B05\uFE0F",
+	"text": ["arrow_left"]
+}, {
+	"unicode": "2b06",
+	"utf16": "\u2B06\uFE0F",
+	"text": ["arrow_up"]
+}, {
+	"unicode": "2b07",
+	"utf16": "\u2B07\uFE0F",
+	"text": ["arrow_down"]
+}, {
+	"unicode": "2b1b",
+	"utf16": "\u2B1B\uFE0F",
+	"text": ["black_large_square"]
+}, {
+	"unicode": "2b1c",
+	"utf16": "\u2B1C\uFE0F",
+	"text": ["white_large_square"]
+}, {
+	"unicode": "2b50",
+	"utf16": "\u2B50\uFE0F",
+	"text": ["star"]
+}, {
+	"unicode": "2b55",
+	"utf16": "\u2B55\uFE0F",
+	"text": ["o"]
+}, {
+	"unicode": "303d",
+	"utf16": "\u303D\uFE0F",
+	"text": ["part_alternation_mark"]
+}, {
+	"unicode": "1f004",
+	"utf16": "\uD83C\uDC04\uFE0F",
+	"text": ["mahjong"]
+}, {
+	"unicode": "1f0cf",
+	"utf16": "\uD83C\uDCCF",
+	"text": ["black_joker"]
+}, {
+	"unicode": "1f170",
+	"utf16": "\uD83C\uDD70",
+	"text": ["a"]
+}, {
+	"unicode": "1f171",
+	"utf16": "\uD83C\uDD71",
+	"text": ["b"]
+}, {
+	"unicode": "1f17e",
+	"utf16": "\uD83C\uDD7E",
+	"text": ["o2"]
+}, {
+	"unicode": "1f17f",
+	"utf16": "\uD83C\uDD7F\uFE0F",
+	"text": ["parking"]
+}, {
+	"unicode": "1f18e",
+	"utf16": "\uD83C\uDD8E",
+	"text": ["ab"]
+}, {
+	"unicode": "1f191",
+	"utf16": "\uD83C\uDD91",
+	"text": ["cl"]
+}, {
+	"unicode": "1f192",
+	"utf16": "\uD83C\uDD92",
+	"text": ["cool"]
+}, {
+	"unicode": "1f193",
+	"utf16": "\uD83C\uDD93",
+	"text": ["free"]
+}, {
+	"unicode": "1f194",
+	"utf16": "\uD83C\uDD94",
+	"text": ["id"]
+}, {
+	"unicode": "1f195",
+	"utf16": "\uD83C\uDD95",
+	"text": ["new"]
+}, {
+	"unicode": "1f196",
+	"utf16": "\uD83C\uDD96",
+	"text": ["ng"]
+}, {
+	"unicode": "1f197",
+	"utf16": "\uD83C\uDD97",
+	"text": ["ok"]
+}, {
+	"unicode": "1f198",
+	"utf16": "\uD83C\uDD98",
+	"text": ["sos"]
+}, {
+	"unicode": "1f199",
+	"utf16": "\uD83C\uDD99",
+	"text": ["up"]
+}, {
+	"unicode": "1f19a",
+	"utf16": "\uD83C\uDD9A",
+	"text": ["vs"]
+}, {
+	"unicode": "1f201",
+	"utf16": "\uD83C\uDE01",
+	"text": ["koko"]
+}, {
+	"unicode": "1f202",
+	"utf16": "\uD83C\uDE02",
+	"text": ["sa"]
+}, {
+	"unicode": "1f21a",
+	"utf16": "\uD83C\uDE1A\uFE0F",
+	"text": ["u7121"]
+}, {
+	"unicode": "1f22f",
+	"utf16": "\uD83C\uDE2F\uFE0F",
+	"text": ["u6307"]
+}, {
+	"unicode": "1f232",
+	"utf16": "\uD83C\uDE32",
+	"text": ["u7981"]
+}, {
+	"unicode": "1f233",
+	"utf16": "\uD83C\uDE33",
+	"text": ["u7a7a"]
+}, {
+	"unicode": "1f234",
+	"utf16": "\uD83C\uDE34",
+	"text": ["u5408"]
+}, {
+	"unicode": "1f235",
+	"utf16": "\uD83C\uDE35",
+	"text": ["u6e80"]
+}, {
+	"unicode": "1f236",
+	"utf16": "\uD83C\uDE36",
+	"text": ["u6709"]
+}, {
+	"unicode": "1f237",
+	"utf16": "\uD83C\uDE37",
+	"text": ["u6708"]
+}, {
+	"unicode": "1f238",
+	"utf16": "\uD83C\uDE38",
+	"text": ["u7533"]
+}, {
+	"unicode": "1f239",
+	"utf16": "\uD83C\uDE39",
+	"text": ["u5272"]
+}, {
+	"unicode": "1f23a",
+	"utf16": "\uD83C\uDE3A",
+	"text": ["u55b6"]
+}, {
+	"unicode": "1f250",
+	"utf16": "\uD83C\uDE50",
+	"text": ["ideograph_advantage"]
+}, {
+	"unicode": "1f251",
+	"utf16": "\uD83C\uDE51",
+	"text": ["accept"]
+}, {
+	"unicode": "1f300",
+	"utf16": "\uD83C\uDF00",
+	"text": ["cyclone"]
+}, {
+	"unicode": "1f301",
+	"utf16": "\uD83C\uDF01",
+	"text": ["foggy"]
+}, {
+	"unicode": "1f302",
+	"utf16": "\uD83C\uDF02",
+	"text": ["closed_umbrella"]
+}, {
+	"unicode": "1f303",
+	"utf16": "\uD83C\uDF03",
+	"text": ["night_with_stars"]
+}, {
+	"unicode": "1f304",
+	"utf16": "\uD83C\uDF04",
+	"text": ["sunrise_over_mountains"]
+}, {
+	"unicode": "1f305",
+	"utf16": "\uD83C\uDF05",
+	"text": ["sunrise"]
+}, {
+	"unicode": "1f306",
+	"utf16": "\uD83C\uDF06",
+	"text": ["city_sunset"]
+}, {
+	"unicode": "1f307",
+	"utf16": "\uD83C\uDF07",
+	"text": ["city_sunrise"]
+}, {
+	"unicode": "1f308",
+	"utf16": "\uD83C\uDF08",
+	"text": ["rainbow"]
+}, {
+	"unicode": "1f309",
+	"utf16": "\uD83C\uDF09",
+	"text": ["bridge_at_night"]
+}, {
+	"unicode": "1f30a",
+	"utf16": "\uD83C\uDF0A",
+	"text": ["ocean"]
+}, {
+	"unicode": "1f30b",
+	"utf16": "\uD83C\uDF0B",
+	"text": ["volcano"]
+}, {
+	"unicode": "1f30c",
+	"utf16": "\uD83C\uDF0C",
+	"text": ["milky_way"]
+}, {
+	"unicode": "1f30d",
+	"utf16": "\uD83C\uDF0D",
+	"text": ["earth_africa"]
+}, {
+	"unicode": "1f30e",
+	"utf16": "\uD83C\uDF0E",
+	"text": ["earth_americas"]
+}, {
+	"unicode": "1f30f",
+	"utf16": "\uD83C\uDF0F",
+	"text": ["earth_asia"]
+}, {
+	"unicode": "1f310",
+	"utf16": "\uD83C\uDF10",
+	"text": ["globe_with_meridians"]
+}, {
+	"unicode": "1f311",
+	"utf16": "\uD83C\uDF11",
+	"text": ["new_moon"]
+}, {
+	"unicode": "1f312",
+	"utf16": "\uD83C\uDF12",
+	"text": ["waxing_crescent_moon"]
+}, {
+	"unicode": "1f313",
+	"utf16": "\uD83C\uDF13",
+	"text": ["first_quarter_moon"]
+}, {
+	"unicode": "1f314",
+	"utf16": "\uD83C\uDF14",
+	"text": ["moon", "waxing_gibbous_moon"]
+}, {
+	"unicode": "1f315",
+	"utf16": "\uD83C\uDF15",
+	"text": ["full_moon"]
+}, {
+	"unicode": "1f316",
+	"utf16": "\uD83C\uDF16",
+	"text": ["waning_gibbous_moon"]
+}, {
+	"unicode": "1f317",
+	"utf16": "\uD83C\uDF17",
+	"text": ["last_quarter_moon"]
+}, {
+	"unicode": "1f318",
+	"utf16": "\uD83C\uDF18",
+	"text": ["waning_crescent_moon"]
+}, {
+	"unicode": "1f319",
+	"utf16": "\uD83C\uDF19",
+	"text": ["crescent_moon"]
+}, {
+	"unicode": "1f31a",
+	"utf16": "\uD83C\uDF1A",
+	"text": ["new_moon_with_face"]
+}, {
+	"unicode": "1f31b",
+	"utf16": "\uD83C\uDF1B",
+	"text": ["first_quarter_moon_with_face"]
+}, {
+	"unicode": "1f31c",
+	"utf16": "\uD83C\uDF1C",
+	"text": ["last_quarter_moon_with_face"]
+}, {
+	"unicode": "1f31d",
+	"utf16": "\uD83C\uDF1D",
+	"text": ["full_moon_with_face"]
+}, {
+	"unicode": "1f31e",
+	"utf16": "\uD83C\uDF1E",
+	"text": ["sun_with_face"]
+}, {
+	"unicode": "1f31f",
+	"utf16": "\uD83C\uDF1F",
+	"text": ["star2"]
+}, {
+	"unicode": "1f320",
+	"utf16": "\uD83C\uDF20",
+	"text": ["stars"]
+}, {
+	"unicode": "1f330",
+	"utf16": "\uD83C\uDF30",
+	"text": ["chestnut"]
+}, {
+	"unicode": "1f331",
+	"utf16": "\uD83C\uDF31",
+	"text": ["seedling"]
+}, {
+	"unicode": "1f332",
+	"utf16": "\uD83C\uDF32",
+	"text": ["evergreen_tree"]
+}, {
+	"unicode": "1f333",
+	"utf16": "\uD83C\uDF33",
+	"text": ["deciduous_tree"]
+}, {
+	"unicode": "1f334",
+	"utf16": "\uD83C\uDF34",
+	"text": ["palm_tree"]
+}, {
+	"unicode": "1f335",
+	"utf16": "\uD83C\uDF35",
+	"text": ["cactus"]
+}, {
+	"unicode": "1f337",
+	"utf16": "\uD83C\uDF37",
+	"text": ["tulip"]
+}, {
+	"unicode": "1f338",
+	"utf16": "\uD83C\uDF38",
+	"text": ["cherry_blossom"]
+}, {
+	"unicode": "1f339",
+	"utf16": "\uD83C\uDF39",
+	"text": ["rose"]
+}, {
+	"unicode": "1f33a",
+	"utf16": "\uD83C\uDF3A",
+	"text": ["hibiscus"]
+}, {
+	"unicode": "1f33b",
+	"utf16": "\uD83C\uDF3B",
+	"text": ["sunflower"]
+}, {
+	"unicode": "1f33c",
+	"utf16": "\uD83C\uDF3C",
+	"text": ["blossom"]
+}, {
+	"unicode": "1f33d",
+	"utf16": "\uD83C\uDF3D",
+	"text": ["corn"]
+}, {
+	"unicode": "1f33e",
+	"utf16": "\uD83C\uDF3E",
+	"text": ["ear_of_rice"]
+}, {
+	"unicode": "1f33f",
+	"utf16": "\uD83C\uDF3F",
+	"text": ["herb"]
+}, {
+	"unicode": "1f340",
+	"utf16": "\uD83C\uDF40",
+	"text": ["four_leaf_clover"]
+}, {
+	"unicode": "1f341",
+	"utf16": "\uD83C\uDF41",
+	"text": ["maple_leaf"]
+}, {
+	"unicode": "1f342",
+	"utf16": "\uD83C\uDF42",
+	"text": ["fallen_leaf"]
+}, {
+	"unicode": "1f343",
+	"utf16": "\uD83C\uDF43",
+	"text": ["leaves"]
+}, {
+	"unicode": "1f344",
+	"utf16": "\uD83C\uDF44",
+	"text": ["mushroom"]
+}, {
+	"unicode": "1f345",
+	"utf16": "\uD83C\uDF45",
+	"text": ["tomato"]
+}, {
+	"unicode": "1f346",
+	"utf16": "\uD83C\uDF46",
+	"text": ["eggplant"]
+}, {
+	"unicode": "1f347",
+	"utf16": "\uD83C\uDF47",
+	"text": ["grapes"]
+}, {
+	"unicode": "1f348",
+	"utf16": "\uD83C\uDF48",
+	"text": ["melon"]
+}, {
+	"unicode": "1f349",
+	"utf16": "\uD83C\uDF49",
+	"text": ["watermelon"]
+}, {
+	"unicode": "1f34a",
+	"utf16": "\uD83C\uDF4A",
+	"text": ["tangerine"]
+}, {
+	"unicode": "1f34b",
+	"utf16": "\uD83C\uDF4B",
+	"text": ["lemon"]
+}, {
+	"unicode": "1f34c",
+	"utf16": "\uD83C\uDF4C",
+	"text": ["banana"]
+}, {
+	"unicode": "1f34d",
+	"utf16": "\uD83C\uDF4D",
+	"text": ["pineapple"]
+}, {
+	"unicode": "1f34e",
+	"utf16": "\uD83C\uDF4E",
+	"text": ["apple"]
+}, {
+	"unicode": "1f34f",
+	"utf16": "\uD83C\uDF4F",
+	"text": ["green_apple"]
+}, {
+	"unicode": "1f350",
+	"utf16": "\uD83C\uDF50",
+	"text": ["pear"]
+}, {
+	"unicode": "1f351",
+	"utf16": "\uD83C\uDF51",
+	"text": ["peach"]
+}, {
+	"unicode": "1f352",
+	"utf16": "\uD83C\uDF52",
+	"text": ["cherries"]
+}, {
+	"unicode": "1f353",
+	"utf16": "\uD83C\uDF53",
+	"text": ["strawberry"]
+}, {
+	"unicode": "1f354",
+	"utf16": "\uD83C\uDF54",
+	"text": ["hamburger"]
+}, {
+	"unicode": "1f355",
+	"utf16": "\uD83C\uDF55",
+	"text": ["pizza"]
+}, {
+	"unicode": "1f356",
+	"utf16": "\uD83C\uDF56",
+	"text": ["meat_on_bone"]
+}, {
+	"unicode": "1f357",
+	"utf16": "\uD83C\uDF57",
+	"text": ["poultry_leg"]
+}, {
+	"unicode": "1f358",
+	"utf16": "\uD83C\uDF58",
+	"text": ["rice_cracker"]
+}, {
+	"unicode": "1f359",
+	"utf16": "\uD83C\uDF59",
+	"text": ["rice_ball"]
+}, {
+	"unicode": "1f35a",
+	"utf16": "\uD83C\uDF5A",
+	"text": ["rice"]
+}, {
+	"unicode": "1f35b",
+	"utf16": "\uD83C\uDF5B",
+	"text": ["curry"]
+}, {
+	"unicode": "1f35c",
+	"utf16": "\uD83C\uDF5C",
+	"text": ["ramen"]
+}, {
+	"unicode": "1f35d",
+	"utf16": "\uD83C\uDF5D",
+	"text": ["spaghetti"]
+}, {
+	"unicode": "1f35e",
+	"utf16": "\uD83C\uDF5E",
+	"text": ["bread"]
+}, {
+	"unicode": "1f35f",
+	"utf16": "\uD83C\uDF5F",
+	"text": ["fries"]
+}, {
+	"unicode": "1f360",
+	"utf16": "\uD83C\uDF60",
+	"text": ["sweet_potato"]
+}, {
+	"unicode": "1f361",
+	"utf16": "\uD83C\uDF61",
+	"text": ["dango"]
+}, {
+	"unicode": "1f362",
+	"utf16": "\uD83C\uDF62",
+	"text": ["oden"]
+}, {
+	"unicode": "1f363",
+	"utf16": "\uD83C\uDF63",
+	"text": ["sushi"]
+}, {
+	"unicode": "1f364",
+	"utf16": "\uD83C\uDF64",
+	"text": ["fried_shrimp"]
+}, {
+	"unicode": "1f365",
+	"utf16": "\uD83C\uDF65",
+	"text": ["fish_cake"]
+}, {
+	"unicode": "1f366",
+	"utf16": "\uD83C\uDF66",
+	"text": ["icecream"]
+}, {
+	"unicode": "1f367",
+	"utf16": "\uD83C\uDF67",
+	"text": ["shaved_ice"]
+}, {
+	"unicode": "1f368",
+	"utf16": "\uD83C\uDF68",
+	"text": ["ice_cream"]
+}, {
+	"unicode": "1f369",
+	"utf16": "\uD83C\uDF69",
+	"text": ["doughnut"]
+}, {
+	"unicode": "1f36a",
+	"utf16": "\uD83C\uDF6A",
+	"text": ["cookie"]
+}, {
+	"unicode": "1f36b",
+	"utf16": "\uD83C\uDF6B",
+	"text": ["chocolate_bar"]
+}, {
+	"unicode": "1f36c",
+	"utf16": "\uD83C\uDF6C",
+	"text": ["candy"]
+}, {
+	"unicode": "1f36d",
+	"utf16": "\uD83C\uDF6D",
+	"text": ["lollipop"]
+}, {
+	"unicode": "1f36e",
+	"utf16": "\uD83C\uDF6E",
+	"text": ["custard"]
+}, {
+	"unicode": "1f36f",
+	"utf16": "\uD83C\uDF6F",
+	"text": ["honey_pot"]
+}, {
+	"unicode": "1f370",
+	"utf16": "\uD83C\uDF70",
+	"text": ["cake"]
+}, {
+	"unicode": "1f371",
+	"utf16": "\uD83C\uDF71",
+	"text": ["bento"]
+}, {
+	"unicode": "1f372",
+	"utf16": "\uD83C\uDF72",
+	"text": ["stew"]
+}, {
+	"unicode": "1f373",
+	"utf16": "\uD83C\uDF73",
+	"text": ["egg"]
+}, {
+	"unicode": "1f374",
+	"utf16": "\uD83C\uDF74",
+	"text": ["fork_and_knife"]
+}, {
+	"unicode": "1f375",
+	"utf16": "\uD83C\uDF75",
+	"text": ["tea"]
+}, {
+	"unicode": "1f376",
+	"utf16": "\uD83C\uDF76",
+	"text": ["sake"]
+}, {
+	"unicode": "1f377",
+	"utf16": "\uD83C\uDF77",
+	"text": ["wine_glass"]
+}, {
+	"unicode": "1f378",
+	"utf16": "\uD83C\uDF78",
+	"text": ["cocktail"]
+}, {
+	"unicode": "1f379",
+	"utf16": "\uD83C\uDF79",
+	"text": ["tropical_drink"]
+}, {
+	"unicode": "1f37a",
+	"utf16": "\uD83C\uDF7A",
+	"text": ["beer"]
+}, {
+	"unicode": "1f37b",
+	"utf16": "\uD83C\uDF7B",
+	"text": ["beers"]
+}, {
+	"unicode": "1f37c",
+	"utf16": "\uD83C\uDF7C",
+	"text": ["baby_bottle"]
+}, {
+	"unicode": "1f380",
+	"utf16": "\uD83C\uDF80",
+	"text": ["ribbon"]
+}, {
+	"unicode": "1f381",
+	"utf16": "\uD83C\uDF81",
+	"text": ["gift"]
+}, {
+	"unicode": "1f382",
+	"utf16": "\uD83C\uDF82",
+	"text": ["birthday"]
+}, {
+	"unicode": "1f383",
+	"utf16": "\uD83C\uDF83",
+	"text": ["jack_o_lantern"]
+}, {
+	"unicode": "1f384",
+	"utf16": "\uD83C\uDF84",
+	"text": ["christmas_tree"]
+}, {
+	"unicode": "1f385",
+	"utf16": "\uD83C\uDF85",
+	"text": ["santa"]
+}, {
+	"unicode": "1f386",
+	"utf16": "\uD83C\uDF86",
+	"text": ["fireworks"]
+}, {
+	"unicode": "1f387",
+	"utf16": "\uD83C\uDF87",
+	"text": ["sparkler"]
+}, {
+	"unicode": "1f388",
+	"utf16": "\uD83C\uDF88",
+	"text": ["balloon"]
+}, {
+	"unicode": "1f389",
+	"utf16": "\uD83C\uDF89",
+	"text": ["tada"]
+}, {
+	"unicode": "1f38a",
+	"utf16": "\uD83C\uDF8A",
+	"text": ["confetti_ball"]
+}, {
+	"unicode": "1f38b",
+	"utf16": "\uD83C\uDF8B",
+	"text": ["tanabata_tree"]
+}, {
+	"unicode": "1f38c",
+	"utf16": "\uD83C\uDF8C",
+	"text": ["crossed_flags"]
+}, {
+	"unicode": "1f38d",
+	"utf16": "\uD83C\uDF8D",
+	"text": ["bamboo"]
+}, {
+	"unicode": "1f38e",
+	"utf16": "\uD83C\uDF8E",
+	"text": ["dolls"]
+}, {
+	"unicode": "1f38f",
+	"utf16": "\uD83C\uDF8F",
+	"text": ["flags"]
+}, {
+	"unicode": "1f390",
+	"utf16": "\uD83C\uDF90",
+	"text": ["wind_chime"]
+}, {
+	"unicode": "1f391",
+	"utf16": "\uD83C\uDF91",
+	"text": ["rice_scene"]
+}, {
+	"unicode": "1f392",
+	"utf16": "\uD83C\uDF92",
+	"text": ["school_satchel"]
+}, {
+	"unicode": "1f393",
+	"utf16": "\uD83C\uDF93",
+	"text": ["mortar_board"]
+}, {
+	"unicode": "1f3a0",
+	"utf16": "\uD83C\uDFA0",
+	"text": ["carousel_horse"]
+}, {
+	"unicode": "1f3a1",
+	"utf16": "\uD83C\uDFA1",
+	"text": ["ferris_wheel"]
+}, {
+	"unicode": "1f3a2",
+	"utf16": "\uD83C\uDFA2",
+	"text": ["roller_coaster"]
+}, {
+	"unicode": "1f3a3",
+	"utf16": "\uD83C\uDFA3",
+	"text": ["fishing_pole_and_fish"]
+}, {
+	"unicode": "1f3a4",
+	"utf16": "\uD83C\uDFA4",
+	"text": ["microphone"]
+}, {
+	"unicode": "1f3a5",
+	"utf16": "\uD83C\uDFA5",
+	"text": ["movie_camera"]
+}, {
+	"unicode": "1f3a6",
+	"utf16": "\uD83C\uDFA6",
+	"text": ["cinema"]
+}, {
+	"unicode": "1f3a7",
+	"utf16": "\uD83C\uDFA7",
+	"text": ["headphones"]
+}, {
+	"unicode": "1f3a8",
+	"utf16": "\uD83C\uDFA8",
+	"text": ["art"]
+}, {
+	"unicode": "1f3a9",
+	"utf16": "\uD83C\uDFA9",
+	"text": ["tophat"]
+}, {
+	"unicode": "1f3aa",
+	"utf16": "\uD83C\uDFAA",
+	"text": ["circus_tent"]
+}, {
+	"unicode": "1f3ab",
+	"utf16": "\uD83C\uDFAB",
+	"text": ["ticket"]
+}, {
+	"unicode": "1f3ac",
+	"utf16": "\uD83C\uDFAC",
+	"text": ["clapper"]
+}, {
+	"unicode": "1f3ad",
+	"utf16": "\uD83C\uDFAD",
+	"text": ["performing_arts"]
+}, {
+	"unicode": "1f3ae",
+	"utf16": "\uD83C\uDFAE",
+	"text": ["video_game"]
+}, {
+	"unicode": "1f3af",
+	"utf16": "\uD83C\uDFAF",
+	"text": ["dart"]
+}, {
+	"unicode": "1f3b0",
+	"utf16": "\uD83C\uDFB0",
+	"text": ["slot_machine"]
+}, {
+	"unicode": "1f3b1",
+	"utf16": "\uD83C\uDFB1",
+	"text": ["8ball"]
+}, {
+	"unicode": "1f3b2",
+	"utf16": "\uD83C\uDFB2",
+	"text": ["game_die"]
+}, {
+	"unicode": "1f3b3",
+	"utf16": "\uD83C\uDFB3",
+	"text": ["bowling"]
+}, {
+	"unicode": "1f3b4",
+	"utf16": "\uD83C\uDFB4",
+	"text": ["flower_playing_cards"]
+}, {
+	"unicode": "1f3b5",
+	"utf16": "\uD83C\uDFB5",
+	"text": ["musical_note"]
+}, {
+	"unicode": "1f3b6",
+	"utf16": "\uD83C\uDFB6",
+	"text": ["notes"]
+}, {
+	"unicode": "1f3b7",
+	"utf16": "\uD83C\uDFB7",
+	"text": ["saxophone"]
+}, {
+	"unicode": "1f3b8",
+	"utf16": "\uD83C\uDFB8",
+	"text": ["guitar"]
+}, {
+	"unicode": "1f3b9",
+	"utf16": "\uD83C\uDFB9",
+	"text": ["musical_keyboard"]
+}, {
+	"unicode": "1f3ba",
+	"utf16": "\uD83C\uDFBA",
+	"text": ["trumpet"]
+}, {
+	"unicode": "1f3bb",
+	"utf16": "\uD83C\uDFBB",
+	"text": ["violin"]
+}, {
+	"unicode": "1f3bc",
+	"utf16": "\uD83C\uDFBC",
+	"text": ["musical_score"]
+}, {
+	"unicode": "1f3bd",
+	"utf16": "\uD83C\uDFBD",
+	"text": ["running_shirt_with_sash"]
+}, {
+	"unicode": "1f3be",
+	"utf16": "\uD83C\uDFBE",
+	"text": ["tennis"]
+}, {
+	"unicode": "1f3bf",
+	"utf16": "\uD83C\uDFBF",
+	"text": ["ski"]
+}, {
+	"unicode": "1f3c0",
+	"utf16": "\uD83C\uDFC0",
+	"text": ["basketball"]
+}, {
+	"unicode": "1f3c1",
+	"utf16": "\uD83C\uDFC1",
+	"text": ["checkered_flag"]
+}, {
+	"unicode": "1f3c2",
+	"utf16": "\uD83C\uDFC2",
+	"text": ["snowboarder"]
+}, {
+	"unicode": "1f3c3",
+	"utf16": "\uD83C\uDFC3",
+	"text": ["runner", "running"]
+}, {
+	"unicode": "1f3c4",
+	"utf16": "\uD83C\uDFC4",
+	"text": ["surfer"]
+}, {
+	"unicode": "1f3c6",
+	"utf16": "\uD83C\uDFC6",
+	"text": ["trophy"]
+}, {
+	"unicode": "1f3c7",
+	"utf16": "\uD83C\uDFC7",
+	"text": ["horse_racing"]
+}, {
+	"unicode": "1f3c8",
+	"utf16": "\uD83C\uDFC8",
+	"text": ["football"]
+}, {
+	"unicode": "1f3c9",
+	"utf16": "\uD83C\uDFC9",
+	"text": ["rugby_football"]
+}, {
+	"unicode": "1f3ca",
+	"utf16": "\uD83C\uDFCA",
+	"text": ["swimmer"]
+}, {
+	"unicode": "1f3e0",
+	"utf16": "\uD83C\uDFE0",
+	"text": ["house"]
+}, {
+	"unicode": "1f3e1",
+	"utf16": "\uD83C\uDFE1",
+	"text": ["house_with_garden"]
+}, {
+	"unicode": "1f3e2",
+	"utf16": "\uD83C\uDFE2",
+	"text": ["office"]
+}, {
+	"unicode": "1f3e3",
+	"utf16": "\uD83C\uDFE3",
+	"text": ["post_office"]
+}, {
+	"unicode": "1f3e4",
+	"utf16": "\uD83C\uDFE4",
+	"text": ["european_post_office"]
+}, {
+	"unicode": "1f3e5",
+	"utf16": "\uD83C\uDFE5",
+	"text": ["hospital"]
+}, {
+	"unicode": "1f3e6",
+	"utf16": "\uD83C\uDFE6",
+	"text": ["bank"]
+}, {
+	"unicode": "1f3e7",
+	"utf16": "\uD83C\uDFE7",
+	"text": ["atm"]
+}, {
+	"unicode": "1f3e8",
+	"utf16": "\uD83C\uDFE8",
+	"text": ["hotel"]
+}, {
+	"unicode": "1f3e9",
+	"utf16": "\uD83C\uDFE9",
+	"text": ["love_hotel"]
+}, {
+	"unicode": "1f3ea",
+	"utf16": "\uD83C\uDFEA",
+	"text": ["convenience_store"]
+}, {
+	"unicode": "1f3eb",
+	"utf16": "\uD83C\uDFEB",
+	"text": ["school"]
+}, {
+	"unicode": "1f3ec",
+	"utf16": "\uD83C\uDFEC",
+	"text": ["department_store"]
+}, {
+	"unicode": "1f3ed",
+	"utf16": "\uD83C\uDFED",
+	"text": ["factory"]
+}, {
+	"unicode": "1f3ee",
+	"utf16": "\uD83C\uDFEE",
+	"text": ["izakaya_lantern", "lantern"]
+}, {
+	"unicode": "1f3ef",
+	"utf16": "\uD83C\uDFEF",
+	"text": ["japanese_castle"]
+}, {
+	"unicode": "1f3f0",
+	"utf16": "\uD83C\uDFF0",
+	"text": ["european_castle"]
+}, {
+	"unicode": "1f400",
+	"utf16": "\uD83D\uDC00",
+	"text": ["rat"]
+}, {
+	"unicode": "1f401",
+	"utf16": "\uD83D\uDC01",
+	"text": ["mouse2"]
+}, {
+	"unicode": "1f402",
+	"utf16": "\uD83D\uDC02",
+	"text": ["ox"]
+}, {
+	"unicode": "1f403",
+	"utf16": "\uD83D\uDC03",
+	"text": ["water_buffalo"]
+}, {
+	"unicode": "1f404",
+	"utf16": "\uD83D\uDC04",
+	"text": ["cow2"]
+}, {
+	"unicode": "1f405",
+	"utf16": "\uD83D\uDC05",
+	"text": ["tiger2"]
+}, {
+	"unicode": "1f406",
+	"utf16": "\uD83D\uDC06",
+	"text": ["leopard"]
+}, {
+	"unicode": "1f407",
+	"utf16": "\uD83D\uDC07",
+	"text": ["rabbit2"]
+}, {
+	"unicode": "1f408",
+	"utf16": "\uD83D\uDC08",
+	"text": ["cat2"]
+}, {
+	"unicode": "1f409",
+	"utf16": "\uD83D\uDC09",
+	"text": ["dragon"]
+}, {
+	"unicode": "1f40a",
+	"utf16": "\uD83D\uDC0A",
+	"text": ["crocodile"]
+}, {
+	"unicode": "1f40b",
+	"utf16": "\uD83D\uDC0B",
+	"text": ["whale2"]
+}, {
+	"unicode": "1f40c",
+	"utf16": "\uD83D\uDC0C",
+	"text": ["snail"]
+}, {
+	"unicode": "1f40d",
+	"utf16": "\uD83D\uDC0D",
+	"text": ["snake"]
+}, {
+	"unicode": "1f40e",
+	"utf16": "\uD83D\uDC0E",
+	"text": ["racehorse"]
+}, {
+	"unicode": "1f40f",
+	"utf16": "\uD83D\uDC0F",
+	"text": ["ram"]
+}, {
+	"unicode": "1f410",
+	"utf16": "\uD83D\uDC10",
+	"text": ["goat"]
+}, {
+	"unicode": "1f411",
+	"utf16": "\uD83D\uDC11",
+	"text": ["sheep"]
+}, {
+	"unicode": "1f412",
+	"utf16": "\uD83D\uDC12",
+	"text": ["monkey"]
+}, {
+	"unicode": "1f413",
+	"utf16": "\uD83D\uDC13",
+	"text": ["rooster"]
+}, {
+	"unicode": "1f414",
+	"utf16": "\uD83D\uDC14",
+	"text": ["chicken"]
+}, {
+	"unicode": "1f415",
+	"utf16": "\uD83D\uDC15",
+	"text": ["dog2"]
+}, {
+	"unicode": "1f416",
+	"utf16": "\uD83D\uDC16",
+	"text": ["pig2"]
+}, {
+	"unicode": "1f417",
+	"utf16": "\uD83D\uDC17",
+	"text": ["boar"]
+}, {
+	"unicode": "1f418",
+	"utf16": "\uD83D\uDC18",
+	"text": ["elephant"]
+}, {
+	"unicode": "1f419",
+	"utf16": "\uD83D\uDC19",
+	"text": ["octopus"]
+}, {
+	"unicode": "1f41a",
+	"utf16": "\uD83D\uDC1A",
+	"text": ["shell"]
+}, {
+	"unicode": "1f41b",
+	"utf16": "\uD83D\uDC1B",
+	"text": ["bug"]
+}, {
+	"unicode": "1f41c",
+	"utf16": "\uD83D\uDC1C",
+	"text": ["ant"]
+}, {
+	"unicode": "1f41d",
+	"utf16": "\uD83D\uDC1D",
+	"text": ["bee", "honeybee"]
+}, {
+	"unicode": "1f41e",
+	"utf16": "\uD83D\uDC1E",
+	"text": ["beetle"]
+}, {
+	"unicode": "1f41f",
+	"utf16": "\uD83D\uDC1F",
+	"text": ["fish"]
+}, {
+	"unicode": "1f420",
+	"utf16": "\uD83D\uDC20",
+	"text": ["tropical_fish"]
+}, {
+	"unicode": "1f421",
+	"utf16": "\uD83D\uDC21",
+	"text": ["blowfish"]
+}, {
+	"unicode": "1f422",
+	"utf16": "\uD83D\uDC22",
+	"text": ["turtle"]
+}, {
+	"unicode": "1f423",
+	"utf16": "\uD83D\uDC23",
+	"text": ["hatching_chick"]
+}, {
+	"unicode": "1f424",
+	"utf16": "\uD83D\uDC24",
+	"text": ["baby_chick"]
+}, {
+	"unicode": "1f425",
+	"utf16": "\uD83D\uDC25",
+	"text": ["hatched_chick"]
+}, {
+	"unicode": "1f426",
+	"utf16": "\uD83D\uDC26",
+	"text": ["bird"]
+}, {
+	"unicode": "1f427",
+	"utf16": "\uD83D\uDC27",
+	"text": ["penguin"]
+}, {
+	"unicode": "1f428",
+	"utf16": "\uD83D\uDC28",
+	"text": ["koala"]
+}, {
+	"unicode": "1f429",
+	"utf16": "\uD83D\uDC29",
+	"text": ["poodle"]
+}, {
+	"unicode": "1f42a",
+	"utf16": "\uD83D\uDC2A",
+	"text": ["dromedary_camel"]
+}, {
+	"unicode": "1f42b",
+	"utf16": "\uD83D\uDC2B",
+	"text": ["camel"]
+}, {
+	"unicode": "1f42c",
+	"utf16": "\uD83D\uDC2C",
+	"text": ["dolphin", "flipper"]
+}, {
+	"unicode": "1f42d",
+	"utf16": "\uD83D\uDC2D",
+	"text": ["mouse"]
+}, {
+	"unicode": "1f42e",
+	"utf16": "\uD83D\uDC2E",
+	"text": ["cow"]
+}, {
+	"unicode": "1f42f",
+	"utf16": "\uD83D\uDC2F",
+	"text": ["tiger"]
+}, {
+	"unicode": "1f430",
+	"utf16": "\uD83D\uDC30",
+	"text": ["rabbit"]
+}, {
+	"unicode": "1f431",
+	"utf16": "\uD83D\uDC31",
+	"text": ["cat"]
+}, {
+	"unicode": "1f432",
+	"utf16": "\uD83D\uDC32",
+	"text": ["dragon_face"]
+}, {
+	"unicode": "1f433",
+	"utf16": "\uD83D\uDC33",
+	"text": ["whale"]
+}, {
+	"unicode": "1f434",
+	"utf16": "\uD83D\uDC34",
+	"text": ["horse"]
+}, {
+	"unicode": "1f435",
+	"utf16": "\uD83D\uDC35",
+	"text": ["monkey_face"]
+}, {
+	"unicode": "1f436",
+	"utf16": "\uD83D\uDC36",
+	"text": ["dog"]
+}, {
+	"unicode": "1f437",
+	"utf16": "\uD83D\uDC37",
+	"text": ["pig"]
+}, {
+	"unicode": "1f438",
+	"utf16": "\uD83D\uDC38",
+	"text": ["frog"]
+}, {
+	"unicode": "1f439",
+	"utf16": "\uD83D\uDC39",
+	"text": ["hamster"]
+}, {
+	"unicode": "1f43a",
+	"utf16": "\uD83D\uDC3A",
+	"text": ["wolf"]
+}, {
+	"unicode": "1f43b",
+	"utf16": "\uD83D\uDC3B",
+	"text": ["bear"]
+}, {
+	"unicode": "1f43c",
+	"utf16": "\uD83D\uDC3C",
+	"text": ["panda_face"]
+}, {
+	"unicode": "1f43d",
+	"utf16": "\uD83D\uDC3D",
+	"text": ["pig_nose"]
+}, {
+	"unicode": "1f43e",
+	"utf16": "\uD83D\uDC3E",
+	"text": ["feet", "paw_prints"]
+}, {
+	"unicode": "1f440",
+	"utf16": "\uD83D\uDC40",
+	"text": ["eyes"]
+}, {
+	"unicode": "1f442",
+	"utf16": "\uD83D\uDC42",
+	"text": ["ear"]
+}, {
+	"unicode": "1f443",
+	"utf16": "\uD83D\uDC43",
+	"text": ["nose"]
+}, {
+	"unicode": "1f444",
+	"utf16": "\uD83D\uDC44",
+	"text": ["lips"]
+}, {
+	"unicode": "1f445",
+	"utf16": "\uD83D\uDC45",
+	"text": ["tongue"]
+}, {
+	"unicode": "1f446",
+	"utf16": "\uD83D\uDC46",
+	"text": ["point_up_2"]
+}, {
+	"unicode": "1f447",
+	"utf16": "\uD83D\uDC47",
+	"text": ["point_down"]
+}, {
+	"unicode": "1f448",
+	"utf16": "\uD83D\uDC48",
+	"text": ["point_left"]
+}, {
+	"unicode": "1f449",
+	"utf16": "\uD83D\uDC49",
+	"text": ["point_right"]
+}, {
+	"unicode": "1f44a",
+	"utf16": "\uD83D\uDC4A",
+	"text": ["facepunch", "punch"]
+}, {
+	"unicode": "1f44b",
+	"utf16": "\uD83D\uDC4B",
+	"text": ["wave"]
+}, {
+	"unicode": "1f44c",
+	"utf16": "\uD83D\uDC4C",
+	"text": ["ok_hand"]
+}, {
+	"unicode": "1f44d",
+	"utf16": "\uD83D\uDC4D",
+	"text": ["+1", "thumbsup"]
+}, {
+	"unicode": "1f44e",
+	"utf16": "\uD83D\uDC4E",
+	"text": ["-1", "thumbsdown"]
+}, {
+	"unicode": "1f44f",
+	"utf16": "\uD83D\uDC4F",
+	"text": ["clap"]
+}, {
+	"unicode": "1f450",
+	"utf16": "\uD83D\uDC50",
+	"text": ["open_hands"]
+}, {
+	"unicode": "1f451",
+	"utf16": "\uD83D\uDC51",
+	"text": ["crown"]
+}, {
+	"unicode": "1f452",
+	"utf16": "\uD83D\uDC52",
+	"text": ["womans_hat"]
+}, {
+	"unicode": "1f453",
+	"utf16": "\uD83D\uDC53",
+	"text": ["eyeglasses"]
+}, {
+	"unicode": "1f454",
+	"utf16": "\uD83D\uDC54",
+	"text": ["necktie"]
+}, {
+	"unicode": "1f455",
+	"utf16": "\uD83D\uDC55",
+	"text": ["shirt", "tshirt"]
+}, {
+	"unicode": "1f456",
+	"utf16": "\uD83D\uDC56",
+	"text": ["jeans"]
+}, {
+	"unicode": "1f457",
+	"utf16": "\uD83D\uDC57",
+	"text": ["dress"]
+}, {
+	"unicode": "1f458",
+	"utf16": "\uD83D\uDC58",
+	"text": ["kimono"]
+}, {
+	"unicode": "1f459",
+	"utf16": "\uD83D\uDC59",
+	"text": ["bikini"]
+}, {
+	"unicode": "1f45a",
+	"utf16": "\uD83D\uDC5A",
+	"text": ["womans_clothes"]
+}, {
+	"unicode": "1f45b",
+	"utf16": "\uD83D\uDC5B",
+	"text": ["purse"]
+}, {
+	"unicode": "1f45c",
+	"utf16": "\uD83D\uDC5C",
+	"text": ["handbag"]
+}, {
+	"unicode": "1f45d",
+	"utf16": "\uD83D\uDC5D",
+	"text": ["pouch"]
+}, {
+	"unicode": "1f45e",
+	"utf16": "\uD83D\uDC5E",
+	"text": ["mans_shoe", "shoe"]
+}, {
+	"unicode": "1f45f",
+	"utf16": "\uD83D\uDC5F",
+	"text": ["athletic_shoe"]
+}, {
+	"unicode": "1f460",
+	"utf16": "\uD83D\uDC60",
+	"text": ["high_heel"]
+}, {
+	"unicode": "1f461",
+	"utf16": "\uD83D\uDC61",
+	"text": ["sandal"]
+}, {
+	"unicode": "1f462",
+	"utf16": "\uD83D\uDC62",
+	"text": ["boot"]
+}, {
+	"unicode": "1f463",
+	"utf16": "\uD83D\uDC63",
+	"text": ["footprints"]
+}, {
+	"unicode": "1f464",
+	"utf16": "\uD83D\uDC64",
+	"text": ["bust_in_silhouette"]
+}, {
+	"unicode": "1f465",
+	"utf16": "\uD83D\uDC65",
+	"text": ["busts_in_silhouette"]
+}, {
+	"unicode": "1f466",
+	"utf16": "\uD83D\uDC66",
+	"text": ["boy"]
+}, {
+	"unicode": "1f467",
+	"utf16": "\uD83D\uDC67",
+	"text": ["girl"]
+}, {
+	"unicode": "1f468",
+	"utf16": "\uD83D\uDC68",
+	"text": ["man"]
+}, {
+	"unicode": "1f469",
+	"utf16": "\uD83D\uDC69",
+	"text": ["woman"]
+}, {
+	"unicode": "1f46a",
+	"utf16": "\uD83D\uDC6A",
+	"text": ["family"]
+}, {
+	"unicode": "1f46b",
+	"utf16": "\uD83D\uDC6B",
+	"text": ["couple"]
+}, {
+	"unicode": "1f46c",
+	"utf16": "\uD83D\uDC6C",
+	"text": ["two_men_holding_hands"]
+}, {
+	"unicode": "1f46d",
+	"utf16": "\uD83D\uDC6D",
+	"text": ["two_women_holding_hands"]
+}, {
+	"unicode": "1f46e",
+	"utf16": "\uD83D\uDC6E",
+	"text": ["cop"]
+}, {
+	"unicode": "1f46f",
+	"utf16": "\uD83D\uDC6F",
+	"text": ["dancers"]
+}, {
+	"unicode": "1f470",
+	"utf16": "\uD83D\uDC70",
+	"text": ["bride_with_veil"]
+}, {
+	"unicode": "1f471",
+	"utf16": "\uD83D\uDC71",
+	"text": ["person_with_blond_hair"]
+}, {
+	"unicode": "1f472",
+	"utf16": "\uD83D\uDC72",
+	"text": ["man_with_gua_pi_mao"]
+}, {
+	"unicode": "1f473",
+	"utf16": "\uD83D\uDC73",
+	"text": ["man_with_turban"]
+}, {
+	"unicode": "1f474",
+	"utf16": "\uD83D\uDC74",
+	"text": ["older_man"]
+}, {
+	"unicode": "1f475",
+	"utf16": "\uD83D\uDC75",
+	"text": ["older_woman"]
+}, {
+	"unicode": "1f476",
+	"utf16": "\uD83D\uDC76",
+	"text": ["baby"]
+}, {
+	"unicode": "1f477",
+	"utf16": "\uD83D\uDC77",
+	"text": ["construction_worker"]
+}, {
+	"unicode": "1f478",
+	"utf16": "\uD83D\uDC78",
+	"text": ["princess"]
+}, {
+	"unicode": "1f479",
+	"utf16": "\uD83D\uDC79",
+	"text": ["japanese_ogre"]
+}, {
+	"unicode": "1f47a",
+	"utf16": "\uD83D\uDC7A",
+	"text": ["japanese_goblin"]
+}, {
+	"unicode": "1f47b",
+	"utf16": "\uD83D\uDC7B",
+	"text": ["ghost"]
+}, {
+	"unicode": "1f47c",
+	"utf16": "\uD83D\uDC7C",
+	"text": ["angel"]
+}, {
+	"unicode": "1f47d",
+	"utf16": "\uD83D\uDC7D",
+	"text": ["alien"]
+}, {
+	"unicode": "1f47e",
+	"utf16": "\uD83D\uDC7E",
+	"text": ["space_invader"]
+}, {
+	"unicode": "1f47f",
+	"utf16": "\uD83D\uDC7F",
+	"text": ["imp"]
+}, {
+	"unicode": "1f480",
+	"utf16": "\uD83D\uDC80",
+	"text": ["skull"]
+}, {
+	"unicode": "1f481",
+	"utf16": "\uD83D\uDC81",
+	"text": ["information_desk_person"]
+}, {
+	"unicode": "1f482",
+	"utf16": "\uD83D\uDC82",
+	"text": ["guardsman"]
+}, {
+	"unicode": "1f483",
+	"utf16": "\uD83D\uDC83",
+	"text": ["dancer"]
+}, {
+	"unicode": "1f484",
+	"utf16": "\uD83D\uDC84",
+	"text": ["lipstick"]
+}, {
+	"unicode": "1f485",
+	"utf16": "\uD83D\uDC85",
+	"text": ["nail_care"]
+}, {
+	"unicode": "1f486",
+	"utf16": "\uD83D\uDC86",
+	"text": ["massage"]
+}, {
+	"unicode": "1f487",
+	"utf16": "\uD83D\uDC87",
+	"text": ["haircut"]
+}, {
+	"unicode": "1f488",
+	"utf16": "\uD83D\uDC88",
+	"text": ["barber"]
+}, {
+	"unicode": "1f489",
+	"utf16": "\uD83D\uDC89",
+	"text": ["syringe"]
+}, {
+	"unicode": "1f48a",
+	"utf16": "\uD83D\uDC8A",
+	"text": ["pill"]
+}, {
+	"unicode": "1f48b",
+	"utf16": "\uD83D\uDC8B",
+	"text": ["kiss"]
+}, {
+	"unicode": "1f48c",
+	"utf16": "\uD83D\uDC8C",
+	"text": ["love_letter"]
+}, {
+	"unicode": "1f48d",
+	"utf16": "\uD83D\uDC8D",
+	"text": ["ring"]
+}, {
+	"unicode": "1f48e",
+	"utf16": "\uD83D\uDC8E",
+	"text": ["gem"]
+}, {
+	"unicode": "1f48f",
+	"utf16": "\uD83D\uDC8F",
+	"text": ["couplekiss"]
+}, {
+	"unicode": "1f490",
+	"utf16": "\uD83D\uDC90",
+	"text": ["bouquet"]
+}, {
+	"unicode": "1f491",
+	"utf16": "\uD83D\uDC91",
+	"text": ["couple_with_heart"]
+}, {
+	"unicode": "1f492",
+	"utf16": "\uD83D\uDC92",
+	"text": ["wedding"]
+}, {
+	"unicode": "1f493",
+	"utf16": "\uD83D\uDC93",
+	"text": ["heartbeat"]
+}, {
+	"unicode": "1f494",
+	"utf16": "\uD83D\uDC94",
+	"text": ["broken_heart"]
+}, {
+	"unicode": "1f495",
+	"utf16": "\uD83D\uDC95",
+	"text": ["two_hearts"]
+}, {
+	"unicode": "1f496",
+	"utf16": "\uD83D\uDC96",
+	"text": ["sparkling_heart"]
+}, {
+	"unicode": "1f497",
+	"utf16": "\uD83D\uDC97",
+	"text": ["heartpulse"]
+}, {
+	"unicode": "1f498",
+	"utf16": "\uD83D\uDC98",
+	"text": ["cupid"]
+}, {
+	"unicode": "1f499",
+	"utf16": "\uD83D\uDC99",
+	"text": ["blue_heart"]
+}, {
+	"unicode": "1f49a",
+	"utf16": "\uD83D\uDC9A",
+	"text": ["green_heart"]
+}, {
+	"unicode": "1f49b",
+	"utf16": "\uD83D\uDC9B",
+	"text": ["yellow_heart"]
+}, {
+	"unicode": "1f49c",
+	"utf16": "\uD83D\uDC9C",
+	"text": ["purple_heart"]
+}, {
+	"unicode": "1f49d",
+	"utf16": "\uD83D\uDC9D",
+	"text": ["gift_heart"]
+}, {
+	"unicode": "1f49e",
+	"utf16": "\uD83D\uDC9E",
+	"text": ["revolving_hearts"]
+}, {
+	"unicode": "1f49f",
+	"utf16": "\uD83D\uDC9F",
+	"text": ["heart_decoration"]
+}, {
+	"unicode": "1f4a0",
+	"utf16": "\uD83D\uDCA0",
+	"text": ["diamond_shape_with_a_dot_inside"]
+}, {
+	"unicode": "1f4a1",
+	"utf16": "\uD83D\uDCA1",
+	"text": ["bulb"]
+}, {
+	"unicode": "1f4a2",
+	"utf16": "\uD83D\uDCA2",
+	"text": ["anger"]
+}, {
+	"unicode": "1f4a3",
+	"utf16": "\uD83D\uDCA3",
+	"text": ["bomb"]
+}, {
+	"unicode": "1f4a4",
+	"utf16": "\uD83D\uDCA4",
+	"text": ["zzz"]
+}, {
+	"unicode": "1f4a5",
+	"utf16": "\uD83D\uDCA5",
+	"text": ["boom", "collision"]
+}, {
+	"unicode": "1f4a6",
+	"utf16": "\uD83D\uDCA6",
+	"text": ["sweat_drops"]
+}, {
+	"unicode": "1f4a7",
+	"utf16": "\uD83D\uDCA7",
+	"text": ["droplet"]
+}, {
+	"unicode": "1f4a8",
+	"utf16": "\uD83D\uDCA8",
+	"text": ["dash"]
+}, {
+	"unicode": "1f4a9",
+	"utf16": "\uD83D\uDCA9",
+	"text": ["hankey", "poop", "shit"]
+}, {
+	"unicode": "1f4aa",
+	"utf16": "\uD83D\uDCAA",
+	"text": ["muscle"]
+}, {
+	"unicode": "1f4ab",
+	"utf16": "\uD83D\uDCAB",
+	"text": ["dizzy"]
+}, {
+	"unicode": "1f4ac",
+	"utf16": "\uD83D\uDCAC",
+	"text": ["speech_balloon"]
+}, {
+	"unicode": "1f4ad",
+	"utf16": "\uD83D\uDCAD",
+	"text": ["thought_balloon"]
+}, {
+	"unicode": "1f4ae",
+	"utf16": "\uD83D\uDCAE",
+	"text": ["white_flower"]
+}, {
+	"unicode": "1f4af",
+	"utf16": "\uD83D\uDCAF",
+	"text": ["100"]
+}, {
+	"unicode": "1f4b0",
+	"utf16": "\uD83D\uDCB0",
+	"text": ["moneybag"]
+}, {
+	"unicode": "1f4b1",
+	"utf16": "\uD83D\uDCB1",
+	"text": ["currency_exchange"]
+}, {
+	"unicode": "1f4b2",
+	"utf16": "\uD83D\uDCB2",
+	"text": ["heavy_dollar_sign"]
+}, {
+	"unicode": "1f4b3",
+	"utf16": "\uD83D\uDCB3",
+	"text": ["credit_card"]
+}, {
+	"unicode": "1f4b4",
+	"utf16": "\uD83D\uDCB4",
+	"text": ["yen"]
+}, {
+	"unicode": "1f4b5",
+	"utf16": "\uD83D\uDCB5",
+	"text": ["dollar"]
+}, {
+	"unicode": "1f4b6",
+	"utf16": "\uD83D\uDCB6",
+	"text": ["euro"]
+}, {
+	"unicode": "1f4b7",
+	"utf16": "\uD83D\uDCB7",
+	"text": ["pound"]
+}, {
+	"unicode": "1f4b8",
+	"utf16": "\uD83D\uDCB8",
+	"text": ["money_with_wings"]
+}, {
+	"unicode": "1f4b9",
+	"utf16": "\uD83D\uDCB9",
+	"text": ["chart"]
+}, {
+	"unicode": "1f4ba",
+	"utf16": "\uD83D\uDCBA",
+	"text": ["seat"]
+}, {
+	"unicode": "1f4bb",
+	"utf16": "\uD83D\uDCBB",
+	"text": ["computer"]
+}, {
+	"unicode": "1f4bc",
+	"utf16": "\uD83D\uDCBC",
+	"text": ["briefcase"]
+}, {
+	"unicode": "1f4bd",
+	"utf16": "\uD83D\uDCBD",
+	"text": ["minidisc"]
+}, {
+	"unicode": "1f4be",
+	"utf16": "\uD83D\uDCBE",
+	"text": ["floppy_disk"]
+}, {
+	"unicode": "1f4bf",
+	"utf16": "\uD83D\uDCBF",
+	"text": ["cd"]
+}, {
+	"unicode": "1f4c0",
+	"utf16": "\uD83D\uDCC0",
+	"text": ["dvd"]
+}, {
+	"unicode": "1f4c1",
+	"utf16": "\uD83D\uDCC1",
+	"text": ["file_folder"]
+}, {
+	"unicode": "1f4c2",
+	"utf16": "\uD83D\uDCC2",
+	"text": ["open_file_folder"]
+}, {
+	"unicode": "1f4c3",
+	"utf16": "\uD83D\uDCC3",
+	"text": ["page_with_curl"]
+}, {
+	"unicode": "1f4c4",
+	"utf16": "\uD83D\uDCC4",
+	"text": ["page_facing_up"]
+}, {
+	"unicode": "1f4c5",
+	"utf16": "\uD83D\uDCC5",
+	"text": ["date"]
+}, {
+	"unicode": "1f4c6",
+	"utf16": "\uD83D\uDCC6",
+	"text": ["calendar"]
+}, {
+	"unicode": "1f4c7",
+	"utf16": "\uD83D\uDCC7",
+	"text": ["card_index"]
+}, {
+	"unicode": "1f4c8",
+	"utf16": "\uD83D\uDCC8",
+	"text": ["chart_with_upwards_trend"]
+}, {
+	"unicode": "1f4c9",
+	"utf16": "\uD83D\uDCC9",
+	"text": ["chart_with_downwards_trend"]
+}, {
+	"unicode": "1f4ca",
+	"utf16": "\uD83D\uDCCA",
+	"text": ["bar_chart"]
+}, {
+	"unicode": "1f4cb",
+	"utf16": "\uD83D\uDCCB",
+	"text": ["clipboard"]
+}, {
+	"unicode": "1f4cc",
+	"utf16": "\uD83D\uDCCC",
+	"text": ["pushpin"]
+}, {
+	"unicode": "1f4cd",
+	"utf16": "\uD83D\uDCCD",
+	"text": ["round_pushpin"]
+}, {
+	"unicode": "1f4ce",
+	"utf16": "\uD83D\uDCCE",
+	"text": ["paperclip"]
+}, {
+	"unicode": "1f4cf",
+	"utf16": "\uD83D\uDCCF",
+	"text": ["straight_ruler"]
+}, {
+	"unicode": "1f4d0",
+	"utf16": "\uD83D\uDCD0",
+	"text": ["triangular_ruler"]
+}, {
+	"unicode": "1f4d1",
+	"utf16": "\uD83D\uDCD1",
+	"text": ["bookmark_tabs"]
+}, {
+	"unicode": "1f4d2",
+	"utf16": "\uD83D\uDCD2",
+	"text": ["ledger"]
+}, {
+	"unicode": "1f4d3",
+	"utf16": "\uD83D\uDCD3",
+	"text": ["notebook"]
+}, {
+	"unicode": "1f4d4",
+	"utf16": "\uD83D\uDCD4",
+	"text": ["notebook_with_decorative_cover"]
+}, {
+	"unicode": "1f4d5",
+	"utf16": "\uD83D\uDCD5",
+	"text": ["closed_book"]
+}, {
+	"unicode": "1f4d6",
+	"utf16": "\uD83D\uDCD6",
+	"text": ["book", "open_book"]
+}, {
+	"unicode": "1f4d7",
+	"utf16": "\uD83D\uDCD7",
+	"text": ["green_book"]
+}, {
+	"unicode": "1f4d8",
+	"utf16": "\uD83D\uDCD8",
+	"text": ["blue_book"]
+}, {
+	"unicode": "1f4d9",
+	"utf16": "\uD83D\uDCD9",
+	"text": ["orange_book"]
+}, {
+	"unicode": "1f4da",
+	"utf16": "\uD83D\uDCDA",
+	"text": ["books"]
+}, {
+	"unicode": "1f4db",
+	"utf16": "\uD83D\uDCDB",
+	"text": ["name_badge"]
+}, {
+	"unicode": "1f4dc",
+	"utf16": "\uD83D\uDCDC",
+	"text": ["scroll"]
+}, {
+	"unicode": "1f4dd",
+	"utf16": "\uD83D\uDCDD",
+	"text": ["memo", "pencil"]
+}, {
+	"unicode": "1f4de",
+	"utf16": "\uD83D\uDCDE",
+	"text": ["telephone_receiver"]
+}, {
+	"unicode": "1f4df",
+	"utf16": "\uD83D\uDCDF",
+	"text": ["pager"]
+}, {
+	"unicode": "1f4e0",
+	"utf16": "\uD83D\uDCE0",
+	"text": ["fax"]
+}, {
+	"unicode": "1f4e1",
+	"utf16": "\uD83D\uDCE1",
+	"text": ["satellite"]
+}, {
+	"unicode": "1f4e2",
+	"utf16": "\uD83D\uDCE2",
+	"text": ["loudspeaker"]
+}, {
+	"unicode": "1f4e3",
+	"utf16": "\uD83D\uDCE3",
+	"text": ["mega"]
+}, {
+	"unicode": "1f4e4",
+	"utf16": "\uD83D\uDCE4",
+	"text": ["outbox_tray"]
+}, {
+	"unicode": "1f4e5",
+	"utf16": "\uD83D\uDCE5",
+	"text": ["inbox_tray"]
+}, {
+	"unicode": "1f4e6",
+	"utf16": "\uD83D\uDCE6",
+	"text": ["package"]
+}, {
+	"unicode": "1f4e7",
+	"utf16": "\uD83D\uDCE7",
+	"text": ["e-mail"]
+}, {
+	"unicode": "1f4e8",
+	"utf16": "\uD83D\uDCE8",
+	"text": ["incoming_envelope"]
+}, {
+	"unicode": "1f4e9",
+	"utf16": "\uD83D\uDCE9",
+	"text": ["envelope_with_arrow"]
+}, {
+	"unicode": "1f4ea",
+	"utf16": "\uD83D\uDCEA",
+	"text": ["mailbox_closed"]
+}, {
+	"unicode": "1f4eb",
+	"utf16": "\uD83D\uDCEB",
+	"text": ["mailbox"]
+}, {
+	"unicode": "1f4ec",
+	"utf16": "\uD83D\uDCEC",
+	"text": ["mailbox_with_mail"]
+}, {
+	"unicode": "1f4ed",
+	"utf16": "\uD83D\uDCED",
+	"text": ["mailbox_with_no_mail"]
+}, {
+	"unicode": "1f4ee",
+	"utf16": "\uD83D\uDCEE",
+	"text": ["postbox"]
+}, {
+	"unicode": "1f4ef",
+	"utf16": "\uD83D\uDCEF",
+	"text": ["postal_horn"]
+}, {
+	"unicode": "1f4f0",
+	"utf16": "\uD83D\uDCF0",
+	"text": ["newspaper"]
+}, {
+	"unicode": "1f4f1",
+	"utf16": "\uD83D\uDCF1",
+	"text": ["iphone"]
+}, {
+	"unicode": "1f4f2",
+	"utf16": "\uD83D\uDCF2",
+	"text": ["calling"]
+}, {
+	"unicode": "1f4f3",
+	"utf16": "\uD83D\uDCF3",
+	"text": ["vibration_mode"]
+}, {
+	"unicode": "1f4f4",
+	"utf16": "\uD83D\uDCF4",
+	"text": ["mobile_phone_off"]
+}, {
+	"unicode": "1f4f5",
+	"utf16": "\uD83D\uDCF5",
+	"text": ["no_mobile_phones"]
+}, {
+	"unicode": "1f4f6",
+	"utf16": "\uD83D\uDCF6",
+	"text": ["signal_strength"]
+}, {
+	"unicode": "1f4f7",
+	"utf16": "\uD83D\uDCF7",
+	"text": ["camera"]
+}, {
+	"unicode": "1f4f9",
+	"utf16": "\uD83D\uDCF9",
+	"text": ["video_camera"]
+}, {
+	"unicode": "1f4fa",
+	"utf16": "\uD83D\uDCFA",
+	"text": ["tv"]
+}, {
+	"unicode": "1f4fb",
+	"utf16": "\uD83D\uDCFB",
+	"text": ["radio"]
+}, {
+	"unicode": "1f4fc",
+	"utf16": "\uD83D\uDCFC",
+	"text": ["vhs"]
+}, {
+	"unicode": "1f500",
+	"utf16": "\uD83D\uDD00",
+	"text": ["twisted_rightwards_arrows"]
+}, {
+	"unicode": "1f501",
+	"utf16": "\uD83D\uDD01",
+	"text": ["repeat"]
+}, {
+	"unicode": "1f502",
+	"utf16": "\uD83D\uDD02",
+	"text": ["repeat_one"]
+}, {
+	"unicode": "1f503",
+	"utf16": "\uD83D\uDD03",
+	"text": ["arrows_clockwise"]
+}, {
+	"unicode": "1f504",
+	"utf16": "\uD83D\uDD04",
+	"text": ["arrows_counterclockwise"]
+}, {
+	"unicode": "1f505",
+	"utf16": "\uD83D\uDD05",
+	"text": ["low_brightness"]
+}, {
+	"unicode": "1f506",
+	"utf16": "\uD83D\uDD06",
+	"text": ["high_brightness"]
+}, {
+	"unicode": "1f507",
+	"utf16": "\uD83D\uDD07",
+	"text": ["mute"]
+}, {
+	"unicode": "1f508",
+	"utf16": "\uD83D\uDD08",
+	"text": ["speaker"]
+}, {
+	"unicode": "1f509",
+	"utf16": "\uD83D\uDD09",
+	"text": ["sound"]
+}, {
+	"unicode": "1f50a",
+	"utf16": "\uD83D\uDD0A",
+	"text": ["loud_sound"]
+}, {
+	"unicode": "1f50b",
+	"utf16": "\uD83D\uDD0B",
+	"text": ["battery"]
+}, {
+	"unicode": "1f50c",
+	"utf16": "\uD83D\uDD0C",
+	"text": ["electric_plug"]
+}, {
+	"unicode": "1f50d",
+	"utf16": "\uD83D\uDD0D",
+	"text": ["mag"]
+}, {
+	"unicode": "1f50e",
+	"utf16": "\uD83D\uDD0E",
+	"text": ["mag_right"]
+}, {
+	"unicode": "1f50f",
+	"utf16": "\uD83D\uDD0F",
+	"text": ["lock_with_ink_pen"]
+}, {
+	"unicode": "1f510",
+	"utf16": "\uD83D\uDD10",
+	"text": ["closed_lock_with_key"]
+}, {
+	"unicode": "1f511",
+	"utf16": "\uD83D\uDD11",
+	"text": ["key"]
+}, {
+	"unicode": "1f512",
+	"utf16": "\uD83D\uDD12",
+	"text": ["lock"]
+}, {
+	"unicode": "1f513",
+	"utf16": "\uD83D\uDD13",
+	"text": ["unlock"]
+}, {
+	"unicode": "1f514",
+	"utf16": "\uD83D\uDD14",
+	"text": ["bell"]
+}, {
+	"unicode": "1f515",
+	"utf16": "\uD83D\uDD15",
+	"text": ["no_bell"]
+}, {
+	"unicode": "1f516",
+	"utf16": "\uD83D\uDD16",
+	"text": ["bookmark"]
+}, {
+	"unicode": "1f517",
+	"utf16": "\uD83D\uDD17",
+	"text": ["link"]
+}, {
+	"unicode": "1f518",
+	"utf16": "\uD83D\uDD18",
+	"text": ["radio_button"]
+}, {
+	"unicode": "1f519",
+	"utf16": "\uD83D\uDD19",
+	"text": ["back"]
+}, {
+	"unicode": "1f51a",
+	"utf16": "\uD83D\uDD1A",
+	"text": ["end"]
+}, {
+	"unicode": "1f51b",
+	"utf16": "\uD83D\uDD1B",
+	"text": ["on"]
+}, {
+	"unicode": "1f51c",
+	"utf16": "\uD83D\uDD1C",
+	"text": ["soon"]
+}, {
+	"unicode": "1f51d",
+	"utf16": "\uD83D\uDD1D",
+	"text": ["top"]
+}, {
+	"unicode": "1f51e",
+	"utf16": "\uD83D\uDD1E",
+	"text": ["underage"]
+}, {
+	"unicode": "1f51f",
+	"utf16": "\uD83D\uDD1F",
+	"text": ["keycap_ten"]
+}, {
+	"unicode": "1f520",
+	"utf16": "\uD83D\uDD20",
+	"text": ["capital_abcd"]
+}, {
+	"unicode": "1f521",
+	"utf16": "\uD83D\uDD21",
+	"text": ["abcd"]
+}, {
+	"unicode": "1f522",
+	"utf16": "\uD83D\uDD22",
+	"text": ["1234"]
+}, {
+	"unicode": "1f523",
+	"utf16": "\uD83D\uDD23",
+	"text": ["symbols"]
+}, {
+	"unicode": "1f524",
+	"utf16": "\uD83D\uDD24",
+	"text": ["abc"]
+}, {
+	"unicode": "1f525",
+	"utf16": "\uD83D\uDD25",
+	"text": ["fire"]
+}, {
+	"unicode": "1f526",
+	"utf16": "\uD83D\uDD26",
+	"text": ["flashlight"]
+}, {
+	"unicode": "1f527",
+	"utf16": "\uD83D\uDD27",
+	"text": ["wrench"]
+}, {
+	"unicode": "1f528",
+	"utf16": "\uD83D\uDD28",
+	"text": ["hammer"]
+}, {
+	"unicode": "1f529",
+	"utf16": "\uD83D\uDD29",
+	"text": ["nut_and_bolt"]
+}, {
+	"unicode": "1f52a",
+	"utf16": "\uD83D\uDD2A",
+	"text": ["hocho", "knife"]
+}, {
+	"unicode": "1f52b",
+	"utf16": "\uD83D\uDD2B",
+	"text": ["gun"]
+}, {
+	"unicode": "1f52c",
+	"utf16": "\uD83D\uDD2C",
+	"text": ["microscope"]
+}, {
+	"unicode": "1f52d",
+	"utf16": "\uD83D\uDD2D",
+	"text": ["telescope"]
+}, {
+	"unicode": "1f52e",
+	"utf16": "\uD83D\uDD2E",
+	"text": ["crystal_ball"]
+}, {
+	"unicode": "1f52f",
+	"utf16": "\uD83D\uDD2F",
+	"text": ["six_pointed_star"]
+}, {
+	"unicode": "1f530",
+	"utf16": "\uD83D\uDD30",
+	"text": ["beginner"]
+}, {
+	"unicode": "1f531",
+	"utf16": "\uD83D\uDD31",
+	"text": ["trident"]
+}, {
+	"unicode": "1f532",
+	"utf16": "\uD83D\uDD32",
+	"text": ["black_square_button"]
+}, {
+	"unicode": "1f533",
+	"utf16": "\uD83D\uDD33",
+	"text": ["white_square_button"]
+}, {
+	"unicode": "1f534",
+	"utf16": "\uD83D\uDD34",
+	"text": ["red_circle"]
+}, {
+	"unicode": "1f535",
+	"utf16": "\uD83D\uDD35",
+	"text": ["large_blue_circle"]
+}, {
+	"unicode": "1f536",
+	"utf16": "\uD83D\uDD36",
+	"text": ["large_orange_diamond"]
+}, {
+	"unicode": "1f537",
+	"utf16": "\uD83D\uDD37",
+	"text": ["large_blue_diamond"]
+}, {
+	"unicode": "1f538",
+	"utf16": "\uD83D\uDD38",
+	"text": ["small_orange_diamond"]
+}, {
+	"unicode": "1f539",
+	"utf16": "\uD83D\uDD39",
+	"text": ["small_blue_diamond"]
+}, {
+	"unicode": "1f53a",
+	"utf16": "\uD83D\uDD3A",
+	"text": ["small_red_triangle"]
+}, {
+	"unicode": "1f53b",
+	"utf16": "\uD83D\uDD3B",
+	"text": ["small_red_triangle_down"]
+}, {
+	"unicode": "1f53c",
+	"utf16": "\uD83D\uDD3C",
+	"text": ["arrow_up_small"]
+}, {
+	"unicode": "1f53d",
+	"utf16": "\uD83D\uDD3D",
+	"text": ["arrow_down_small"]
+}, {
+	"unicode": "1f550",
+	"utf16": "\uD83D\uDD50",
+	"text": ["clock1"]
+}, {
+	"unicode": "1f551",
+	"utf16": "\uD83D\uDD51",
+	"text": ["clock2"]
+}, {
+	"unicode": "1f552",
+	"utf16": "\uD83D\uDD52",
+	"text": ["clock3"]
+}, {
+	"unicode": "1f553",
+	"utf16": "\uD83D\uDD53",
+	"text": ["clock4"]
+}, {
+	"unicode": "1f554",
+	"utf16": "\uD83D\uDD54",
+	"text": ["clock5"]
+}, {
+	"unicode": "1f555",
+	"utf16": "\uD83D\uDD55",
+	"text": ["clock6"]
+}, {
+	"unicode": "1f556",
+	"utf16": "\uD83D\uDD56",
+	"text": ["clock7"]
+}, {
+	"unicode": "1f557",
+	"utf16": "\uD83D\uDD57",
+	"text": ["clock8"]
+}, {
+	"unicode": "1f558",
+	"utf16": "\uD83D\uDD58",
+	"text": ["clock9"]
+}, {
+	"unicode": "1f559",
+	"utf16": "\uD83D\uDD59",
+	"text": ["clock10"]
+}, {
+	"unicode": "1f55a",
+	"utf16": "\uD83D\uDD5A",
+	"text": ["clock11"]
+}, {
+	"unicode": "1f55b",
+	"utf16": "\uD83D\uDD5B",
+	"text": ["clock12"]
+}, {
+	"unicode": "1f55c",
+	"utf16": "\uD83D\uDD5C",
+	"text": ["clock130"]
+}, {
+	"unicode": "1f55d",
+	"utf16": "\uD83D\uDD5D",
+	"text": ["clock230"]
+}, {
+	"unicode": "1f55e",
+	"utf16": "\uD83D\uDD5E",
+	"text": ["clock330"]
+}, {
+	"unicode": "1f55f",
+	"utf16": "\uD83D\uDD5F",
+	"text": ["clock430"]
+}, {
+	"unicode": "1f560",
+	"utf16": "\uD83D\uDD60",
+	"text": ["clock530"]
+}, {
+	"unicode": "1f561",
+	"utf16": "\uD83D\uDD61",
+	"text": ["clock630"]
+}, {
+	"unicode": "1f562",
+	"utf16": "\uD83D\uDD62",
+	"text": ["clock730"]
+}, {
+	"unicode": "1f563",
+	"utf16": "\uD83D\uDD63",
+	"text": ["clock830"]
+}, {
+	"unicode": "1f564",
+	"utf16": "\uD83D\uDD64",
+	"text": ["clock930"]
+}, {
+	"unicode": "1f565",
+	"utf16": "\uD83D\uDD65",
+	"text": ["clock1030"]
+}, {
+	"unicode": "1f566",
+	"utf16": "\uD83D\uDD66",
+	"text": ["clock1130"]
+}, {
+	"unicode": "1f567",
+	"utf16": "\uD83D\uDD67",
+	"text": ["clock1230"]
+}, {
+	"unicode": "1f5fb",
+	"utf16": "\uD83D\uDDFB",
+	"text": ["mount_fuji"]
+}, {
+	"unicode": "1f5fc",
+	"utf16": "\uD83D\uDDFC",
+	"text": ["tokyo_tower"]
+}, {
+	"unicode": "1f5fd",
+	"utf16": "\uD83D\uDDFD",
+	"text": ["statue_of_liberty"]
+}, {
+	"unicode": "1f5fe",
+	"utf16": "\uD83D\uDDFE",
+	"text": ["japan"]
+}, {
+	"unicode": "1f5ff",
+	"utf16": "\uD83D\uDDFF",
+	"text": ["moyai"]
+}, {
+	"unicode": "1f645",
+	"utf16": "\uD83D\uDE45",
+	"text": ["no_good"]
+}, {
+	"unicode": "1f646",
+	"utf16": "\uD83D\uDE46",
+	"text": ["ok_woman"]
+}, {
+	"unicode": "1f647",
+	"utf16": "\uD83D\uDE47",
+	"text": ["bow"]
+}, {
+	"unicode": "1f648",
+	"utf16": "\uD83D\uDE48",
+	"text": ["see_no_evil"]
+}, {
+	"unicode": "1f649",
+	"utf16": "\uD83D\uDE49",
+	"text": ["hear_no_evil"]
+}, {
+	"unicode": "1f64a",
+	"utf16": "\uD83D\uDE4A",
+	"text": ["speak_no_evil"]
+}, {
+	"unicode": "1f64b",
+	"utf16": "\uD83D\uDE4B",
+	"text": ["raising_hand"]
+}, {
+	"unicode": "1f64c",
+	"utf16": "\uD83D\uDE4C",
+	"text": ["raised_hands"]
+}, {
+	"unicode": "1f64d",
+	"utf16": "\uD83D\uDE4D",
+	"text": ["person_frowning"]
+}, {
+	"unicode": "1f64e",
+	"utf16": "\uD83D\uDE4E",
+	"text": ["person_with_pouting_face"]
+}, {
+	"unicode": "1f64f",
+	"utf16": "\uD83D\uDE4F",
+	"text": ["pray"]
+}, {
+	"unicode": "1f680",
+	"utf16": "\uD83D\uDE80",
+	"text": ["rocket"]
+}, {
+	"unicode": "1f681",
+	"utf16": "\uD83D\uDE81",
+	"text": ["helicopter"]
+}, {
+	"unicode": "1f682",
+	"utf16": "\uD83D\uDE82",
+	"text": ["steam_locomotive"]
+}, {
+	"unicode": "1f683",
+	"utf16": "\uD83D\uDE83",
+	"text": ["railway_car"]
+}, {
+	"unicode": "1f684",
+	"utf16": "\uD83D\uDE84",
+	"text": ["bullettrain_side"]
+}, {
+	"unicode": "1f685",
+	"utf16": "\uD83D\uDE85",
+	"text": ["bullettrain_front"]
+}, {
+	"unicode": "1f686",
+	"utf16": "\uD83D\uDE86",
+	"text": ["train2"]
+}, {
+	"unicode": "1f687",
+	"utf16": "\uD83D\uDE87",
+	"text": ["metro"]
+}, {
+	"unicode": "1f688",
+	"utf16": "\uD83D\uDE88",
+	"text": ["light_rail"]
+}, {
+	"unicode": "1f689",
+	"utf16": "\uD83D\uDE89",
+	"text": ["station"]
+}, {
+	"unicode": "1f68a",
+	"utf16": "\uD83D\uDE8A",
+	"text": ["tram"]
+}, {
+	"unicode": "1f68b",
+	"utf16": "\uD83D\uDE8B",
+	"text": ["train"]
+}, {
+	"unicode": "1f68c",
+	"utf16": "\uD83D\uDE8C",
+	"text": ["bus"]
+}, {
+	"unicode": "1f68d",
+	"utf16": "\uD83D\uDE8D",
+	"text": ["oncoming_bus"]
+}, {
+	"unicode": "1f68e",
+	"utf16": "\uD83D\uDE8E",
+	"text": ["trolleybus"]
+}, {
+	"unicode": "1f68f",
+	"utf16": "\uD83D\uDE8F",
+	"text": ["busstop"]
+}, {
+	"unicode": "1f690",
+	"utf16": "\uD83D\uDE90",
+	"text": ["minibus"]
+}, {
+	"unicode": "1f691",
+	"utf16": "\uD83D\uDE91",
+	"text": ["ambulance"]
+}, {
+	"unicode": "1f692",
+	"utf16": "\uD83D\uDE92",
+	"text": ["fire_engine"]
+}, {
+	"unicode": "1f693",
+	"utf16": "\uD83D\uDE93",
+	"text": ["police_car"]
+}, {
+	"unicode": "1f694",
+	"utf16": "\uD83D\uDE94",
+	"text": ["oncoming_police_car"]
+}, {
+	"unicode": "1f695",
+	"utf16": "\uD83D\uDE95",
+	"text": ["taxi"]
+}, {
+	"unicode": "1f696",
+	"utf16": "\uD83D\uDE96",
+	"text": ["oncoming_taxi"]
+}, {
+	"unicode": "1f697",
+	"utf16": "\uD83D\uDE97",
+	"text": ["car", "red_car"]
+}, {
+	"unicode": "1f698",
+	"utf16": "\uD83D\uDE98",
+	"text": ["oncoming_automobile"]
+}, {
+	"unicode": "1f699",
+	"utf16": "\uD83D\uDE99",
+	"text": ["blue_car"]
+}, {
+	"unicode": "1f69a",
+	"utf16": "\uD83D\uDE9A",
+	"text": ["truck"]
+}, {
+	"unicode": "1f69b",
+	"utf16": "\uD83D\uDE9B",
+	"text": ["articulated_lorry"]
+}, {
+	"unicode": "1f69c",
+	"utf16": "\uD83D\uDE9C",
+	"text": ["tractor"]
+}, {
+	"unicode": "1f69d",
+	"utf16": "\uD83D\uDE9D",
+	"text": ["monorail"]
+}, {
+	"unicode": "1f69e",
+	"utf16": "\uD83D\uDE9E",
+	"text": ["mountain_railway"]
+}, {
+	"unicode": "1f69f",
+	"utf16": "\uD83D\uDE9F",
+	"text": ["suspension_railway"]
+}, {
+	"unicode": "1f6a0",
+	"utf16": "\uD83D\uDEA0",
+	"text": ["mountain_cableway"]
+}, {
+	"unicode": "1f6a1",
+	"utf16": "\uD83D\uDEA1",
+	"text": ["aerial_tramway"]
+}, {
+	"unicode": "1f6a2",
+	"utf16": "\uD83D\uDEA2",
+	"text": ["ship"]
+}, {
+	"unicode": "1f6a3",
+	"utf16": "\uD83D\uDEA3",
+	"text": ["rowboat"]
+}, {
+	"unicode": "1f6a4",
+	"utf16": "\uD83D\uDEA4",
+	"text": ["speedboat"]
+}, {
+	"unicode": "1f6a5",
+	"utf16": "\uD83D\uDEA5",
+	"text": ["traffic_light"]
+}, {
+	"unicode": "1f6a6",
+	"utf16": "\uD83D\uDEA6",
+	"text": ["vertical_traffic_light"]
+}, {
+	"unicode": "1f6a7",
+	"utf16": "\uD83D\uDEA7",
+	"text": ["construction"]
+}, {
+	"unicode": "1f6a8",
+	"utf16": "\uD83D\uDEA8",
+	"text": ["rotating_light"]
+}, {
+	"unicode": "1f6a9",
+	"utf16": "\uD83D\uDEA9",
+	"text": ["triangular_flag_on_post"]
+}, {
+	"unicode": "1f6aa",
+	"utf16": "\uD83D\uDEAA",
+	"text": ["door"]
+}, {
+	"unicode": "1f6ab",
+	"utf16": "\uD83D\uDEAB",
+	"text": ["no_entry_sign"]
+}, {
+	"unicode": "1f6ac",
+	"utf16": "\uD83D\uDEAC",
+	"text": ["smoking"]
+}, {
+	"unicode": "1f6ad",
+	"utf16": "\uD83D\uDEAD",
+	"text": ["no_smoking"]
+}, {
+	"unicode": "1f6ae",
+	"utf16": "\uD83D\uDEAE",
+	"text": ["put_litter_in_its_place"]
+}, {
+	"unicode": "1f6af",
+	"utf16": "\uD83D\uDEAF",
+	"text": ["do_not_litter"]
+}, {
+	"unicode": "1f6b0",
+	"utf16": "\uD83D\uDEB0",
+	"text": ["potable_water"]
+}, {
+	"unicode": "1f6b1",
+	"utf16": "\uD83D\uDEB1",
+	"text": ["non-potable_water"]
+}, {
+	"unicode": "1f6b2",
+	"utf16": "\uD83D\uDEB2",
+	"text": ["bike"]
+}, {
+	"unicode": "1f6b3",
+	"utf16": "\uD83D\uDEB3",
+	"text": ["no_bicycles"]
+}, {
+	"unicode": "1f6b4",
+	"utf16": "\uD83D\uDEB4",
+	"text": ["bicyclist"]
+}, {
+	"unicode": "1f6b5",
+	"utf16": "\uD83D\uDEB5",
+	"text": ["mountain_bicyclist"]
+}, {
+	"unicode": "1f6b6",
+	"utf16": "\uD83D\uDEB6",
+	"text": ["walking"]
+}, {
+	"unicode": "1f6b7",
+	"utf16": "\uD83D\uDEB7",
+	"text": ["no_pedestrians"]
+}, {
+	"unicode": "1f6b8",
+	"utf16": "\uD83D\uDEB8",
+	"text": ["children_crossing"]
+}, {
+	"unicode": "1f6b9",
+	"utf16": "\uD83D\uDEB9",
+	"text": ["mens"]
+}, {
+	"unicode": "1f6ba",
+	"utf16": "\uD83D\uDEBA",
+	"text": ["womens"]
+}, {
+	"unicode": "1f6bb",
+	"utf16": "\uD83D\uDEBB",
+	"text": ["restroom"]
+}, {
+	"unicode": "1f6bc",
+	"utf16": "\uD83D\uDEBC",
+	"text": ["baby_symbol"]
+}, {
+	"unicode": "1f6bd",
+	"utf16": "\uD83D\uDEBD",
+	"text": ["toilet"]
+}, {
+	"unicode": "1f6be",
+	"utf16": "\uD83D\uDEBE",
+	"text": ["wc"]
+}, {
+	"unicode": "1f6bf",
+	"utf16": "\uD83D\uDEBF",
+	"text": ["shower"]
+}, {
+	"unicode": "1f6c0",
+	"utf16": "\uD83D\uDEC0",
+	"text": ["bath"]
+}, {
+	"unicode": "1f6c1",
+	"utf16": "\uD83D\uDEC1",
+	"text": ["bathtub"]
+}, {
+	"unicode": "1f6c2",
+	"utf16": "\uD83D\uDEC2",
+	"text": ["passport_control"]
+}, {
+	"unicode": "1f6c3",
+	"utf16": "\uD83D\uDEC3",
+	"text": ["customs"]
+}, {
+	"unicode": "1f6c4",
+	"utf16": "\uD83D\uDEC4",
+	"text": ["baggage_claim"]
+}, {
+	"unicode": "1f6c5",
+	"utf16": "\uD83D\uDEC5",
+	"text": ["left_luggage"]
+}, {
+	"unicode": "0023-20e3",
+	"utf16": "\u0023\u20E3",
+	"text": ["hash"]
+}, {
+	"unicode": "0030-20e3",
+	"utf16": "\u0030\u20E3",
+	"text": ["zero"]
+}, {
+	"unicode": "0031-20e3",
+	"utf16": "\u0031\u20E3",
+	"text": ["one"]
+}, {
+	"unicode": "0032-20e3",
+	"utf16": "\u0032\u20E3",
+	"text": ["two"]
+}, {
+	"unicode": "0033-20e3",
+	"utf16": "\u0033\u20E3",
+	"text": ["three"]
+}, {
+	"unicode": "0034-20e3",
+	"utf16": "\u0034\u20E3",
+	"text": ["four"]
+}, {
+	"unicode": "0035-20e3",
+	"utf16": "\u0035\u20E3",
+	"text": ["five"]
+}, {
+	"unicode": "0036-20e3",
+	"utf16": "\u0036\u20E3",
+	"text": ["six"]
+}, {
+	"unicode": "0037-20e3",
+	"utf16": "\u0037\u20E3",
+	"text": ["seven"]
+}, {
+	"unicode": "0038-20e3",
+	"utf16": "\u0038\u20E3",
+	"text": ["eight"]
+}, {
+	"unicode": "0039-20e3",
+	"utf16": "\u0039\u20E3",
+	"text": ["nine"]
+}, {
+	"unicode": "1f1e8-1f1f3",
+	"utf16": "\uD83C\uDDE8\uD83C\uDDF3",
+	"text": ["cn"]
+}, {
+	"unicode": "1f1e9-1f1ea",
+	"utf16": "\uD83C\uDDE9\uD83C\uDDEA",
+	"text": ["de"]
+}, {
+	"unicode": "1f1ea-1f1f8",
+	"utf16": "\uD83C\uDDEA\uD83C\uDDF8",
+	"text": ["es"]
+}, {
+	"unicode": "1f1eb-1f1f7",
+	"utf16": "\uD83C\uDDEB\uD83C\uDDF7",
+	"text": ["fr"]
+}, {
+	"unicode": "1f1ec-1f1e7",
+	"utf16": "\uD83C\uDDEC\uD83C\uDDE7",
+	"text": ["gb", "uk"]
+}, {
+	"unicode": "1f1ee-1f1f9",
+	"utf16": "\uD83C\uDDEE\uD83C\uDDF9",
+	"text": ["it"]
+}, {
+	"unicode": "1f1ef-1f1f5",
+	"utf16": "\uD83C\uDDEF\uD83C\uDDF5",
+	"text": ["jp"]
+}, {
+	"unicode": "1f1f0-1f1f7",
+	"utf16": "\uD83C\uDDF0\uD83C\uDDF7",
+	"text": ["kr"]
+}, {
+	"unicode": "1f1f7-1f1fa",
+	"utf16": "\uD83C\uDDF7\uD83C\uDDFA",
+	"text": ["ru"]
+}, {
+	"unicode": "1f1fa-1f1f8",
+	"utf16": "\uD83C\uDDFA\uD83C\uDDF8",
+	"text": ["us"]
+}];
