@@ -21,7 +21,7 @@
 	],
 	"content_scripts": [{
 		"js": ["emoji.js", "editor.js", "view.js"],
-		"css": ["bani.css", "style.css"],
+		"css": ["style.css"],
 		"matches": [ "http://*/*", "https://*/*" ],
 		"run_at": "document_start"
 	}]

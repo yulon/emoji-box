@@ -12,7 +12,6 @@ function showBox() {
 		if (box == null) {
 			box = document.createElement("div");
 			box.id = "emoji-box";
-			box.setAttribute("bani", "up2down pluse 3ds");
 
 			box.onclick = box.oncontextmenu = function(me){
 				me.cancelBubble = true;
@@ -26,10 +25,10 @@ function showBox() {
 			box.appendChild(tab);
 
 			box.onscroll = function(){
-				var base = (Math.ceil(box.scrollTop / 32) + 15) * tabCol;
+				var base = (Math.ceil(box.scrollTop / 32) + 10) * tabCol;
 
 				if (loadEnd >= base) {
-					box.onmousewheel = null;
+					delete box.onmousewheel;
 					loadEnd = emoji.length;
 				}else{
 					loadEnd = base;
@@ -60,6 +59,16 @@ function showBox() {
 	box.style.width = erPos.width + "px";
 
 	box.style.display = "block";
+	box.animate(
+		[
+			{ offset:0, opacity: 0, transform: "scale(0, 0)" },
+			{ offset:6/10, transform: "scale(1.1, 1.1)" },
+			{ offset:1, opacity: 1, transform: "scale(1, 1)" }
+		],
+		{
+			duration: 300
+		}
+	);
 
 	tab.style.width = box.clientWidth - (box.clientWidth % 32) + "px";
 
@@ -67,10 +76,9 @@ function showBox() {
 	tabRow = Math.ceil(emoji.length / tabCol);
 	tab.style.height = tabRow * 32 + "px";
 
-	if (box.onscroll != null) {
+	if (box.onscroll) {
 		box.onscroll();
 	};
-
 }
 
 function hideBox (argument) {
