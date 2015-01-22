@@ -6,7 +6,7 @@ var loadEnd = 0;
 
 function showBox() {
 	dest = document.activeElement;
-	er = new Editor(dest)
+	er = new Editor(dest);
 	
 	if (document.getElementById("emoji-box") == null) {
 		if (box == null) {

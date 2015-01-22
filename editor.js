@@ -35,47 +35,35 @@ function Editor (ele) {
 			}
 		};
 
-	} else if (ele.tagName == "DIV"){
-		var val;
-		
-		if(ele.id.slice(0, 10) == "tweet-box-"){
+	} else if (ele.contentEditable){
+		var val = ele;
 
-			val = ele.querySelector("div");
-			
-			if(val.childElementCount==1 && val.childNodes[0].tagName=="BR"){
-				val.removeChild(val.childNodes[0]);
-			}
+		if (ele.id.slice(0, 10) == "tweet-box-") {
+			val = val.childNodes[0];
+		};
 
-
-		}else{
-			val = ele;
-		}
-		
-
-		var selection = document.getSelection();
+		var selection = window.getSelection();
 		var range = selection.rangeCount && selection.getRangeAt(0);
-
 
 		this.value = {
 			get: function(){
-				return val.innerHTML;
+				return val.textContent;
 			},
 			set: function(value){
-				val.innerHTML = value;
+				val.textContent = value;
 			},
 			input: function(value){
 				//dest.focus();
-				//console.log(ele.childElementCount, ele.childNodes[0].tagName);
 
-				var oldStart = range.startOffset;
-				val.innerHTML = val.innerHTML.slice(0, range.startOffset) + value + val.innerHTML.slice(range.endOffset, val.innerHTML.length);
-
-				range.setStart(range.commonAncestorContainer, oldStart + value.length);
-				range.setEnd(range.commonAncestorContainer, oldStart + value.length);
-
-				//selection.removeAllRanges();
+				var offset = range.startOffset;
+				val.textContent = val.textContent.slice(0, range.startOffset) + value + val.textContent.slice(range.endOffset, val.textContent.length);
+				offset += value.length;
+				
+				range.setStart(val.childNodes[0], offset);
+				range.setEnd(val.childNodes[0], offset);
+				//range.collapse(false);
+				//if(selection.rangeCount > 0) selection.removeAllRanges();
 				//selection.addRange(range);
-
 			}
 		};
 
