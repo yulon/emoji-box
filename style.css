@@ -38,6 +38,7 @@
 
 #emoji-box #emoji-box-tab i:hover {
 	box-shadow: 0 0 10px 0px rgba(35,191,243,0.8);
+	background-size: 100%;
 	position: relative;
 	z-index: 2;
 }
