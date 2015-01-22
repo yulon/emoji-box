@@ -8,47 +8,50 @@ function showBox() {
 	dest = document.activeElement;
 	er = new Editor(dest)
 	
-	if (box == null) {
-		box = document.createElement("div");
-		box.id = "emoji-box";
-		box.setAttribute("bani", "up2down pluse 3ds");
+	if (document.getElementById("emoji-box") == null) {
+		if (box == null) {
+			box = document.createElement("div");
+			box.id = "emoji-box";
+			box.setAttribute("bani", "up2down pluse 3ds");
 
-		box.onclick = box.oncontextmenu = function(me){
-			me.cancelBubble = true;
+			box.onclick = box.oncontextmenu = function(me){
+				me.cancelBubble = true;
+			};
+
+			window.addEventListener("click", hideBox);
+			window.addEventListener("contextmenu", hideBox);
+
+			tab = document.createElement("div");
+			tab.id = "emoji-box-tab"
+			box.appendChild(tab);
+
+			box.onscroll = function(){
+				var base = (Math.ceil(box.scrollTop / 32) + 15) * tabCol;
+
+				if (loadEnd >= base) {
+					box.onmousewheel = null;
+					loadEnd = emoji.length;
+				}else{
+					loadEnd = base;
+				};
+
+				if (loading == false) {
+					loading = true;
+					for (; loaded < loadEnd && loaded < emoji.length; loaded++) {
+						var ico = document.createElement("i");
+						ico.setAttribute("emoji-id", loaded);
+						ico.style.backgroundImage = "url(\"" + root + "emoji/" + emoji[loaded].unicode + ".png\")";
+						ico.onclick = leftClick;
+						ico.oncontextmenu = rightClick;
+						tab.appendChild(ico);
+					};
+					loading = false;
+				};
+			};
 		};
-
-		window.addEventListener("click", hideBox);
-		window.addEventListener("contextmenu", hideBox);
-
-		tab = document.createElement("div");
-		tab.id = "emoji-box-tab"
-		box.appendChild(tab);
 
 		document.body.appendChild(box);
 
-		box.onscroll = function(){
-			var base = (Math.ceil(box.scrollTop / 32) + 15) * tabCol;
-
-			if (loadEnd >= base) {
-				box.onmousewheel = null;
-				loadEnd = emoji.length;
-			}else{
-				loadEnd = base;
-			};
-
-			if (loading == false) {
-				loading = true;
-				for (; loaded < loadEnd && loaded < emoji.length; loaded++) {
-					var ico = document.createElement("i");
-					ico.setAttribute("emoji-id", loaded);
-					ico.style.backgroundImage = "url(\"" + root + "emoji/" + emoji[loaded].unicode + ".png\")";
-					ico.onclick = leftClick;
-					ico.oncontextmenu = rightClick;
-					tab.appendChild(ico);
-				};
-				loading = false;
-			};
-		};
 	};
 
 	var erPos = er.getPosition();
