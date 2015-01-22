@@ -6,7 +6,6 @@ var loadEnd = 0;
 
 function showBox() {
 	dest = document.activeElement;
-	console.log(dest);
 	er = new Editor(dest)
 	
 	if (box == null) {
@@ -52,10 +51,10 @@ function showBox() {
 		};
 	};
 
-	var destRange = dest.getBoundingClientRect();
-	box.style.left = destRange.left + window.scrollX + "px";
-	box.style.top = destRange.top + window.scrollY + destRange.height + "px";
-	box.style.width = dest.offsetWidth + "px";
+	var erPos = er.getPosition();
+	box.style.left = erPos.left + "px";
+	box.style.top = erPos.top + erPos.height + "px";
+	box.style.width = erPos.width + "px";
 
 	box.style.display = "block";
 
@@ -68,6 +67,7 @@ function showBox() {
 	if (box.onscroll != null) {
 		box.onscroll();
 	};
+
 }
 
 function hideBox (argument) {
