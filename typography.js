@@ -35,7 +35,7 @@ function Typography (ele) {
 			}
 		};
 
-		//this.getCaretRect = function(){};
+		this.getCaretRect = function(){};
 
 	} else if (ele.contentEditable){
 
@@ -86,33 +86,39 @@ function Typography (ele) {
 		this.getCaretRect = function(){
 			var docRect;
 
-			if (range.startOffset == range.endOffset) {
+			if (range.collapsed) {
+				if (range.startOffset == 0) return;
+
 				var newRange = document.createRange();
 
-				newRange.setStart(range.commonAncestorContainer, 0);
-
 				var caret;
-				if (range.startOffset > 0) {
+				if (range.startOffset < range.commonAncestorContainer.length) {
+
+					newRange.setStart(range.commonAncestorContainer, range.startOffset);
+					newRange.setEnd(range.commonAncestorContainer, range.startOffset + 1);
+
+					var rect = newRange.getBoundingClientRect();
+
+					docRect = {
+						left: rect.left + window.scrollX,
+						width: 0
+					};
+
+				}else{
+
+					newRange.setStart(range.commonAncestorContainer, range.startOffset - 1);
 					newRange.setEnd(range.commonAncestorContainer, range.startOffset);
 
 					var rect = newRange.getBoundingClientRect();
 
 					docRect = {
-						right: rect.right + window.scrollX,
+						left: rect.left + window.scrollX + rect.width,
 						width: 0
 					};
-				}else{
-					newRange.setEnd(range.commonAncestorContainer, 1);
 
-					var rect = newRange.getBoundingClientRect();
-
-					docRect = {
-						right: rect.right + window.scrollX - rect.width,
-						width: 0
-					};
 				};
 
-				docRect.left = docRect.right;
+				docRect.right = docRect.left;
 
 			}else{
 				var rect = range.getBoundingClientRect();

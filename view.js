@@ -1,11 +1,19 @@
-var box, tab, tabCol, tabRow, dest, tpgp;
+var box, tab, tabCol, tabRow, dest, tpgp, popX, popY;
 var root = chrome.extension.getURL("/");
 var loaded = 0;
 var loading = false;
 var loadEnd = 0;
 
+window.addEventListener("contextmenu", function(mouseEvent) {
+	dest = mouseEvent.srcElement;
+	popX = mouseEvent.pageX;
+	popY = mouseEvent.pageY;
+});
+
 function showBox() {
-	dest = document.activeElement;
+	if (dest != document.activeElement){
+		console.log(dest, document.activeElement);
+	};
 	
 	if(dest.id.slice(0, 10) == "tweet-box-"){
 		tpgp = new Typography(dest.childNodes[0]);
@@ -58,28 +66,17 @@ function showBox() {
 
 	};
 
-	var	rect;
+	var	rect = tpgp.getCaretRect();
 
-	if (tpgp.getCaretRect) {
-		rect = tpgp.getCaretRect();
-	} else{
-		rect = tpgp.getRect();
+	if (rect) {
+		box.style.left = rect.left + rect.width/2 - 200 + "px";
+		box.style.top = rect.bottom + 20 + "px";
+	} else {
+		box.style.left = popX - 200 + "px";
+		box.style.top = popY + 30 + "px";
 	};
 
-	box.style.left = rect.left + rect.width/2 - 200 + "px";
-	box.style.top = rect.bottom + 20 + "px";
-
 	box.style.display = "block";
-	box.animate(
-		[
-			{ offset:0, opacity: 0, transform: "scale(0, 0)" },
-			{ offset:6/10, transform: "scale(1.1, 1.1)" },
-			{ offset:1, opacity: 1, transform: "scale(1, 1)" }
-		],
-		{
-			duration: 300
-		}
-	);
 
 	tab.style.width = box.clientWidth - (box.clientWidth % 32) + "px";
 

@@ -16,6 +16,7 @@
 	box-sizing: border-box;
 	-webkit-transform-origin: 50% 0%;
 	transform-origin: 50% 0%;
+	-webkit-animation: emoji-box-ani 300ms both;
 }
 
 #emoji-box #emoji-box-tab {
@@ -43,4 +44,14 @@
 	background-size: 100%;
 	position: relative;
 	z-index: 2;
+}
+
+@-webkit-keyframes emoji-box-ani {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(0, 0);
+	}
+	60% {
+		-webkit-transform: scale(1.1, 1.1);
+	}
 }
