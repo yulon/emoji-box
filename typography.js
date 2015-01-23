@@ -28,7 +28,6 @@ function Typography (ele) {
 				ele.value = value;
 			},
 			input: function(value){
-				dest.focus();
 				var oldStart = ele.selectionStart;
 				ele.value = ele.value.slice(0, ele.selectionStart) + value + ele.value.slice(ele.selectionEnd, ele.value.length);
 				ele.selectionStart = ele.selectionEnd = oldStart + value.length;
@@ -40,11 +39,6 @@ function Typography (ele) {
 	} else if (ele.contentEditable){
 
 		var selection = window.getSelection();
-		var range = selection.rangeCount && selection.getRangeAt(0);
-
-		if (dest.textContent == "") {
-			dest.textContent = "\u200b";
-		};
 
 		this.value = {
 			get: function(){
@@ -54,44 +48,47 @@ function Typography (ele) {
 				ele.textContent = value;
 			},
 			input: function(value){
-				//ele.focus();
-				var offset = range.startOffset;
-				
-				ele.textContent = (
-					ele.textContent.slice(0, range.startOffset) +
-					value +
-					ele.textContent.slice(range.endOffset, ele.textContent.length)
-				).replace("\u200b", "");
+				var range = selection.getRangeAt(0);
 
+				var offset = range.startOffset;
+				ele.textContent = ele.textContent.slice(0, range.startOffset) + value + ele.textContent.slice(range.endOffset, ele.textContent.length);
 				offset += value.length;
-				//range = document.createRange();
+
 				range.setStart(ele.childNodes[0], offset);
 				range.setEnd(ele.childNodes[0], offset);
-				//range.collapse(false);
-				//if(selection.rangeCount > 0) selection.removeAllRanges();
-				//selection.addRange(range);
+				if(selection.rangeCount > 0) selection.removeAllRanges();
+				selection.addRange(range);
 			}
 		};
 
 		this.selectionStart = {
 			get: function(){
+				var range = selection.getRangeAt(0);
 				return range.startOffset;
 			},
 			set: function(offset){
+				var range = selection.getRangeAt(0);
 				range.setStart(range.commonAncestorContainer, offset);
+				if(selection.rangeCount > 0) selection.removeAllRanges();
+				selection.addRange(range);
 			}
 		};
 
 		this.selectionEnd = {
 			get: function(){
+				var range = selection.getRangeAt(0);
 				return range.endOffset;
 			},
 			set: function(offset){
+				var range = selection.getRangeAt(0);
 				range.setEnd(range.commonAncestorContainer, offset);
+				if(selection.rangeCount > 0) selection.removeAllRanges();
+				selection.addRange(range);
 			}
 		};
 
 		this.getCaretRect = function(){
+			var range = selection.getRangeAt(0);
 			var docRect;
 
 			if (range.collapsed) {

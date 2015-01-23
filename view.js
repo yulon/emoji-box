@@ -18,12 +18,16 @@ function showBox() {
 			box = document.createElement("div");
 			box.id = "emoji-box";
 
-			box.onclick = box.oncontextmenu = function(me){
-				me.cancelBubble = true;
+			box.onmousedown = box.onclick = box.oncontextmenu = function(mouseEvent){
+				mouseEvent.cancelBubble = true;
+				return false;
 			};
 
-			window.addEventListener("click", hideBox);
-			window.addEventListener("contextmenu", hideBox);
+			window.addEventListener("mousedown", function() {
+				if(box.style.display == "block"){
+					box.style.display = null;
+				};
+			});
 
 			tab = document.createElement("div");
 			tab.id = "emoji-box-tab"
@@ -81,22 +85,12 @@ function showBox() {
 	};
 }
 
-function hideBox (argument) {
-	if(box.style.display == "block"){
-		box.style.display = null;
-	};
-}
-
-function leftClick(me) {
+function leftClick() {
 	tpgp.value.input(emoji[this.getAttribute("emoji-id")].utf16);
-	me.cancelBubble = true;
-	return false;
 }
 
-function rightClick(me) {
+function rightClick() {
 	tpgp.value.input(":" + emoji[this.getAttribute("emoji-id")].text + ":");
-	me.cancelBubble = true;
-	return false;
 }
 
 function containsNode(parent, child) {
