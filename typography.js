@@ -42,6 +42,10 @@ function Typography (ele) {
 		var selection = window.getSelection();
 		var range = selection.rangeCount && selection.getRangeAt(0);
 
+		if (dest.textContent == "") {
+			dest.textContent = "\u200b";
+		};
+
 		this.value = {
 			get: function(){
 				return ele.textContent;
@@ -51,11 +55,15 @@ function Typography (ele) {
 			},
 			input: function(value){
 				//ele.focus();
-				console.log(ele.contentWindow);
 				var offset = range.startOffset;
-				ele.textContent = ele.textContent.slice(0, range.startOffset) + value + ele.textContent.slice(range.endOffset, ele.textContent.length);
-				offset += value.length;
+				
+				ele.textContent = (
+					ele.textContent.slice(0, range.startOffset) +
+					value +
+					ele.textContent.slice(range.endOffset, ele.textContent.length)
+				).replace("\u200b", "");
 
+				offset += value.length;
 				//range = document.createRange();
 				range.setStart(ele.childNodes[0], offset);
 				range.setEnd(ele.childNodes[0], offset);

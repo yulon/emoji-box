@@ -11,16 +11,8 @@ window.addEventListener("contextmenu", function(mouseEvent) {
 });
 
 function showBox() {
-	if (dest != document.activeElement){
-		console.log(dest, document.activeElement);
-	};
-	
-	if(dest.id.slice(0, 10) == "tweet-box-"){
-		tpgp = new Typography(dest.childNodes[0]);
-	}else{
-		tpgp = new Typography(dest);
-	};
-	
+	tpgp = new Typography(dest);
+
 	if (document.getElementById("emoji-box") == null) {
 		if (box == null) {
 			box = document.createElement("div");
