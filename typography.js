@@ -2,7 +2,7 @@ function Typography (ele) {
 
 	if (ele.select) {
 
-		this.startOffset = {
+		this.selectionStart = {
 			get: function(){
 				return ele.selectionStart;
 			},
@@ -11,7 +11,7 @@ function Typography (ele) {
 			}
 		};
 
-		this.endOffset = {
+		this.selectionEnd = {
 			get: function(){
 				return ele.selectionEnd;
 			},
@@ -28,52 +28,44 @@ function Typography (ele) {
 				ele.value = value;
 			},
 			input: function(value){
+				dest.focus();
 				var oldStart = ele.selectionStart;
 				ele.value = ele.value.slice(0, ele.selectionStart) + value + ele.value.slice(ele.selectionEnd, ele.value.length);
 				ele.selectionStart = ele.selectionEnd = oldStart + value.length;
-				dest.focus();
 			}
 		};
 
-	} else if (ele.contentEditable){
-		var val;
+		//this.getCaretRect = function(){};
 
-		switch(true){
-			case ele.id.slice(0, 10) == "tweet-box-": //Twitter
-				val = ele.childNodes[0];
-				break;
-			case ele.getAttribute("g_editable") != null: //Google+
-				ele.parentNode.childNodes[0].style.display = "none";
-			default:
-				val = ele;
-		}
+	} else if (ele.contentEditable){
 
 		var selection = window.getSelection();
 		var range = selection.rangeCount && selection.getRangeAt(0);
 
 		this.value = {
 			get: function(){
-				return val.textContent;
+				return ele.textContent;
 			},
 			set: function(value){
-				val.textContent = value;
+				ele.textContent = value;
 			},
 			input: function(value){
-				//dest.focus();
-
+				//ele.focus();
+				console.log(ele.contentWindow);
 				var offset = range.startOffset;
-				val.textContent = val.textContent.slice(0, range.startOffset) + value + val.textContent.slice(range.endOffset, val.textContent.length);
+				ele.textContent = ele.textContent.slice(0, range.startOffset) + value + ele.textContent.slice(range.endOffset, ele.textContent.length);
 				offset += value.length;
-				
-				range.setStart(val.childNodes[0], offset);
-				range.setEnd(val.childNodes[0], offset);
+
+				//range = document.createRange();
+				range.setStart(ele.childNodes[0], offset);
+				range.setEnd(ele.childNodes[0], offset);
 				//range.collapse(false);
 				//if(selection.rangeCount > 0) selection.removeAllRanges();
 				//selection.addRange(range);
 			}
 		};
 
-		this.startOffset = {
+		this.selectionStart = {
 			get: function(){
 				return range.startOffset;
 			},
@@ -82,7 +74,7 @@ function Typography (ele) {
 			}
 		};
 
-		this.endOffset = {
+		this.selectionEnd = {
 			get: function(){
 				return range.endOffset;
 			},
@@ -91,31 +83,59 @@ function Typography (ele) {
 			}
 		};
 
+		this.getCaretRect = function(){
+			var docRect;
 
-		this.getSelectedBoundingClientRect = function(){
-			return range.getBoundingClientRect();
-		};
+			if (range.startOffset == range.endOffset) {
+				var newRange = document.createRange();
 
-		this.getSelectedPosition = function(){
-			var rect = range.getBoundingClientRect();
-			return {
-				left: rect.left + window.scrollX,
-				top: rect.top + window.scrollY,
-				width: rect.width,
-				height: rect.height
+				newRange.setStart(range.commonAncestorContainer, 0);
+
+				var caret;
+				if (range.startOffset > 0) {
+					newRange.setEnd(range.commonAncestorContainer, range.startOffset);
+
+					var rect = newRange.getBoundingClientRect();
+
+					docRect = {
+						right: rect.right + window.scrollX,
+						width: 0
+					};
+				}else{
+					newRange.setEnd(range.commonAncestorContainer, 1);
+
+					var rect = newRange.getBoundingClientRect();
+
+					docRect = {
+						right: rect.right + window.scrollX - rect.width,
+						width: 0
+					};
+				};
+
+				docRect.left = docRect.right;
+
+			}else{
+				var rect = range.getBoundingClientRect();
+				docRect = {
+					left: rect.left + window.scrollX,
+					right: rect.right + window.scrollX,
+					width: rect.width
+				};
 			};
+
+			docRect.top = rect.top +window.scrollY;
+			docRect.bottom = rect.bottom +window.scrollY;
+			docRect.height = rect.height;
+
+			return docRect;
 		};
 
 	};
 
-	this.getPosition = function(){
+	this.getRect = function(){
 		var rect = ele.getBoundingClientRect();
-		return {
-			left: rect.left + window.scrollX,
-			top: rect.top + window.scrollY,
-			width: rect.width,
-			height: rect.height
-		};
+		rect.top += window.scrollY;
+		rect.left += window.scrollX;
+		return rect;
 	};
-
 }

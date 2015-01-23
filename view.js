@@ -6,7 +6,12 @@ var loadEnd = 0;
 
 function showBox() {
 	dest = document.activeElement;
-	tpgp = new Typography(dest);
+	
+	if(dest.id.slice(0, 10) == "tweet-box-"){
+		tpgp = new Typography(dest.childNodes[0]);
+	}else{
+		tpgp = new Typography(dest);
+	};
 	
 	if (document.getElementById("emoji-box") == null) {
 		if (box == null) {
@@ -53,10 +58,16 @@ function showBox() {
 
 	};
 
-	var tpgpPos = tpgp.getPosition();
-	box.style.left = tpgpPos.left + "px";
-	box.style.top = tpgpPos.top + tpgpPos.height + "px";
-	box.style.width = tpgpPos.width + "px";
+	var	rect;
+
+	if (tpgp.getCaretRect) {
+		rect = tpgp.getCaretRect();
+	} else{
+		rect = tpgp.getRect();
+	};
+
+	box.style.left = rect.left + rect.width/2 - 200 + "px";
+	box.style.top = rect.bottom + 20 + "px";
 
 	box.style.display = "block";
 	box.animate(
