@@ -1,4 +1,4 @@
-function Editor (ele) {
+function Typography (ele) {
 
 	if (ele.select) {
 
@@ -36,11 +36,17 @@ function Editor (ele) {
 		};
 
 	} else if (ele.contentEditable){
-		var val = ele;
+		var val;
 
-		if (ele.id.slice(0, 10) == "tweet-box-") {
-			val = val.childNodes[0];
-		};
+		switch(true){
+			case ele.id.slice(0, 10) == "tweet-box-": //Twitter
+				val = ele.childNodes[0];
+				break;
+			case ele.getAttribute("g_editable") != null: //Google+
+				ele.parentNode.childNodes[0].style.display = "none";
+			default:
+				val = ele;
+		}
 
 		var selection = window.getSelection();
 		var range = selection.rangeCount && selection.getRangeAt(0);

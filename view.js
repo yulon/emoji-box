@@ -1,4 +1,4 @@
-var box, tab, tabCol, tabRow, dest, er;
+var box, tab, tabCol, tabRow, dest, tpgp;
 var root = chrome.extension.getURL("/");
 var loaded = 0;
 var loading = false;
@@ -6,7 +6,7 @@ var loadEnd = 0;
 
 function showBox() {
 	dest = document.activeElement;
-	er = new Editor(dest);
+	tpgp = new Typography(dest);
 	
 	if (document.getElementById("emoji-box") == null) {
 		if (box == null) {
@@ -53,10 +53,10 @@ function showBox() {
 
 	};
 
-	var erPos = er.getPosition();
-	box.style.left = erPos.left + "px";
-	box.style.top = erPos.top + erPos.height + "px";
-	box.style.width = erPos.width + "px";
+	var tpgpPos = tpgp.getPosition();
+	box.style.left = tpgpPos.left + "px";
+	box.style.top = tpgpPos.top + tpgpPos.height + "px";
+	box.style.width = tpgpPos.width + "px";
 
 	box.style.display = "block";
 	box.animate(
@@ -88,13 +88,13 @@ function hideBox (argument) {
 }
 
 function leftClick(me) {
-	er.value.input(emoji[this.getAttribute("emoji-id")].utf16);
+	tpgp.value.input(emoji[this.getAttribute("emoji-id")].utf16);
 	me.cancelBubble = true;
 	return false;
 }
 
 function rightClick(me) {
-	er.value.input(":" + emoji[this.getAttribute("emoji-id")].text + ":");
+	tpgp.value.input(":" + emoji[this.getAttribute("emoji-id")].text + ":");
 	me.cancelBubble = true;
 	return false;
 }
