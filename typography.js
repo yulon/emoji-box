@@ -2,7 +2,7 @@ function Typography (ele) {
 
 	if (ele.select) {
 
-		this.selectionStart = {
+		this.selStart = {
 			get: function(){
 				return ele.selectionStart;
 			},
@@ -11,7 +11,7 @@ function Typography (ele) {
 			}
 		};
 
-		this.selectionEnd = {
+		this.selEnd = {
 			get: function(){
 				return ele.selectionEnd;
 			},
@@ -61,7 +61,7 @@ function Typography (ele) {
 			}
 		};
 
-		this.selectionStart = {
+		this.selStart = {
 			get: function(){
 				var range = selection.getRangeAt(0);
 				return range.startOffset;
@@ -74,7 +74,7 @@ function Typography (ele) {
 			}
 		};
 
-		this.selectionEnd = {
+		this.selEnd = {
 			get: function(){
 				var range = selection.getRangeAt(0);
 				return range.endOffset;
@@ -88,59 +88,51 @@ function Typography (ele) {
 		};
 
 		this.getCaretRect = function(){
-			var range = selection.getRangeAt(0);
 			var docRect;
-
-			if (range.collapsed) {
-				if (range.startOffset == 0) return;
-
-				var newRange = document.createRange();
-
-				var caret;
-				if (range.startOffset < range.commonAncestorContainer.length) {
-
-					newRange.setStart(range.commonAncestorContainer, range.startOffset);
-					newRange.setEnd(range.commonAncestorContainer, range.startOffset + 1);
-
-					var rect = newRange.getBoundingClientRect();
-
-					docRect = {
-						left: rect.left + window.scrollX,
-						width: 0
-					};
-
-				}else{
-
-					newRange.setStart(range.commonAncestorContainer, range.startOffset - 1);
-					newRange.setEnd(range.commonAncestorContainer, range.startOffset);
-
-					var rect = newRange.getBoundingClientRect();
-
-					docRect = {
-						left: rect.left + window.scrollX + rect.width,
-						width: 0
-					};
-
-				};
-
-				docRect.right = docRect.left;
-
-			}else{
-				var rect = range.getBoundingClientRect();
+			if (ele.textContent.length == 0) {
+				ele.innerHTML = "<span>\u200b</span>";
+				var rect = ele.getElementsByTagName("span")[0].getBoundingClientRect();
+				ele.innerHTML = "";
 				docRect = {
 					left: rect.left + window.scrollX,
 					right: rect.right + window.scrollX,
-					width: rect.width
+					width: 0
+				};
+			} else{
+				var range = selection.getRangeAt(0);
+				var rect;
+				if (range.collapsed) {
+					if (range.startOffset == ele.textContent.length) {
+						range.setStart(ele.childNodes[0], range.startOffset - 1);
+						range.setEnd(ele.childNodes[0], range.startOffset);
+						rect = range.getBoundingClientRect();
+						docRect = {
+							left: rect.left + window.scrollX + rect.width
+						};
+					} else{
+						range.setStart(ele.childNodes[0], range.startOffset);
+						range.setEnd(ele.childNodes[0], range.startOffset + 1);
+						rect = range.getBoundingClientRect();
+						docRect = {
+							left: rect.left + window.scrollX
+						};
+					};
+					docRect.right = docRect.left;
+					docRect.width = 0;
+				}else{
+					rect = range.getBoundingClientRect();
+					docRect = {
+						left: rect.left + window.scrollX,
+						right: rect.right + window.scrollX,
+						width: rect.width
+					};
 				};
 			};
-
-			docRect.top = rect.top +window.scrollY;
-			docRect.bottom = rect.bottom +window.scrollY;
+			docRect.top = rect.top + window.scrollY;
+			docRect.bottom = rect.bottom + window.scrollY;
 			docRect.height = rect.height;
-
 			return docRect;
 		};
-
 	};
 
 	this.getRect = function(){
