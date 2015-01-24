@@ -5,12 +5,13 @@ var loading = false;
 var loadEnd = 0;
 
 window.addEventListener("contextmenu", function(mouseEvent) {
-	dest = mouseEvent.srcElement;
+	//dest = mouseEvent.srcElement;
 	popX = mouseEvent.pageX;
 	popY = mouseEvent.pageY;
 });
 
 function showBox() {
+	dest = document.activeElement;
 	tpgp = new Typography(dest);
 
 	if (document.getElementById("emoji-box") == null) {
