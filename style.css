@@ -29,13 +29,15 @@
 	display: block;
 	content: "";
 	margin: 0 auto;
-	border: solid 10px transparent;
-	border-bottom: solid 10px #fff;
+	border-color: transparent transparent #ffffff transparent;
+	border-width: 0 11px 11px 11px;
+	border-style: solid;
 	height: 0;
 	width: 0;
 }
 
 [emoji-box="scl"] {
+	border: 1px solid #ffffff;
 	height: 300px;
 	padding: 10px;
 	overflow-y: scroll;
