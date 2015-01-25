@@ -5,7 +5,8 @@
 	"description": "Open from the context menu, input unicode char from left click icon, input text name from left click icon.",
 	"icons": {
 		"16": "16.png",
-		"48": "48.png"
+		"48": "48.png",
+		"128": "128.png"
 	},
 	"permissions": [
 		"activeTab",
@@ -17,7 +18,7 @@
         "scripts": ["menu.js"]
     },
 	"web_accessible_resources": [
-		"emoji/*.png"
+		"36x36/*.png"
 	],
 	"content_scripts": [{
 		"js": ["emoji.js", "typography.js", "view.js"],
