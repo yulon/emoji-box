@@ -1,5 +1,4 @@
 function Typography (ele) {
-
 	if (ele.select) {
 
 		this.selStart = {
@@ -89,9 +88,10 @@ function Typography (ele) {
 
 		this.getCaretRect = function(){
 			var docRect;
+			var rect;
 			if (ele.textContent.length == 0) {
 				ele.innerHTML = "<span>\u200b</span>";
-				var rect = ele.getElementsByTagName("span")[0].getBoundingClientRect();
+				rect = ele.getElementsByTagName("span")[0].getBoundingClientRect();
 				ele.innerHTML = "";
 				docRect = {
 					left: rect.left + window.scrollX,
@@ -100,21 +100,21 @@ function Typography (ele) {
 				};
 			} else{
 				var range = selection.getRangeAt(0);
-				var rect;
 				if (range.collapsed) {
-					if (range.startOffset == ele.textContent.length) {
-						range.setStart(ele.childNodes[0], range.startOffset - 1);
-						range.setEnd(ele.childNodes[0], range.startOffset);
-						rect = range.getBoundingClientRect();
-						docRect = {
-							left: rect.left + window.scrollX + rect.width
-						};
-					} else{
-						range.setStart(ele.childNodes[0], range.startOffset);
-						range.setEnd(ele.childNodes[0], range.startOffset + 1);
+					if (range.startOffset < range.commonAncestorContainer.length) {
+						range.setEnd(range.commonAncestorContainer, range.startOffset + 1);
+						range.setStart(range.commonAncestorContainer, range.startOffset);
 						rect = range.getBoundingClientRect();
 						docRect = {
 							left: rect.left + window.scrollX
+						};
+						
+					} else{
+						range.setEnd(range.commonAncestorContainer, range.startOffset);
+						range.setStart(range.commonAncestorContainer, range.startOffset - 1);
+						rect = range.getBoundingClientRect();
+						docRect = {
+							left: rect.right + window.scrollX
 						};
 					};
 					docRect.right = docRect.left;

@@ -1,4 +1,4 @@
-var box, tab, tabCol, tabRow, dest, tpgp, popX, popY;
+var win, tab, tabCol, tabRow, dest, tpgp, popX, popY;
 var root = chrome.extension.getURL("/");
 var loaded = 0;
 var loading = false;
@@ -10,35 +10,39 @@ window.addEventListener("contextmenu", function(mouseEvent) {
 	popY = mouseEvent.pageY;
 });
 
-function showBox() {
+function show() {
 	dest = document.activeElement;
 	tpgp = new Typography(dest);
 
-	if (document.getElementById("emoji-box") == null) {
-		if (box == null) {
-			box = document.createElement("div");
-			box.id = "emoji-box";
+	if (document.querySelector("[emoji-box=\"win\"]") == null) {
+		if (win == null) {
+			win = document.createElement("div");
+			win.setAttribute("emoji-box", "win");
 
-			box.onmousedown = box.onclick = box.oncontextmenu = function(mouseEvent){
+			win.onmousedown = win.onclick = win.oncontextmenu = function(mouseEvent){
 				mouseEvent.cancelBubble = true;
 				return false;
 			};
 
 			window.addEventListener("mousedown", function() {
-				if(box.style.display == "block"){
-					box.style.display = null;
+				if(win.style.display == "block"){
+					win.style.display = null;
 				};
 			});
 
-			tab = document.createElement("div");
-			tab.id = "emoji-box-tab"
-			box.appendChild(tab);
+			var scl = document.createElement("div");
+			scl.setAttribute("emoji-box", "scl");
+			win.appendChild(scl);
 
-			box.onscroll = function(){
-				var base = (Math.ceil(box.scrollTop / 32) + 10) * tabCol;
+			tab = document.createElement("div");
+			tab.setAttribute("emoji-box", "tab");
+			scl.appendChild(tab);
+			
+			scl.onscroll = function(){
+				var base = (Math.ceil(scl.scrollTop / 32) + 10) * tabCol;
 
 				if (loadEnd >= base) {
-					delete box.onmousewheel;
+					delete scl.onscroll;
 					loadEnd = emoji.length;
 				}else{
 					loadEnd = base;
@@ -48,7 +52,7 @@ function showBox() {
 					loading = true;
 					for (; loaded < loadEnd && loaded < emoji.length; loaded++) {
 						var ico = document.createElement("i");
-						ico.setAttribute("emoji-id", loaded);
+						ico.setAttribute("emoji-box", loaded);
 						ico.style.backgroundImage = "url(\"" + root + "emoji/" + emoji[loaded].unicode + ".png\")";
 						ico.onclick = leftClick;
 						ico.oncontextmenu = rightClick;
@@ -58,40 +62,36 @@ function showBox() {
 				};
 			};
 		};
-
-		document.body.appendChild(box);
-
+		document.body.appendChild(win);
 	};
 
 	var	rect = tpgp.getCaretRect();
 
+	win.style.display = "block";
+
 	if (rect) {
-		box.style.left = rect.left + rect.width/2 - 200 + "px";
-		box.style.top = rect.bottom + 20 + "px";
+		win.style.left = rect.left + rect.width/2 - win.offsetWidth/2 + "px";
+		win.style.top = rect.bottom + 10 + "px";
 	} else {
-		box.style.left = popX - 200 + "px";
-		box.style.top = popY + 30 + "px";
+		win.style.left = popX - win.offsetWidth/2 + "px";
+		win.style.top = popY + 20 + "px";
 	};
-
-	box.style.display = "block";
-
-	tab.style.width = box.clientWidth - (box.clientWidth % 32) + "px";
 
 	tabCol = tab.offsetWidth / 32;
 	tabRow = Math.ceil(emoji.length / tabCol);
 	tab.style.height = tabRow * 32 + "px";
 
-	if (box.onscroll) {
-		box.onscroll();
+	if (scl.onscroll) {
+		scl.onscroll();
 	};
 }
 
 function leftClick() {
-	tpgp.value.input(emoji[this.getAttribute("emoji-id")].utf16);
+	tpgp.value.input(emoji[this.getAttribute("emoji-box")].utf16);
 }
 
 function rightClick() {
-	tpgp.value.input(":" + emoji[this.getAttribute("emoji-id")].text + ":");
+	tpgp.value.input(":" + emoji[this.getAttribute("emoji-box")].text + ":");
 }
 
 function containsNode(parent, child) {

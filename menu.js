@@ -2,6 +2,6 @@ chrome.contextMenus.create({
 	title: "Emoji Box",
 	contexts: ["editable"],
 	onclick: function() {
-		chrome.tabs.executeScript({ code: "showBox();" });
+		chrome.tabs.executeScript({ code: "show();" });
 	}
 })
