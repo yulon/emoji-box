@@ -42,7 +42,7 @@
 	padding: 10px;
 	overflow-y: scroll;
 	background-color: rgba(255, 255, 255, 0.94);
-	box-shadow: 0 0px 30px 5px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 5px 50px 0px rgba(0,0,0,0.5);
 }
 
 [emoji-box="tab"] {
