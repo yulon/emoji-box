@@ -87,11 +87,11 @@ function show() {
 }
 
 function leftClick() {
-	tpgp.value.input(emoji[this.getAttribute("emoji-box")].utf16);
+	tpgp.value.input(emoji[this.getAttribute("emoji-box")].char);
 }
 
 function rightClick() {
-	tpgp.value.input(":" + emoji[this.getAttribute("emoji-box")].text + ":");
+	tpgp.value.input(":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
 }
 
 function containsNode(parent, child) {
