@@ -94,16 +94,6 @@ function rightClick() {
 	tpgp.value.input(":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
 }
 
-function containsNode(parent, child) {
-	if (parent === child) return true;
-	child = child.parentNode;
-	while (child) {
-		if (child === parent) return true;
-		child = child.parentNode;
-	}
-	return false;
-}
-
 function unicodesToString (unicodes) {
 	var string = "";
 	for (var i = 0; i < unicodes.length; i++) {
