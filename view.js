@@ -87,7 +87,7 @@ function show() {
 }
 
 function leftClick() {
-	tpgp.value.input(unicodesToString(emoji[this.getAttribute("emoji-box")].unicode));
+	tpgp.value.input(unicodesToString(emoji[this.getAttribute("emoji-box")].unicode.split("-")));
 }
 
 function rightClick() {
@@ -105,30 +105,19 @@ function containsNode(parent, child) {
 }
 
 function unicodesToString (unicodes) {
-	var a = unicodes.split("-");
-	var ret = "";
-	for (var i = 0; i < a.length; i++) {
-		ret += unicodeToChar(parseInt(a[i], 16));
+	var string = "";
+	for (var i = 0; i < unicodes.length; i++) {
+		string += unicodeToChar(parseInt(unicodes[i], 16));
 	};
-	return ret;
+	return string;
 }
 
 function unicodeToChar (unicode) {
 	if (unicode < 0x10000)
 	{
-		return unescape("%u" + toHex16String(unicode));
-	}
-	else
-	{
+		return String.fromCharCode(unicode);
+	} else {
 		var over = unicode - 0x10000 ;
-		return unescape(
-			"%u" + toHex16String(0xD800 | ((over & 0xFFC00) >> 10)) +
-			"%u" + toHex16String(0xDC00 | (over & 0x3ff))
-		);
+		return String.fromCharCode((0xD800 | ((over & 0xFFC00) >> 10)), (0xDC00 | (over & 0x3ff)));
 	}
-}
-
-function toHex16String (num) {
-	var hex = "000" + num.toString(16);
-	return hex.slice(hex.length - 4, hex.length);
 }
