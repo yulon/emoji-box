@@ -10,7 +10,7 @@
 	-webkit-transform-origin: 50% 0%;
 	transform-origin: 50% 0%;
 	-webkit-animation: emoji-box-ani 300ms both;
-	z-index: 29999;
+	z-index: 999999;
 }
 
 @-webkit-keyframes emoji-box-ani {
