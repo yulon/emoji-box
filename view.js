@@ -87,9 +87,18 @@ function show() {
 }
 
 function leftClick() {
-	tpgp.value.input(String.fromUnicode(emoji[this.getAttribute("emoji-box")].unicode));
+	tpgp.value.input(unicodeToString(emoji[this.getAttribute("emoji-box")].unicode));
 }
 
 function rightClick() {
 	tpgp.value.input(":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
+}
+
+function unicodeToString (unicode) {
+	var string = "";
+	var split = unicode.split("-");
+	for (var i = 0; i < split.length; i++) {
+		string += String.fromCodePoint(parseInt(split[i], 16));
+	}
+	return string;
 }
