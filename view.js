@@ -87,27 +87,9 @@ function show() {
 }
 
 function leftClick() {
-	tpgp.value.input(unicodesToString(emoji[this.getAttribute("emoji-box")].unicode.split("-")));
+	tpgp.value.input(String.fromUnicode(emoji[this.getAttribute("emoji-box")].unicode));
 }
 
 function rightClick() {
 	tpgp.value.input(":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
-}
-
-function unicodesToString (unicodes) {
-	var string = "";
-	for (var i = 0; i < unicodes.length; i++) {
-		string += unicodeToChar(parseInt(unicodes[i], 16));
-	};
-	return string;
-}
-
-function unicodeToChar (unicode) {
-	if (unicode < 0x10000)
-	{
-		return String.fromCharCode(unicode);
-	} else {
-		var over = unicode - 0x10000 ;
-		return String.fromCharCode((0xD800 | ((over & 0xFFC00) >> 10)), (0xDC00 | (over & 0x3ff)));
-	}
 }
