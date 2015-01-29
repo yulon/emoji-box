@@ -98,7 +98,7 @@ function unicodeToString (unicode) {
 	var string = "";
 	var split = unicode.split("-");
 	for (var i = 0; i < split.length; i++) {
-		string += String.fromCodePoint(parseInt(split[i], 16));
+		string += String.fromCodePoint(Number.parseInt(split[i], 16));
 	}
 	return string;
 }
