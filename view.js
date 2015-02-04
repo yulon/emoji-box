@@ -41,7 +41,7 @@ function show() {
 			scl.onscroll = function(){
 				var base = (Math.ceil(scl.scrollTop / 32) + 10) * tabCol;
 
-				if (loadEnd >= base) {
+				if (base >= emoji.length) {
 					delete scl.onscroll;
 					loadEnd = emoji.length;
 				}else{
@@ -50,7 +50,7 @@ function show() {
 
 				if (loading == false) {
 					loading = true;
-					for (; loaded < loadEnd && loaded < emoji.length; loaded++) {
+					for (; loaded < loadEnd; loaded++) {
 						var ico = document.createElement("i");
 						ico.setAttribute("emoji-box", loaded);
 						ico.style.backgroundImage = "url(\"" + root + "36x36/" + emoji[loaded].unicode + ".png\")";
@@ -81,7 +81,7 @@ function show() {
 	tabRow = Math.ceil(emoji.length / tabCol);
 	tab.style.height = tabRow * 32 + "px";
 
-	if (scl.onscroll) {
+	if ("onscroll" in scl) {
 		scl.onscroll();
 	};
 }
