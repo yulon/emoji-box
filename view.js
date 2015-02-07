@@ -96,18 +96,9 @@ function show() {
 }
 
 function leftClick() {
-	feor.input(unicodeToString(emoji[this.getAttribute("emoji-box")].unicode));
+	feor.input(String.fromCodePointEx(emoji[this.getAttribute("emoji-box")].unicode));
 }
 
 function rightClick() {
 	feor.input(":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
-}
-
-function unicodeToString (unicode) {
-	var string = "";
-	var split = unicode.split("-");
-	for (var i = 0; i < split.length; i++) {
-		string += String.fromCodePoint(Number.parseInt(split[i], 16));
-	}
-	return string;
 }
