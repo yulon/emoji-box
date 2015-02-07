@@ -1,4 +1,4 @@
-var win, tab, tabCol, tabRow, dest, tpgp, popX, popY;
+var win, scl, tab, tabCol, tabRow, dest, feor, popX, popY;
 var root = chrome.extension.getURL("/");
 var loaded = 0;
 var loading = false;
@@ -11,8 +11,6 @@ window.addEventListener("contextmenu", function(mouseEvent) {
 });
 
 function show() {
-	dest = document.activeElement;
-	tpgp = new Typography(dest);
 
 	if (document.querySelector("[emoji-box=\"win\"]") == null) {
 		if (win == null) {
@@ -30,7 +28,7 @@ function show() {
 				};
 			});
 
-			var scl = document.createElement("div");
+			scl = document.createElement("div");
 			scl.setAttribute("emoji-box", "scl");
 			win.appendChild(scl);
 
@@ -65,16 +63,27 @@ function show() {
 		document.body.appendChild(win);
 	};
 
-	var	rect = tpgp.getCaretRect();
-
+	dest = document.activeElement;
+	feor = new FocusEditor(dest);
+	
 	win.style.display = "block";
 
-	if (rect) {
-		win.style.left = rect.left + rect.width/2 - win.offsetWidth/2 + "px";
+	var left;
+	if ("getCaretRect" in feor) {
+		var	rect = feor.getCaretRect();
+		left = rect.left + rect.width/2 - win.offsetWidth/2;
 		win.style.top = rect.bottom + 10 + "px";
 	} else {
-		win.style.left = popX - win.offsetWidth/2 + "px";
+		left = popX - win.offsetWidth/2;
 		win.style.top = popY + 20 + "px";
+	};
+
+	if (left < window.scrollX) {
+		win.style.left = window.scrollX + 5 + "px";
+	} else if (left + win.offsetWidth > window.scrollX + window.innerWidth) {
+		win.style.left = window.scrollX + window.innerWidth - 17 - win.offsetWidth - 5 + "px";
+	} else {
+		win.style.left = left + "px";
 	};
 
 	tabCol = tab.offsetWidth / 32;
@@ -87,11 +96,11 @@ function show() {
 }
 
 function leftClick() {
-	tpgp.value.input(unicodeToString(emoji[this.getAttribute("emoji-box")].unicode));
+	feor.input(unicodeToString(emoji[this.getAttribute("emoji-box")].unicode));
 }
 
 function rightClick() {
-	tpgp.value.input(":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
+	feor.input(":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
 }
 
 function unicodeToString (unicode) {
