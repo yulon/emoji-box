@@ -12,7 +12,43 @@ function FocusEditor (ele) {
 		var selection = window.getSelection();
 
 		this.input = function(value){
-			
+			var range = selection.getRangeAt(0);
+			var caretOffset = range.startOffset + value.length;
+
+			var oldHTML = range.commonAncestorContainer.parentElement.innerHTML;
+			var newHTML = "";
+			var offset = 0;
+
+			for (var i = 0; i < oldHTML.length; i++) {
+				
+				if (offset == range.startOffset) {
+					newHTML += value;
+					i += range.endOffset - range.startOffset;
+					if (i < oldHTML.length) {
+						offset += value.length;
+					}else{
+						break;
+					};
+				};
+
+				if (oldHTML[i] == "<") {
+					while(oldHTML.slice(i-4, i) != "</a>"){
+						newHTML += oldHTML[i];
+						i++;
+					}
+				}
+
+				newHTML += oldHTML[i];
+
+				offset++;
+			};
+
+			range.commonAncestorContainer.parentElement.innerHTML = newHTML;
+
+			range.setStart(range.commonAncestorContainer, caretOffset);
+			range.setEnd(range.commonAncestorContainer, caretOffset);
+			if(selection.rangeCount > 0) selection.removeAllRanges();
+			selection.addRange(range);
 		};
 
 		this.getCaretRect = function(){
