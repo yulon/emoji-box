@@ -1,6 +1,6 @@
 {
 	"name": "Emoji Box",
-	"version": "0.1.0",
+	"version": "0.1.39",
 	"manifest_version": 2,
 	"description": "Open from the context menu, input unicode char from left click icon, input text name from left click icon.",
 	"homepage_url": "https://github.com/yulon/emoji-box",
