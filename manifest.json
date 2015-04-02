@@ -1,8 +1,8 @@
 {
 	"name": "Emoji Box",
-	"version": "0.1.41",
+	"version": "0.2.52",
 	"manifest_version": 2,
-	"description": "Open from the context menu, input unicode char from left click icon, input text name from left click icon.",
+	"description": "Input emoji.",
 	"homepage_url": "https://github.com/yulon/emoji-box",
 	"icons": {
 		"16": "16.png",
@@ -19,7 +19,7 @@
         "scripts": ["menu.js"]
     },
 	"web_accessible_resources": [
-		"36x36/*.png"
+		"icons/*.png"
 	],
 	"content_scripts": [{
 		"js": ["emoji.js", "focuseditor.js", "stringex.js", "view.js"],
