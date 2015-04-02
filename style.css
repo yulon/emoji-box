@@ -7,8 +7,6 @@
 [emoji-box="win"] {
 	position: absolute;
 	display: none;
-	-webkit-transform-origin: 50% 0%;
-	transform-origin: 50% 0%;
 	-webkit-animation: emoji-box-ani 300ms both;
 	z-index: 999999;
 }
@@ -23,14 +21,27 @@
 	}
 }
 
-[emoji-box="win"]:before{
+[emoji-box="upArr"]{
 	top: 1px;
 	position: relative;
-	display: block;
+	visibility: hidden;
 	content: "";
 	margin: 0 auto;
 	border-color: transparent transparent #ffffff transparent;
 	border-width: 0 11px 11px 11px;
+	border-style: solid;
+	height: 0;
+	width: 0;
+}
+
+[emoji-box="downArr"]{
+	top: -1px;
+	position: relative;
+	visibility: hidden;
+	content: "";
+	margin: 0 auto;
+	border-color: #ffffff transparent transparent transparent;
+	border-width: 11px 11px 0 11px;
 	border-style: solid;
 	height: 0;
 	width: 0;

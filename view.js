@@ -1,4 +1,4 @@
-var win, scl, tab, tabCol, tabRow, dest, feor, popX, popY;
+var win, upArr, downArr, aArr, scl, tab, tabCol, tabRow, dest, feor, popX, popY;
 var root = chrome.extension.getURL("/");
 var loaded = 0;
 var loading = false;
@@ -25,12 +25,21 @@ function show() {
 			window.addEventListener("mousedown", function() {
 				if(win.style.display == "block"){
 					win.style.display = null;
+					aArr.style.visibility = null;
 				};
 			});
+
+			upArr = document.createElement("div");
+			upArr.setAttribute("emoji-box", "upArr");
+			win.appendChild(upArr);
 
 			scl = document.createElement("div");
 			scl.setAttribute("emoji-box", "scl");
 			win.appendChild(scl);
+
+			downArr = document.createElement("div");
+			downArr.setAttribute("emoji-box", "downArr");
+			win.appendChild(downArr);
 
 			tab = document.createElement("div");
 			tab.setAttribute("emoji-box", "tab");
@@ -65,17 +74,22 @@ function show() {
 
 	dest = document.activeElement;
 	feor = new FocusEditor(dest);
-	
-	win.style.display = "block";
 
-	var left;
+	win.style.display = "block";
+	tabCol = tab.offsetWidth / 32;
+	tabRow = Math.ceil(emoji.length / tabCol);
+	tab.style.height = tabRow * 32 + "px";
+
+	var left, top, topOff;
 	if ("getCaretRect" in feor) {
 		var	rect = feor.getCaretRect();
 		left = rect.left + rect.width/2 - win.offsetWidth/2;
-		win.style.top = rect.bottom + 10 + "px";
+		top = rect.bottom;
+		topOff = 0;
 	} else {
 		left = popX - win.offsetWidth/2;
-		win.style.top = popY + 20 + "px";
+		top = popY;
+		topOff = 10;
 	};
 
 	if (left < window.scrollX) {
@@ -86,9 +100,16 @@ function show() {
 		win.style.left = left + "px";
 	};
 
-	tabCol = tab.offsetWidth / 32;
-	tabRow = Math.ceil(emoji.length / tabCol);
-	tab.style.height = tabRow * 32 + "px";
+	if (top + win.offsetHeight > window.scrollY + window.innerHeight) {
+		aArr = downArr;
+		win.style.top = top - win.offsetHeight - topOff + "px";
+		win.style.webkitTransformOrigin = "50% 100%";
+	}else{
+		aArr = upArr;
+		win.style.top = top + topOff + "px";
+		win.style.webkitTransformOrigin = "50% 0%";
+	};
+	aArr.style.visibility = "visible";
 
 	if ("onscroll" in scl) {
 		scl.onscroll();
