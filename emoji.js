@@ -11,6 +11,9 @@ var emoji = [{
 	unicode: "1f60a",
 	name: ["blush"]
 }, {
+	unicode: "263a",
+	name: ["relaxed"]
+}, {
 	unicode: "1f609",
 	name: ["wink"]
 }, {
@@ -2245,9 +2248,6 @@ var emoji = [{
 }, {
 	unicode: "1f539",
 	name: ["small_blue_diamond"]
-}, {
-	unicode: "263a",
-	name: ["relaxed"]
 }, {
 	unicode: "2049",
 	name: ["interrobang"]
