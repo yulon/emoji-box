@@ -60,7 +60,7 @@ function show() {
 					for (; loaded < loadEnd; loaded++) {
 						var ico = document.createElement("i");
 						ico.setAttribute("emoji-box", loaded);
-						ico.style.backgroundImage = "url(\"" + root + "36x36/" + emoji[loaded].unicode + ".png\")";
+						ico.style.backgroundImage = "url(\"" + root + "icons/" + emoji[loaded].unicode + ".png\")";
 						ico.onclick = leftClick;
 						ico.oncontextmenu = rightClick;
 						tab.appendChild(ico);
