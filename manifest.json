@@ -22,7 +22,7 @@
 		"36x36/*.png"
 	],
 	"content_scripts": [{
-		"js": ["emoji.js", "focuseditor.js", "codepointex.js", "view.js"],
+		"js": ["emoji.js", "focuseditor.js", "stringex.js", "view.js"],
 		"css": ["style.css"],
 		"matches": [ "http://*/*", "https://*/*" ],
 		"run_at": "document_start"

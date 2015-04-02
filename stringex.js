@@ -1,3 +1,19 @@
+if (String.fromCodePoint == null) {
+	String.fromCodePoint = function() {
+		var string = "";
+		for (var i = 0; i < arguments.length; i++) {
+			if (arguments[i] < 0x10000)
+			{
+				string += String.fromCharCode(arguments[i]);
+			} else {
+				var over = arguments[i] - 0x10000 ;
+				string += String.fromCharCode((0xD800 | ((over & 0xFFC00) >> 10)), (0xDC00 | (over & 0x3ff)));
+			}
+		}
+		return string;
+	};
+};
+
 String.fromCodePointEx = function() {
 	var string = "";
 	for (var i = 0; i < arguments.length; i++) {
@@ -48,15 +64,3 @@ String.fromCodePointEx = function() {
 	}
 	return string;
 }
-
-if (String.fromCodePoint == null) {
-	String.fromCodePoint = function(code) {
-		if (code < 0x10000)
-		{
-			return String.fromCharCode(code);
-		} else {
-			var over = code - 0x10000 ;
-			return String.fromCharCode((0xD800 | ((over & 0xFFC00) >> 10)), (0xDC00 | (over & 0x3ff)));
-		}
-	};
-};
