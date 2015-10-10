@@ -73,7 +73,6 @@ function show() {
 	};
 
 	dest = document.activeElement;
-	feor = new FocusEditor(dest);
 
 	win.style.display = "block";
 	tabCol = tab.offsetWidth / 32;
@@ -81,15 +80,15 @@ function show() {
 	tab.style.height = tabRow * 32 + "px";
 
 	var left, top, topOff;
-	if ("getCaretRect" in feor) {
-		var	rect = feor.getCaretRect();
-		left = rect.left + rect.width/2 - win.offsetWidth/2;
-		top = rect.bottom;
-		topOff = 0;
-	} else {
+	if ("select" in dest) {
 		left = popX - win.offsetWidth/2;
 		top = popY;
 		topOff = 10;
+	} else if ("contentEditable" in dest) {
+		var	rect = getCaretRect(dest);
+		left = rect.left + rect.width/2 - win.offsetWidth/2;
+		top = rect.bottom;
+		topOff = 0;
 	};
 
 	if (left < window.scrollX) {
@@ -123,3 +122,49 @@ function leftClick() {
 function rightClick() {
 	document.execCommand("insertText", false, ":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
 }
+
+function getCaretRect(ele){
+	var docRect;
+	var rect;
+	if (ele.textContent.length == 0) {
+		ele.innerHTML = "<span>\u200b</span>";
+		rect = ele.getElementsByTagName("span")[0].getBoundingClientRect();
+		ele.innerHTML = "";
+		docRect = {
+			left: rect.left + window.scrollX,
+			right: rect.right + window.scrollX,
+			width: 0
+		};
+	} else {
+		var range = selection.getRangeAt(0);
+		if (range.collapsed) {
+			if (range.startOffset < range.commonAncestorContainer.length) {
+				range.setEnd(range.commonAncestorContainer, range.startOffset + 1);
+				rect = range.getBoundingClientRect();
+				docRect = {
+					left: rect.left + window.scrollX
+				};
+			} else{
+				range.setEnd(range.commonAncestorContainer, range.startOffset);
+				range.setStart(range.commonAncestorContainer, 0);
+				rect = range.getBoundingClientRect();
+				docRect = {
+					left: rect.right + window.scrollX
+				};
+			};
+			docRect.right = docRect.left;
+			docRect.width = 0;
+		}else{
+			rect = range.getBoundingClientRect();
+			docRect = {
+				left: rect.left + window.scrollX,
+				right: rect.right + window.scrollX,
+				width: rect.width
+			};
+		};
+	};
+	docRect.top = rect.top + window.scrollY;
+	docRect.bottom = rect.bottom + window.scrollY;
+	docRect.height = rect.height;
+	return docRect;
+};
