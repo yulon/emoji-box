@@ -44,7 +44,7 @@ function show() {
 			tab = document.createElement("div");
 			tab.setAttribute("emoji-box", "tab");
 			scl.appendChild(tab);
-			
+
 			scl.onscroll = function(){
 				var base = (Math.ceil(scl.scrollTop / 32) + 10) * tabCol;
 
@@ -117,9 +117,9 @@ function show() {
 }
 
 function leftClick() {
-	feor.input(String.fromCodePointEx(emoji[this.getAttribute("emoji-box")].unicode));
+	document.execCommand("insertText", false, String.fromCodePointEx(emoji[this.getAttribute("emoji-box")].unicode));
 }
 
 function rightClick() {
-	feor.input(":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
+	document.execCommand("insertText", false, ":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
 }
