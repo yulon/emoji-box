@@ -124,6 +124,7 @@ function rightClick() {
 }
 
 function getCaretRect(ele){
+	var selection = window.getSelection();
 	var docRect;
 	var rect;
 	if (ele.textContent.length == 0) {
