@@ -48,9 +48,9 @@ function show() {
 			scl.onscroll = function(){
 				var base = (Math.ceil(scl.scrollTop / 32) + 10) * tabCol;
 
-				if (base >= emoji.length) {
+				if (base >= emojis.length) {
 					delete scl.onscroll;
-					loadEnd = emoji.length;
+					loadEnd = emojis.length;
 				}else{
 					loadEnd = base;
 				};
@@ -60,7 +60,7 @@ function show() {
 					for (; loaded < loadEnd; loaded++) {
 						var ico = document.createElement("i");
 						ico.setAttribute("emoji-box", loaded);
-						ico.style.backgroundImage = "url(\"" + root + "icons/" + emoji[loaded].unicode + ".png\")";
+						ico.style.backgroundImage = "url(\"" + emojis[loaded].image + "\")";
 						ico.onclick = leftClick;
 						ico.oncontextmenu = rightClick;
 						tab.appendChild(ico);
@@ -76,7 +76,7 @@ function show() {
 
 	win.style.display = "block";
 	tabCol = tab.offsetWidth / 32;
-	tabRow = Math.ceil(emoji.length / tabCol);
+	tabRow = Math.ceil(emojis.length / tabCol);
 	tab.style.height = tabRow * 32 + "px";
 
 	var left, top, topOff;
@@ -116,11 +116,11 @@ function show() {
 }
 
 function leftClick() {
-	document.execCommand("insertText", false, String.fromCodePointEx(emoji[this.getAttribute("emoji-box")].unicode));
+	document.execCommand("insertText", false, emojis[this.getAttribute("emoji-box")].text);
 }
 
 function rightClick() {
-	document.execCommand("insertText", false, ":" + emoji[this.getAttribute("emoji-box")].name[0] + ":");
+	document.execCommand("insertText", false, emojis[this.getAttribute("emoji-box")].shortCode);
 }
 
 function getCaretRect(ele){
