@@ -17,7 +17,23 @@ function show() {
 			win = document.createElement("div");
 			win.setAttribute("emoji-box", "win");
 
-			win.onmousedown = win.onclick = win.oncontextmenu = function(mouseEvent){
+			win.onmousedown = function(mouseEvent){
+				mouseEvent.cancelBubble = true;
+				return false;
+			};
+			win.onclick = function(mouseEvent){
+				switch (mouseEvent.button) {
+					case 0:
+						insertEmoji(mouseEvent, "text");
+						break;
+					case 1:
+						insertEmoji(mouseEvent, "shortCode");
+				}
+				mouseEvent.cancelBubble = true;
+				return false;
+			};
+			win.oncontextmenu = function(mouseEvent){
+				insertEmoji(mouseEvent, "shortCode");
 				mouseEvent.cancelBubble = true;
 				return false;
 			};
@@ -59,10 +75,8 @@ function show() {
 					loading = true;
 					for (; loaded < loadEnd; loaded++) {
 						var ico = document.createElement("i");
-						ico.setAttribute("emoji-box", loaded);
+						ico.setAttribute("emoji-index", loaded);
 						ico.style.backgroundImage = "url(\"" + emojis[loaded].image + "\")";
-						ico.onclick = leftClick;
-						ico.oncontextmenu = rightClick;
 						tab.appendChild(ico);
 					};
 					loading = false;
@@ -84,7 +98,7 @@ function show() {
 		left = popX - win.offsetWidth/2;
 		top = popY;
 		topOff = 10;
-	} else if ("contentEditable" in dest) {
+	} else if (dest.contentEditable === "true") {
 		var	rect = getCaretRect(dest);
 		left = rect.left + rect.width/2 - win.offsetWidth/2;
 		top = rect.bottom;
@@ -115,12 +129,8 @@ function show() {
 	};
 }
 
-function leftClick() {
-	document.execCommand("insertText", false, emojis[this.getAttribute("emoji-box")].text);
-}
-
-function rightClick() {
-	document.execCommand("insertText", false, emojis[this.getAttribute("emoji-box")].shortCode);
+function insertEmoji(event, type) {
+	document.execCommand("insertText", false, emojis[event.target.getAttribute("emoji-index")][type]);
 }
 
 function getCaretRect(ele){
