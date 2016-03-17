@@ -130,7 +130,12 @@ function show() {
 }
 
 function insertEmoji(event, type) {
-	document.execCommand("insertText", false, emojis[event.target.getAttribute("emoji-index")][type]);
+	var emoji = emojis[event.target.getAttribute("emoji-index")][type];
+	if (emoji !== "") {
+		document.execCommand("insertText", false, emoji);
+	} else {
+		alert("Emoji Box: This short code is missing.");
+	}
 }
 
 function getCaretRect(ele){
