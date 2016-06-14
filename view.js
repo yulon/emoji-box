@@ -18,10 +18,6 @@ function show() {
 			win.setAttribute("emoji-box", "win");
 
 			win.onmousedown = function(mouseEvent){
-				mouseEvent.cancelBubble = true;
-				return false;
-			};
-			win.onclick = function(mouseEvent){
 				switch (mouseEvent.button) {
 					case 0:
 						insertEmoji(mouseEvent, "text");
@@ -29,6 +25,10 @@ function show() {
 					case 1:
 						insertEmoji(mouseEvent, "shortCode");
 				}
+				mouseEvent.cancelBubble = true;
+				return false;
+			};
+			win.onclick = function(mouseEvent){
 				mouseEvent.cancelBubble = true;
 				return false;
 			};
