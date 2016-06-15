@@ -132,11 +132,14 @@ function show() {
 }
 
 function insertEmoji(event, type) {
-	var emoji = emojis[event.target.getAttribute("emoji-index")][type];
-	if (emoji !== "") {
-		document.execCommand("insertText", false, emoji);
-	} else {
-		alert("Emoji Box: This :code: is missing.");
+	var i = event.target.getAttribute("emoji-index")
+	if (i !== null) {
+		var emoji = emojis[i][type];
+		if (emoji !== "") {
+			document.execCommand("insertText", false, emoji);
+		} else {
+			alert("Emoji Box: This :code: is missing.");
+		}
 	}
 }
 
