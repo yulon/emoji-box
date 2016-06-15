@@ -1,3 +1,5 @@
+console.log(emojis.length);
+
 var win, upArr, downArr, aArr, scl, tab, tabCol, tabRow, dest, feor, popX, popY;
 var root = chrome.extension.getURL("/");
 var loaded = 0;
@@ -23,7 +25,7 @@ function show() {
 						insertEmoji(mouseEvent, "text");
 						break;
 					case 1:
-						insertEmoji(mouseEvent, "shortCode");
+						insertEmoji(mouseEvent, "code");
 				}
 				mouseEvent.cancelBubble = true;
 				return false;
@@ -33,7 +35,7 @@ function show() {
 				return false;
 			};
 			win.oncontextmenu = function(mouseEvent){
-				insertEmoji(mouseEvent, "shortCode");
+				insertEmoji(mouseEvent, "code");
 				mouseEvent.cancelBubble = true;
 				return false;
 			};
@@ -134,7 +136,7 @@ function insertEmoji(event, type) {
 	if (emoji !== "") {
 		document.execCommand("insertText", false, emoji);
 	} else {
-		alert("Emoji Box: This short code is missing.");
+		alert("Emoji Box: This :code: is missing.");
 	}
 }
 
