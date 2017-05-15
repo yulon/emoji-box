@@ -170,7 +170,7 @@ function show() {
 function insertEmoji(event, type) {
 	var i = event.target.getAttribute("ix")
 	if (i) {
-		var emoji = emojiGroups[0].emojis[i][type];
+		var emoji = emojiGroups[cPage].emojis[i][type];
 		if (emoji) {
 			if (!document.execCommand("insertText", false, emoji)) {
 				insertText(dest, emoji);
