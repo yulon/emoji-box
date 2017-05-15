@@ -1,6 +1,5 @@
 var ts = (new Date()).getTime();
 var win, upArr, downArr, aArr, pages, cPage, tabCol, tabRow, dest;
-var root = chrome.extension.getURL("/");
 
 function show() {
 	dest = document.activeElement;

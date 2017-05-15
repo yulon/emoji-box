@@ -1,17 +1,35 @@
-var weUtil = new WEUtil();
+var bext = new Bext();
 
-we.contextMenus.onClicked.addListener(function() {
-	we.tabs.executeScript(null, { file: "emoji.js", runAt: "document_start" }, function() {
-		we.tabs.executeScript(null, { file: "box.js", runAt: "document_start" }, function() {
-			we.tabs.insertCSS(null, { file: "box.css", runAt: "document_start" }, function() {
-				weUtil.cs.call(null, "show");
+browser.contextMenus.onClicked.addListener(function() {
+	browser.tabs.executeScript(null, { file: "emoji.js", runAt: "document_start" }, function() {
+		browser.tabs.executeScript(null, { file: "box.js", runAt: "document_start" }, function() {
+			browser.tabs.insertCSS(null, { file: "box.css", runAt: "document_start" }, function() {
+				bext.c.call(null, "show");
 			});
 		});
 	});
 });
 
-function init() {
-	we.contextMenus.create({
+function initTab(tabId) {
+	bext.c.eval(tabId, '!("popX" in window)', function (r) {
+		if (r) {
+			browser.tabs.executeScript(tabId, { file: "mps.js", runAt: "document_start" });
+		}
+	})
+}
+
+browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+	if ("status" in changeInfo && changeInfo.status == "loading") {
+		initTab(tabId);
+	}
+});
+
+bext.b.main(function(createdTabs) {
+	for (var i = 0; i < createdTabs.length; i++) {
+		initTab(createdTabs[i].id);
+	}
+
+	browser.contextMenus.create({
 		id: "main",
 		title: "Emoji Box",
 		contexts: ["editable"]
@@ -20,37 +38,4 @@ function init() {
 	var other = document.createElement("script");
 	other.setAttribute("src", "other.js");
 	document.body.appendChild(other);
-}
-
-we.runtime.onStartup.addListener(init);
-
-function initTab(tabId) {
-	weUtil.cs.eval(tabId, '!("popX" in window)', function (r) {
-		if (r) {
-			we.tabs.executeScript(tabId, { file: "mps.js", runAt: "document_start" });
-		}
-	})
-}
-
-we.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-	if ("status" in changeInfo && changeInfo.status == "loading") {
-		initTab(tabId);
-	}
-});
-
-function initEx() {
-	we.tabs.query({}, function(result) {
-		for (var i = 0; i < result.length; i++) {
-			initTab(result[i].id);
-		}
-		init();
-	});
-}
-
-we.runtime.onInstalled.addListener(initEx);
-
-we.management.onEnabled.addListener(function(info) {
-	if (info.id === we.runtime.id) {
-		initEx();
-	}
 });
