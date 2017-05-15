@@ -39,7 +39,7 @@ function initTab(tabId) {
 }
 
 we.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-	if ("title" in changeInfo) {
+	if ("status" in changeInfo && changeInfo.status == "loading") {
 		initTab(tabId);
 	}
 });
