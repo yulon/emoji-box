@@ -1,6 +1,6 @@
 {
 	"name": "Emoji Box",
-	"version": "0.6.69.2457",
+	"version": "1.0.70.1358",
 	"manifest_version": 2,
 	"description": "Input emoji.",
 	"homepage_url": "https://github.com/yulon/emoji-box",
@@ -10,18 +10,13 @@
 		"128": "128.png"
 	},
 	"permissions": [
-		"activeTab",
+		"tabs",
 		"contextMenus",
-		"http://*/*",
-		"https://*/*"
+		"management",
+		"<all_urls>"
 	],
 	"background": {
-        "scripts": ["menu.js"]
-    },
-	"content_scripts": [{
-		"js": ["emojis.js", "view.js"],
-		"css": ["style.css"],
-		"matches": [ "http://*/*", "https://*/*" ],
-		"run_at": "document_start"
-	}]
+		"scripts": ["weutil.js", "bg.js"],
+		"persistent": false
+	}
 }

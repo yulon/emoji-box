@@ -1,0 +1,140 @@
+[emoji-box="win"], [emoji-box="win"] * {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+[emoji-box="win"] {
+	position: absolute;
+	display: none;
+	-webkit-animation: emoji-box-ani 300ms both;
+	z-index: 999999;
+}
+
+@-webkit-keyframes emoji-box-ani {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(0, 0);
+	}
+	60% {
+		-webkit-transform: scale(1.1, 1.1);
+	}
+}
+
+[emoji-box="win"] ::-webkit-scrollbar {
+	background-color: transparent;
+	width: 10px;
+}
+
+[emoji-box="win"] ::-webkit-scrollbar-thumb {
+	background-color: #cdcdcd;
+}
+
+[emoji-box="win"] a, [emoji-box="win"] a:visited, [emoji-box="win"] a:active, [emoji-box="win"] a:hover {
+	color: #017afd;
+	cursor: pointer;
+}
+
+[emoji-box="upArr"]{
+	top: 1px;
+	position: relative;
+	visibility: hidden;
+	content: "";
+	margin: 0 auto;
+	border-color: transparent transparent #ffffff transparent;
+	border-width: 0 11px 11px 11px;
+	border-style: solid;
+	height: 0;
+	width: 0;
+}
+
+[emoji-box="downArr"]{
+	top: -1px;
+	position: relative;
+	visibility: hidden;
+	content: "";
+	margin: 0 auto;
+	border-color: #ffffff transparent transparent transparent;
+	border-width: 11px 11px 0 11px;
+	border-style: solid;
+	height: 0;
+	width: 0;
+}
+
+[emoji-box="box"] {
+	border: 1px solid #ffffff;
+	background-color: rgba(255, 255, 255, 0.94);
+	box-shadow: 0 5px 50px 0px rgba(0,0,0,0.5);
+}
+
+[emoji-box="nav"] {
+	display: inline-block;
+	line-height: 28px;
+	height: 30px;
+	margin: 10px 0 5px 12px;
+	border: 1px solid #017afd;
+}
+
+[emoji-box="btn"], [emoji-box="c-btn"] {
+	width: 40px;
+	height: 100%;
+	display: inline-block;
+	font-size: 20px;
+	text-align: center;
+	background-size: 50%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+[emoji-box="btn"]:hover {
+	background-color: rgba(67, 91, 138, 0.2);
+}
+
+[emoji-box="btn"]:active {
+	background-color: rgba(67, 91, 138, 0.5);
+}
+
+[emoji-box="c-btn"] {
+	color: #ffffff;
+	background-color: #017afd;
+}
+
+[emoji-box="share"] {
+	text-decoration: underline;
+	display: inline-block;
+	font-family: arial, sans-serif;
+	font-size: 18px;
+	text-align: center;
+	float: right;
+	margin: 15px 25px 5px 0;
+}
+
+[emoji-box="page"] {
+	display: none;
+	height: 300px;
+	padding: 5px 10px;
+	overflow-y: scroll;
+}
+
+[emoji-box="tab"] {
+	width: 400px;
+	line-height: 0;
+	text-align: left;
+}
+
+[emoji-box="tab"] i {
+	font-style: normal;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	background-size: 70%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+[emoji-box="tab"] i:hover {
+	box-shadow: 0 0 10px 0px rgba(35,191,243,0.8);
+	background-size: 90%;
+	position: relative;
+}
