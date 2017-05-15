@@ -2,6 +2,7 @@
 	margin: 0;
 	border: 0;
 	padding: 0;
+	box-sizing: content-box;
 }
 
 [emoji-box="win"] {
@@ -75,6 +76,18 @@
 	border: 1px solid #017afd;
 }
 
+[emoji-box="share"] {
+	text-decoration: underline;
+	display: inline-block;
+	font-family: arial, sans-serif;
+	font-size: 18px;
+	line-height: 30px;
+	text-align: center;
+	height: 30px;
+	float: right;
+	margin: 10px 25px 5px 0;
+}
+
 [emoji-box="btn"], [emoji-box="c-btn"] {
 	width: 40px;
 	height: 100%;
@@ -97,16 +110,6 @@
 [emoji-box="c-btn"] {
 	color: #ffffff;
 	background-color: #017afd;
-}
-
-[emoji-box="share"] {
-	text-decoration: underline;
-	display: inline-block;
-	font-family: arial, sans-serif;
-	font-size: 18px;
-	text-align: center;
-	float: right;
-	margin: 15px 25px 5px 0;
 }
 
 [emoji-box="page"] {
