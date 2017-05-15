@@ -1,8 +1,9 @@
 {
 	"name": "Emoji Box",
-	"version": "1.0.73.1358",
+	"version": "1.1.74.1358",
 	"manifest_version": 2,
 	"description": "Input emoji.",
+	"author": "Yulon",
 	"homepage_url": "https://github.com/yulon/emoji-box",
 	"icons": {
 		"16": "16.png",

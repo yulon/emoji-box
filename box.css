@@ -115,12 +115,12 @@
 [emoji-box="page"] {
 	display: none;
 	height: 300px;
-	padding: 5px 10px;
 	overflow-y: scroll;
 }
 
 [emoji-box="tab"] {
 	width: 400px;
+	padding: 5px 10px;
 	line-height: 0;
 	text-align: left;
 }

@@ -1,18 +1,12 @@
-var weUtil = new WEUtil("chrome");
+var weUtil = new WEUtil();
 
 we.contextMenus.onClicked.addListener(function() {
-	weUtil.cs.eval(null, '!("emojiGroups" in window)', function (r) {
-		if (r) {
-			we.tabs.executeScript(null, { file: "emoji.js", runAt: "document_start" }, function() {
-				we.tabs.executeScript(null, { file: "box.js", runAt: "document_start" }, function() {
-					we.tabs.insertCSS(null, { file: "box.css", runAt: "document_start" }, function() {
-						weUtil.cs.call(null, "show");
-					});
-				});
+	we.tabs.executeScript(null, { file: "emoji.js", runAt: "document_start" }, function() {
+		we.tabs.executeScript(null, { file: "box.js", runAt: "document_start" }, function() {
+			we.tabs.insertCSS(null, { file: "box.css", runAt: "document_start" }, function() {
+				weUtil.cs.call(null, "show");
 			});
-		} else {
-			weUtil.cs.call(null, "show");
-		}
+		});
 	});
 });
 

@@ -172,10 +172,33 @@ function insertEmoji(event, type) {
 	if (i) {
 		var emoji = emojiGroups[0].emojis[i][type];
 		if (emoji) {
-			document.execCommand("insertText", false, emoji);
+			if (!document.execCommand("insertText", false, emoji)) {
+				insertText(dest, emoji);
+			}
 		} else {
-			alert("Emoji Box: This :code: is missing.");
+			alert("Emoji Box: This :shortcode: is missing.");
 		}
+	}
+}
+
+function insertText(ele, value) {
+	if ("select" in ele) {
+		var oldStart = ele.selectionStart;
+		ele.value = ele.value.slice(0, ele.selectionStart) + value + ele.value.slice(ele.selectionEnd, ele.value.length);
+		ele.selectionStart = ele.selectionEnd = oldStart + value.length;
+	} else if ("contentEditable" in ele){
+		var selection = window.getSelection();
+
+		var range = selection.getRangeAt(0);
+
+		var offset = range.startOffset;
+		ele.textContent = ele.textContent.slice(0, range.startOffset) + value + ele.textContent.slice(range.endOffset, ele.textContent.length);
+		offset += value.length;
+
+		range.setStart(ele.childNodes[0], offset);
+		range.setEnd(ele.childNodes[0], offset);
+		if(selection.rangeCount > 0) selection.removeAllRanges();
+		selection.addRange(range);
 	}
 }
 
@@ -198,6 +221,7 @@ function getCaretRect(ele){
 			if (range.startOffset < range.commonAncestorContainer.length) {
 				range.setEnd(range.commonAncestorContainer, range.startOffset + 1);
 				rect = range.getBoundingClientRect();
+				range.setEnd(range.commonAncestorContainer, range.startOffset);
 				docRect = {
 					left: rect.left + window.scrollX
 				};
@@ -205,6 +229,7 @@ function getCaretRect(ele){
 				range.setEnd(range.commonAncestorContainer, range.startOffset);
 				range.setStart(range.commonAncestorContainer, 0);
 				rect = range.getBoundingClientRect();
+				range.setStart(range.commonAncestorContainer, range.endOffset);
 				docRect = {
 					left: rect.right + window.scrollX
 				};

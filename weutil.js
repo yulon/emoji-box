@@ -1,53 +1,92 @@
-function WEUtil(weObjName) {
+function WEUtil() {
+	var weObjName;
+	if ("browser" in window) {
+		weObjName = "browser";
+	} else if ("chrome" in window) {
+		weObjName = "chrome";
+	} else {
+		weObjName = "window";
+	}
+
 	window.we = window[weObjName];
 
 	var cs = this.cs = {};
 
 	cs.init = function(tabId, doneCb) {
-		we.tabs.executeScript(tabId, {
-			code: `
-				if (!("we" in window)) {
-					window.we = ` + weObjName + `;
-				}
-			`,
-			runAt: "document_start",
-			allFrames: true
-		}, function() {
+		try {
 			we.tabs.executeScript(tabId, {
 				code: `
-					if (!("weUtil" in window)) {
-						window.weUtil = {};
-						we.runtime.onMessage.addListener(function(msg, sender, resp) {
-							switch (msg.type) {
-								case "WEUtilMsg.Eval":
-									resp(eval(msg.code), true);
-									return;
-								case "WEUtilMsg.Call":
-									resp(window[msg.funcName](), true);
-									return;
-								case "WEUtilMsg.CallWAR":
-									window[msg.funcName](function(r) { resp(r, true); });
-									return true;
-							}
-						});
+					if (!("we" in window)) {
+						window.we = ` + weObjName + `;
 					}
 				`,
-				runAt: "document_start"
-			}, doneCb);
-		});
+				runAt: "document_start",
+				allFrames: true
+			}, function(a) {
+				if (a && a.constructor === Array) {
+					we.tabs.executeScript(tabId, {
+						code: `
+							if (!("weUtil" in window)) {
+								window.weUtil = {};
+								we.runtime.onMessage.addListener(function(msg, sender, resp) {
+									switch (msg.type) {
+										case "WEUtilMsg.Eval":
+											resp([eval(msg.code)]);
+											return;
+										case "WEUtilMsg.Call":
+											resp([eval(msg.funcName)()]);
+											return;
+										case "WEUtilMsg.CallWAR":
+											eval(msg.funcName)(function(r) { resp([r]); });
+											return true;
+									}
+								});
+							}
+						`,
+						runAt: "document_start"
+					}, function(a) {
+						if (a && a.constructor === Array) {
+							doneCb(true);
+						} else {
+							doneCb(false);
+						}
+					});
+				} else {
+					doneCb(false);
+				}
+			});
+		} catch (e) {
+			console.log("[Emoji Box]", e);
+			doneCb(false);
+		}
 	};
 
 	function csSendMsg(tabId, msg, resultCb) {
 		function send(tabId) {
-			we.tabs.sendMessage(tabId, msg, function(r, ok) {
-				if (!ok) {
-					cs.init(tabId, function() {
-						we.tabs.sendMessage(tabId, msg, resultCb);
-					});
-				} else {
-					resultCb(r);
-				}
-			});
+			function init() {
+				cs.init(tabId, function(ok) {
+					if (ok) {
+						we.tabs.sendMessage(tabId, msg, function(a) {
+							if (a && resultCb) {
+								resultCb(a[0]);
+							}
+						});
+					}
+				});
+			}
+
+			try {
+				we.tabs.sendMessage(tabId, msg, function(a) {
+					if (!a) {
+						init();
+					} else if (resultCb) {
+						resultCb(a[0])
+					}
+				});
+			} catch (e) {
+				console.log("[Emoji Box]", e);
+				init();
+			}
 		}
 
 		if (tabId == null) {
