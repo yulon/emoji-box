@@ -1,5 +1,5 @@
 var ts = (new Date()).getTime();
-var win, upArr, downArr, aArr, pages, cPage, tabCol, tabRow, dest;
+var win, upArr, downArr, aArr, pages, cPage, dest;
 
 function show() {
 	dest = document.activeElement;
@@ -22,10 +22,7 @@ function show() {
 			mouseEvent.cancelBubble = true;
 			return false;
 		};
-		win.onclick = function(mouseEvent) {
-			mouseEvent.cancelBubble = true;
-			return false;
-		};
+
 		win.oncontextmenu = function(mouseEvent) {
 			if (mouseEvent.target.tagName === "I") {
 				insertEmoji(mouseEvent, "short");
@@ -84,16 +81,17 @@ function show() {
 				page.setAttribute("emoji-box", "page");
 				box.appendChild(page);
 
-				tab = document.createElement("div");
-				tab.setAttribute("emoji-box", "tab");
-				page.appendChild(tab);
-
 				for (var j = 0; j < emojiGroups[i].emojis.length; j++) {
-					var ico = document.createElement("i");
-					ico.setAttribute("ix", j);
-					ico.setAttribute("title", emojiGroups[i].emojis[j].name);
-					ico.style.backgroundImage = "url(\"" + emojiGroups[i].emojis[j].image + "\")";
-					tab.appendChild(ico);
+					var line = document.createElement("p");
+					for (var c = 0; c < 10 && j < emojiGroups[i].emojis.length; c++) {
+						var ico = document.createElement("i");
+						ico.setAttribute("ix", j);
+						ico.setAttribute("title", emojiGroups[i].emojis[j].name);
+						ico.style.backgroundImage = "url(\"" + emojiGroups[i].emojis[j].image + "\")";
+						line.appendChild(ico);
+						j++;
+					}
+					page.appendChild(line);
 				}
 
 				pages[i] = page;
@@ -110,7 +108,7 @@ function show() {
 		}
 		changePage(0);
 
-		nav.onclick = function(mouseEvent) {
+		nav.onmousedown = function(mouseEvent) {
 			if (mouseEvent.target.getAttribute("emoji-box") === "btn") {
 				var ix = mouseEvent.target.getAttribute("ix");
 				if (ix != null) {
@@ -119,7 +117,7 @@ function show() {
 			}
 			mouseEvent.cancelBubble = true;
 			return false;
-		}
+		};
 
 		downArr = document.createElement("div");
 		downArr.setAttribute("emoji-box", "downArr");

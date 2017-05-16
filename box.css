@@ -3,6 +3,7 @@
 	border: 0;
 	padding: 0;
 	box-sizing: content-box;
+	text-align: left;
 }
 
 [emoji-box="win"] {
@@ -65,6 +66,7 @@
 
 [emoji-box="box"] {
 	border: 1px solid #ffffff;
+	padding-top: 10px;
 	background-color: rgba(255, 255, 255, 0.94);
 	box-shadow: 0 5px 50px 0px rgba(0,0,0,0.5);
 }
@@ -73,7 +75,7 @@
 	display: inline-block;
 	line-height: 28px;
 	height: 30px;
-	margin: 10px 0 5px 12px;
+	margin: 0 0 5px 10px;
 	border: 1px solid #017afd;
 }
 
@@ -85,7 +87,7 @@
 	text-align: center;
 	height: 30px;
 	float: right;
-	margin: 10px 25px 0 0;
+	margin-right: 15px;
 }
 
 [emoji-box="btn"], [emoji-box="c-btn"] {
@@ -100,11 +102,7 @@
 }
 
 [emoji-box="btn"]:hover {
-	background-color: rgba(67, 91, 138, 0.2);
-}
-
-[emoji-box="btn"]:active {
-	background-color: rgba(67, 91, 138, 0.5);
+	background-color: rgba(1, 122, 253, 0.2);
 }
 
 [emoji-box="c-btn"] {
@@ -116,16 +114,12 @@
 	display: none;
 	height: 300px;
 	overflow-y: scroll;
-}
-
-[emoji-box="tab"] {
-	width: 400px;
-	padding: 5px 10px;
+	padding: 6px;
 	line-height: 0;
 	text-align: left;
 }
 
-[emoji-box="tab"] i {
+[emoji-box="page"] i {
 	font-style: normal;
 	display: inline-block;
 	width: 40px;
@@ -136,7 +130,7 @@
 	background-repeat: no-repeat;
 }
 
-[emoji-box="tab"] i:hover {
+[emoji-box="page"] i:hover {
 	box-shadow: 0 0 10px 0px rgba(35,191,243,0.8);
 	background-size: 90%;
 	position: relative;
