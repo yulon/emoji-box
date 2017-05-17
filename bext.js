@@ -104,26 +104,4 @@ function Bext() {
 	c.callWAR = function(tabId, funcName, argCb) {
 		cSendMsg(tabId, { type: "WEUtilMsg.CallWAR", funcName: funcName}, argCb);
 	};
-
-	var b = bext.b = {};
-
-	b.main = function(mainFunc) {
-		function bInit() {
-			browser.tabs.query({}, function(createdTabs) {
-				mainFunc(createdTabs);
-			});
-		}
-
-		if (!bext.isStd && browser.runtime.getManifest().background.persistent === false) {
-			browser.runtime.onStartup.addListener(function() { mainFunc([]); });
-			browser.runtime.onInstalled.addListener(bInit);
-			browser.management.onEnabled.addListener(function(info) {
-				if (info.id === browser.runtime.id) {
-					bInit();
-				}
-			});
-		} else {
-			bInit();
-		}
-	}
 };
