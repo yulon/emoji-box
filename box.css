@@ -4,6 +4,7 @@
 	padding: 0;
 	box-sizing: content-box;
 	text-align: left;
+	display: block;
 }
 
 [emoji-box="win"] {
@@ -36,6 +37,7 @@
 	color: #017afd;
 	cursor: pointer;
 	text-decoration: underline;
+	opacity: 1;
 }
 
 [emoji-box="upArr"]{
@@ -49,6 +51,7 @@
 	border-style: solid;
 	height: 0;
 	width: 0;
+	z-index: 9999999;
 }
 
 [emoji-box="downArr"]{
@@ -62,6 +65,7 @@
 	border-style: solid;
 	height: 0;
 	width: 0;
+	z-index: 9999999;
 }
 
 [emoji-box="box"] {
