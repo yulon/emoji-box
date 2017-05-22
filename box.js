@@ -1,7 +1,7 @@
 var ts = (new Date()).getTime();
 var win, upArr, downArr, aArr, pages, cPage, dest;
 
-function show() {
+window.show = function() {
 	dest = document.activeElement;
 
 	if (!win) {

@@ -2,8 +2,8 @@ var bext = new Bext();
 
 browser.tabs.query({}, function(createdTabs) {
 	function initTab(tabId) {
-		bext.c.eval(tabId, '!("popX" in window)', function (r) {
-			if (r) {
+		bext.c.has(tabId, 'popX', function (r) {
+			if (!r) {
 				browser.tabs.executeScript(tabId, { file: "mps.js", runAt: "document_start" });
 			}
 		});
@@ -25,8 +25,8 @@ browser.tabs.query({}, function(createdTabs) {
 	});
 
 	browser.contextMenus.onClicked.addListener(function() {
-		bext.c.eval(null, '!("emojiGroups" in window)', function (r) {
-			if (r) {
+		bext.c.has(null, 'emojiGroups', function (r) {
+			if (!r) {
 				browser.tabs.executeScript(null, { file: "emoji.js", runAt: "document_start" }, function() {
 					browser.tabs.executeScript(null, { file: "box.js", runAt: "document_start" }, function() {
 						browser.tabs.insertCSS(null, { file: "box.css", runAt: "document_start" }, function() {

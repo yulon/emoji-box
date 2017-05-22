@@ -29,14 +29,14 @@ function Bext() {
 						window.bext = {};
 						browser.runtime.onMessage.addListener(function(msg, sender, resp) {
 							switch (msg.type) {
-								case "WEUtilMsg.Eval":
-									resp([eval(msg.code)]);
+								case "WEUtilMsg.Has":
+									resp([msg.obj in window]);
 									return;
 								case "WEUtilMsg.Call":
-									resp([eval(msg.funcName)()]);
+									resp([window[msg.funcName]()]);
 									return;
 								case "WEUtilMsg.CallWAR":
-									eval(msg.funcName)(function(r) { resp([r]); });
+									window[msg.funcName](function(r) { resp([r]); });
 									return true;
 							}
 						});
@@ -93,8 +93,8 @@ function Bext() {
 		}
 	};
 
-	c.eval = function(tabId, code, resultCb) {
-		cSendMsg(tabId, { type: "WEUtilMsg.Eval", code: code}, resultCb);
+	c.has = function(tabId, object, resultCb) {
+		cSendMsg(tabId, { type: "WEUtilMsg.Has", obj: object}, resultCb);
 	};
 
 	c.call = function(tabId, funcName, resultCb) {
