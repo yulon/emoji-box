@@ -63,10 +63,10 @@ function show() {
 
 		var share = document.createElement("a");
 		share.setAttribute("emoji-box", "share");
-		share.setAttribute("href", "https://twitter.com/intent/tweet?text=I+recommend+a+very+handy+%23emoji+input+browser+extension!+For+Chrome%3A+https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Femoji-box%2Fhnoiafifeglklbpfplmeofgeliopdpih+For+Firefox%3A+https%3A%2F%2Faddons.mozilla.org%2Fzh-CN%2Ffirefox%2Faddon%2Femoji-box%2F");
+		share.setAttribute("href", "https://twitter.com/intent/tweet?text=I+recommend+a+very+handy+%23emoji+input+browser+extension!+For+Chrome%3A+https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Femoji-box%2Fhnoiafifeglklbpfplmeofgeliopdpih+For+Firefox%3A+https%3A%2F%2Faddons.mozilla.org%2Faddon%2Femoji-box%2F");
 		share.setAttribute("target", "_blank");
 		share.setAttribute("title", "Share Emoji Box on Twitter.");
-		share.innerText = "share"
+		share.textContent = "share"
 		box.appendChild(share);
 
 		share.onclick = function(mouseEvent) {
