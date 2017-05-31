@@ -1,7 +1,7 @@
 var ts = (new Date()).getTime();
 var win, upArr, downArr, aArr, pages, cPage, dest;
 
-window.show = function() {
+function show() {
 	dest = document.activeElement;
 
 	if (!win) {
@@ -19,6 +19,11 @@ window.show = function() {
 						insertEmoji(mouseEvent, "short");
 				}
 			}
+			mouseEvent.cancelBubble = true;
+			return false;
+		};
+
+		win.onclick = function(mouseEvent) {
 			mouseEvent.cancelBubble = true;
 			return false;
 		};

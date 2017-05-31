@@ -1,16 +1,12 @@
 function Bext() {
 	var bext = this;
 
-	try {
-		if (browser) {
-			bext.isStd = true;
-		}
-	} catch (e) {
-		if (chrome) {
-			window.browser = window.chrome;
-		} else {
-			window.browser = window;
-		}
+	if ("browser" in Bext.scope) {
+		bext.isStd = true;
+	} else if ("chrome" in Bext.scope) {
+		Bext.scope.browser = Bext.scope.chrome;
+	} else {
+		Bext.scope.browser = Bext.scope;
 	}
 
 	var c = bext.c = {};
@@ -19,24 +15,33 @@ function Bext() {
 		try {
 			var baseCode;
 			if (!bext.isStd) {
-				baseCode = `window.browser = chrome;`
+				baseCode = `
+					if ("chrome" in this) {
+						this.browser = this.chrome;
+					} else {
+						this.browser = this;
+					}
+				`
 			} else {
 				baseCode = "";
 			}
 			browser.tabs.executeScript(tabId, {
-				code: baseCode + `
-					if (!("bext" in window)) {
-						window.bext = {};
+				code: `
+					if (!("bext" in this)) {
+						` + baseCode + `
+						this.bext = {};
+						this.bext.c = {};
+						this.bext.c.global = this;
 						browser.runtime.onMessage.addListener(function(msg, sender, resp) {
 							switch (msg.type) {
-								case "WEUtilMsg.Has":
-									resp([msg.obj in window]);
+								case "BextMsg.Has":
+									resp([msg.obj in bext.c.global]);
 									return;
-								case "WEUtilMsg.Call":
-									resp([window[msg.funcName]()]);
+								case "BextMsg.Call":
+									resp([bext.c.global[msg.funcName]()]);
 									return;
-								case "WEUtilMsg.CallWAR":
-									window[msg.funcName](function(r) { resp([r]); });
+								case "BextMsg.CallWAR":
+									bext.c.global[msg.funcName](function(r) { resp([r]); });
 									return true;
 							}
 						});
@@ -94,14 +99,16 @@ function Bext() {
 	};
 
 	c.has = function(tabId, object, resultCb) {
-		cSendMsg(tabId, { type: "WEUtilMsg.Has", obj: object}, resultCb);
+		cSendMsg(tabId, { type: "BextMsg.Has", obj: object}, resultCb);
 	};
 
 	c.call = function(tabId, funcName, resultCb) {
-		cSendMsg(tabId, { type: "WEUtilMsg.Call", funcName: funcName}, resultCb);
+		cSendMsg(tabId, { type: "BextMsg.Call", funcName: funcName}, resultCb);
 	};
 
 	c.callWAR = function(tabId, funcName, argCb) {
-		cSendMsg(tabId, { type: "WEUtilMsg.CallWAR", funcName: funcName}, argCb);
+		cSendMsg(tabId, { type: "BextMsg.CallWAR", funcName: funcName}, argCb);
 	};
 };
+
+Bext.scope = this;
