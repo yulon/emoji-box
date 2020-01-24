@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-type oneEmoji struct {
+type jpEmoji struct {
 	Order      int    `json:"order"`
 	Name       string `json:"name"`
 	Shortname  string `json:"shortname"`
@@ -23,7 +23,7 @@ type oneEmoji struct {
 	} `json:"code_points"`
 }
 
-type oneCategory struct {
+type jpCategory struct {
 	Order         int    `json:"order"`
 	Category      string `json:"category"`
 	CategoryLabel string `json:"category_label"`
@@ -42,35 +42,35 @@ type emojiGroup struct {
 }
 
 func main() {
-	var oneCategorys []oneCategory
-	oneCategorysJson, err := os.Open("../emojione/categories.json")
+	var jpCategorys []jpCategory
+	jpCategorysJson, err := os.Open("../emoji-toolkit/categories.json")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	dec := json.NewDecoder(oneCategorysJson)
-	err = dec.Decode(&oneCategorys)
+	dec := json.NewDecoder(jpCategorysJson)
+	err = dec.Decode(&jpCategorys)
 	if err != nil {
 		fmt.Println(err)
 	}
-	oneCategorysJson.Close()
+	jpCategorysJson.Close()
 
-	var oneEmojis map[string]oneEmoji
-	oneEmojisJson, err := os.Open("../emojione/emoji.json")
+	var jpEmojis map[string]jpEmoji
+	jpEmojisJson, err := os.Open("../emoji-toolkit/emoji.json")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	dec = json.NewDecoder(oneEmojisJson)
-	err = dec.Decode(&oneEmojis)
+	dec = json.NewDecoder(jpEmojisJson)
+	err = dec.Decode(&jpEmojis)
 	if err != nil {
 		fmt.Println(err)
 	}
-	oneEmojisJson.Close()
+	jpEmojisJson.Close()
 
 	var emojiGroups []emojiGroup
-	for i := 1; i <= len(oneCategorys); i++ {
-		for _, oc := range oneCategorys {
+	for i := 1; i <= len(jpCategorys); i++ {
+		for _, oc := range jpCategorys {
 			if i == oc.Order {
 				emojiGroups = append(emojiGroups, emojiGroup{oc.CategoryLabel, nil})
 				break
@@ -80,9 +80,9 @@ func main() {
 
 	num := 0
 
-	for i := 1; i <= len(oneEmojis); i++ {
+	for i := 1; i <= len(jpEmojis); i++ {
 	l2:
-		for rawUcStr, oe := range oneEmojis {
+		for rawUcStr, oe := range jpEmojis {
 			if i == oe.Order {
 				if strings.Index(oe.Shortname, "_tone") != -1 ||
 					strings.Index(oe.Shortname, "man_") != -1 ||
@@ -101,7 +101,7 @@ func main() {
 					runes = append(runes, rune(chr))
 				}
 
-				img, err := os.Open("../twemoji/2/72x72/" + ucStr + ".png")
+				img, err := os.Open("../twemoji/assets/72x72/" + ucStr + ".png")
 				if err != nil {
 					fmt.Println(err)
 					continue
@@ -124,7 +124,7 @@ func main() {
 				img.Close()
 				enc.Close()
 
-				for _, oc := range oneCategorys {
+				for _, oc := range jpCategorys {
 					if oc.Category == oe.Category {
 						for j := 0; j < len(emojiGroups); j++ {
 							if emojiGroups[j].Name == oc.CategoryLabel {
