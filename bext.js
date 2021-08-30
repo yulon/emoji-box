@@ -1,10 +1,22 @@
-if (typeof(browser) === "undefined") {
-	this.browser = chrome
-} else if (typeof(chrome) === "undefined") {
-	this.chrome = browser
-}
+var bext = new (function (g) {
+	var th1s = this
 
-var bext = new (function(g) {
+	if (typeof (browser) === "undefined") {
+		if (typeof (chrome) === "undefined") {
+			return
+		}
+		g.browser = chrome
+		th1s.isChrome = true
+	} else {
+		if (typeof (chrome) === "undefined") {
+			if (typeof (browser) === "undefined") {
+				return
+			}
+			g.chrome = browser
+		}
+		th1s.isChrome = false
+	}
+
 	var insertCbs = {}
 
 	function callInsertCb(msg, sender, isRepeated) {
@@ -19,7 +31,7 @@ var bext = new (function(g) {
 		delete insertCbsOnThisTab[msg.scriptName]
 	}
 
-	browser.runtime.onMessage.addListener(function(msg, sender, resp) {
+	browser.runtime.onMessage.addListener(function (msg, sender, resp) {
 		switch (msg.type) {
 			case "Bext.Message.Inserted":
 				callInsertCb(msg, sender, true)
@@ -39,7 +51,7 @@ var bext = new (function(g) {
 		}
 	})
 
-	browser.runtime.onMessage.addListener(function(tabId, removeInfo) {
+	browser.runtime.onMessage.addListener(function (tabId, removeInfo) {
 		if (tabId in insertCbs) {
 			delete insertCbs[tabId]
 		}
@@ -47,13 +59,19 @@ var bext = new (function(g) {
 
 	function getHash(str) {
 		var hash = 0
-		for (var i = 0; i!= str.length(); ++i) {
+		for (var i = 0; i != str.length(); ++i) {
 			hash = 131 * hash + str.charCodeAt(i)
 		}
 		return hash
 	}
 
 	function basicInsert(tab, details, cb) {
+		if (!tab || !("id" in tab) || !("url" in tab)) {
+			return
+		}
+		if (typeof URL === "undefined") {
+			console.log(tab)
+		}
 		var urlSlices = tab.url.split(":")
 		if (
 			urlSlices.length !== 2 ||
@@ -66,7 +84,7 @@ var bext = new (function(g) {
 		if (!("file" in details) && !("code" in details)) {
 			return
 		} else if ("file" in details) {
-			scriptName = details.file;
+			scriptName = details.file
 		} else if ("code" in details) {
 			scriptName = "[" + getHash(details.code) + "]"
 		} else {
@@ -76,14 +94,14 @@ var bext = new (function(g) {
 		if (!(tab.id in insertCbs)) {
 			insertCbs[tab.id] = {}
 		}
-		insertCbs[tab.id][scriptName] = function(isRepeated) {
+		insertCbs[tab.id][scriptName] = function (isRepeated) {
 			if (isRepeated) {
 				if (cb) {
 					cb(isRepeated)
 				}
 				return
 			}
-			browser.tabs.executeScript(tab.id, details, function() {
+			browser.tabs.executeScript(tab.id, details, function () {
 				if (cb) {
 					cb(isRepeated)
 				}
@@ -119,7 +137,7 @@ var bext = new (function(g) {
 								g[msg.funcName](resp)
 								return true
 						}
-					});
+					})
 				}
 				if (!("InsertedScripts" in bext)) {
 					bext.InsertedScripts = {}
@@ -127,63 +145,66 @@ var bext = new (function(g) {
 				if ("` + scriptName + `" in bext.InsertedScripts) {
 					browser.runtime.sendMessage(null, { type: "Bext.Message.Inserted", scriptName: \`` + scriptName + `\`})
 				} else {
-					bext.InsertedScripts["` + scriptName + `"] = true;
+					bext.InsertedScripts["` + scriptName + `"] = true
 					browser.runtime.sendMessage(null, { type: "Bext.Message.ToBeInserted", scriptName: \`` + scriptName + `\`})
 				}
 			`
 		})
 	}
 
-	this.insert = function(tabId, details, cb) {
+	this.insert = function (tabId, details, cb) {
 		if (tabId == null) {
-			browser.tabs.query({ active: true }, function(tabs) {
+			browser.tabs.query({ active: true }, function (tabs) {
 				basicInsert(tabs[0], details, cb)
 			})
 			return
 		}
-		browser.tabs.get(tabId, function(tab) {
+		browser.tabs.get(tabId, function (tab) {
 			basicInsert(tab, details, cb)
 		})
 	}
 
-	var onUpdatedListeners = {}
+	var onInitializedMap = {}
 
 	this.onInitialized = {
-		addListener: function(cb) {
-			browser.tabs.query({}, function(createdTabs) {
-				for (var i = 0; i < createdTabs.length; i++) {
-					cb(createdTabs[i])
-				}
-				var onUpdatedListener = function(tabId, changeInfo, tab) {
+		addListener: function (cb) {
+			var cbs = {
+				onActivated: function (activeInfo) {
+					cb(activeInfo.tabId)
+				},
+				onUpdated: function (tabId, changeInfo, tab) {
 					if ("status" in changeInfo && changeInfo.status == "loading") {
-						cb(tab)
+						cb(tabId)
 					}
 				}
-				onUpdatedListeners[cb] = onUpdatedListener
-				browser.tabs.onUpdated.addListener(onUpdatedListener)
-			})
+			}
+			onInitializedMap[cb] = cbs
+			browser.tabs.onActivated.addListener(cbs.onActivated)
+			browser.tabs.onUpdated.addListener(cbs.onUpdated)
 		},
-		removeListener: function(cb) {
-			browser.tabs.onUpdated.removeListener(onUpdatedListeners[cb])
-			delete onUpdatedListeners[cb]
+		removeListener: function (cb) {
+			var cbs = onInitializedMap[cb]
+			browser.tabs.onActivated.removeListener(cbs.onActivated)
+			browser.tabs.onUpdated.removeListener(cbs.onUpdated)
+			delete onInitializedMap[cb]
 		}
 	}
 
 	function basicCall(tabId, type, funcName, resultCb) {
 		if (tabId == null) {
-			browser.tabs.query({ active: true }, function(tabs) {
+			browser.tabs.query({ active: true }, function (tabs) {
 				basicCall(tabs[0].id, type, funcName, resultCb)
 			})
 			return
 		}
-		browser.tabs.sendMessage(tabId, { type: type, funcName: funcName}, resultCb)
+		browser.tabs.sendMessage(tabId, { type: type, funcName: funcName }, resultCb)
 	}
 
-	this.call = function(tabId, funcName, resultCb) {
+	this.call = function (tabId, funcName, resultCb) {
 		basicCall(tabId, "Bext.Message.Call", funcName, resultCb)
 	}
 
-	this.callA = function(tabId, funcName, resultCb) {
+	this.callA = function (tabId, funcName, resultCb) {
 		basicCall(tabId, "Bext.Message.CallA", funcName, resultCb)
 	}
 })(this)
