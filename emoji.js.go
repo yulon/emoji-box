@@ -101,10 +101,39 @@ func main() {
 					runes = append(runes, rune(chr))
 				}
 
-				img, err := os.Open("../twemoji/assets/72x72/" + ucStr + ".png")
+				twUcStr := ucStr
+				img, err := os.Open("../twemoji/assets/72x72/" + twUcStr + ".png")
 				if err != nil {
-					fmt.Println(err)
-					continue
+					twUcStr = ""
+					for i, hex := range hexs {
+						if i > 0 {
+							twUcStr += "-200d-"
+						}
+						twUcStr += hex
+					}
+					img, err = os.Open("../twemoji/assets/72x72/" + twUcStr + ".png")
+					if err != nil {
+						for i := 0; i < len(hexs); i++ {
+							twUcStr = ""
+							for j, hex := range hexs {
+								if j > 0 {
+									twUcStr += "-200d-"
+								}
+								twUcStr += hex
+								if j <= i {
+									twUcStr += "-fe0f"
+								}
+							}
+							img, err = os.Open("../twemoji/assets/72x72/" + twUcStr + ".png")
+							if err == nil {
+								break
+							}
+						}
+						if err != nil {
+							fmt.Println("cannot find", ucStr+".png")
+							continue
+						}
+					}
 				}
 
 				imgDataUrl := bytes.NewBuffer([]byte{})
