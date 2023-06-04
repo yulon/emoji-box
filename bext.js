@@ -1,20 +1,18 @@
-var bext = new (function (g) {
-	var th1s = this
-
-	if (typeof (browser) === "undefined") {
-		if (typeof (chrome) === "undefined") {
+const bext = new (function (g) {
+	if (typeof browser === 'undefined') {
+		if (typeof chrome === 'undefined') {
 			return
 		}
 		g.browser = chrome
-		th1s.isChrome = true
+		this.isChrome = true
 	} else {
-		if (typeof (chrome) === "undefined") {
-			if (typeof (browser) === "undefined") {
+		if (typeof chrome === 'undefined') {
+			if (typeof browser === 'undefined') {
 				return
 			}
 			g.chrome = browser
 		}
-		th1s.isChrome = false
+		this.isChrome = false
 	}
 
 	var insertCbs = {}
@@ -33,19 +31,19 @@ var bext = new (function (g) {
 
 	browser.runtime.onMessage.addListener(function (msg, sender, resp) {
 		switch (msg.type) {
-			case "Bext.Message.Inserted":
+			case 'Bext.Message.Inserted':
 				callInsertCb(msg, sender, true)
 				return
 
-			case "Bext.Message.ToBeInserted":
+			case 'Bext.Message.ToBeInserted':
 				callInsertCb(msg, sender, false)
 				return
 
-			case "Bext.Message.Call":
+			case 'Bext.Message.Call':
 				resp(g[msg.funcName](sender.tab.id))
 				return
 
-			case "Bext.Message.CallA":
+			case 'Bext.Message.Acall':
 				g[msg.funcName](sender.tab.id, resp)
 				return true
 		}
@@ -66,27 +64,27 @@ var bext = new (function (g) {
 	}
 
 	function basicInsert(tab, details, cb) {
-		if (!tab || !("id" in tab) || !("url" in tab)) {
+		if (!tab || !('id' in tab) || !('url' in tab)) {
 			return
 		}
-		if (typeof URL === "undefined") {
+		if (typeof URL === 'undefined') {
 			console.log(tab)
 		}
-		var urlSlices = tab.url.split(":")
+		var urlSlices = tab.url.split(':')
 		if (
 			urlSlices.length !== 2 ||
-			tab.url.substr(0, 4) !== "http"
+			tab.url.substr(0, 4) !== 'http'
 		) {
 			return
 		}
 
 		var scriptName
-		if (!("file" in details) && !("code" in details)) {
+		if (!('file' in details) && !('code' in details)) {
 			return
-		} else if ("file" in details) {
+		} else if ('file' in details) {
 			scriptName = details.file
-		} else if ("code" in details) {
-			scriptName = "[" + getHash(details.code) + "]"
+		} else if ('code' in details) {
+			scriptName = '[' + getHash(details.code) + ']'
 		} else {
 			return
 		}
@@ -110,43 +108,43 @@ var bext = new (function (g) {
 
 		browser.tabs.executeScript(tab.id, {
 			code: `
-				if (typeof(browser) === "undefined") {
+				if (typeof browser === 'undefined') {
 					this.browser = chrome
-				} else if (typeof(chrome) === "undefined") {
+				} else if (typeof chrome === 'undefined') {
 					this.chrome = browser
 				}
-				if (!("bext" in this)) {
+				if (!('bext' in this)) {
 					function basicCall(type, funcName, resultCb) {
 						browser.runtime.sendMessage(null, { type: type, funcName: funcName}, resultCb)
 					}
 					this.bext = {
 						call: function(funcName, resultCb) {
-							basicCall("Bext.Message.Call", funcName, resultCb)
+							basicCall('Bext.Message.Call', funcName, resultCb)
 						},
-						callA: function(funcName, resultCb) {
-							basicCall("Bext.Message.CallA", funcName, resultCb)
+						acall: function(funcName, resultCb) {
+							basicCall('Bext.Message.Acall', funcName, resultCb)
 						}
 					}
 					var g = this
 					browser.runtime.onMessage.addListener(function(msg, sender, resp) {
 						switch (msg.type) {
-							case "Bext.Message.Call":
+							case 'Bext.Message.Call':
 								resp(g[msg.funcName]())
 								return
-							case "Bext.Message.CallA":
+							case 'Bext.Message.Acall':
 								g[msg.funcName](resp)
 								return true
 						}
 					})
 				}
-				if (!("InsertedScripts" in bext)) {
+				if (!('InsertedScripts' in bext)) {
 					bext.InsertedScripts = {}
 				}
-				if ("` + scriptName + `" in bext.InsertedScripts) {
-					browser.runtime.sendMessage(null, { type: "Bext.Message.Inserted", scriptName: \`` + scriptName + `\`})
+				if ('` + scriptName + `' in bext.InsertedScripts) {
+					browser.runtime.sendMessage(null, { type: 'Bext.Message.Inserted', scriptName: \`` + scriptName + `\`})
 				} else {
-					bext.InsertedScripts["` + scriptName + `"] = true
-					browser.runtime.sendMessage(null, { type: "Bext.Message.ToBeInserted", scriptName: \`` + scriptName + `\`})
+					bext.InsertedScripts['` + scriptName + `'] = true
+					browser.runtime.sendMessage(null, { type: 'Bext.Message.ToBeInserted', scriptName: \`` + scriptName + `\`})
 				}
 			`
 		})
@@ -173,7 +171,7 @@ var bext = new (function (g) {
 					cb(activeInfo.tabId)
 				},
 				onUpdated: function (tabId, changeInfo, tab) {
-					if ("status" in changeInfo && changeInfo.status == "loading") {
+					if ('status' in changeInfo && changeInfo.status == 'loading') {
 						cb(tabId)
 					}
 				}
@@ -201,10 +199,10 @@ var bext = new (function (g) {
 	}
 
 	this.call = function (tabId, funcName, resultCb) {
-		basicCall(tabId, "Bext.Message.Call", funcName, resultCb)
+		basicCall(tabId, 'Bext.Message.Call', funcName, resultCb)
 	}
 
-	this.callA = function (tabId, funcName, resultCb) {
-		basicCall(tabId, "Bext.Message.CallA", funcName, resultCb)
+	this.acall = function (tabId, funcName, resultCb) {
+		basicCall(tabId, 'Bext.Message.Acall', funcName, resultCb)
 	}
 })(this)
