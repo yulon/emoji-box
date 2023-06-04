@@ -13,17 +13,17 @@ import (
 	"strings"
 )
 
-type jpEmoji struct {
+type etEmoji struct {
 	Order      int    `json:"order"`
 	Name       string `json:"name"`
 	Shortname  string `json:"shortname"`
 	Category   string `json:"category"`
 	CodePoints struct {
-		Output string `json:"output"`
+		FullyQualified string `json:"fully_qualified"`
 	} `json:"code_points"`
 }
 
-type jpCategory struct {
+type etCategory struct {
 	Order         int    `json:"order"`
 	Category      string `json:"category"`
 	CategoryLabel string `json:"category_label"`
@@ -42,35 +42,35 @@ type emojiGroup struct {
 }
 
 func main() {
-	var jpCategorys []jpCategory
-	jpCategorysJson, err := os.Open("../emoji-toolkit/categories.json")
+	var etCategorys []etCategory
+	etCategorysJson, err := os.Open("../emoji-toolkit/categories.json")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	dec := json.NewDecoder(jpCategorysJson)
-	err = dec.Decode(&jpCategorys)
+	dec := json.NewDecoder(etCategorysJson)
+	err = dec.Decode(&etCategorys)
 	if err != nil {
 		fmt.Println(err)
 	}
-	jpCategorysJson.Close()
+	etCategorysJson.Close()
 
-	var jpEmojis map[string]jpEmoji
-	jpEmojisJson, err := os.Open("../emoji-toolkit/emoji.json")
+	var etEmojis map[string]etEmoji
+	etEmojisJson, err := os.Open("../emoji-toolkit/emoji.json")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	dec = json.NewDecoder(jpEmojisJson)
-	err = dec.Decode(&jpEmojis)
+	dec = json.NewDecoder(etEmojisJson)
+	err = dec.Decode(&etEmojis)
 	if err != nil {
 		fmt.Println(err)
 	}
-	jpEmojisJson.Close()
+	etEmojisJson.Close()
 
 	var emojiGroups []emojiGroup
-	for i := 1; i <= len(jpCategorys); i++ {
-		for _, oc := range jpCategorys {
+	for i := 1; i <= len(etCategorys); i++ {
+		for _, oc := range etCategorys {
 			if i == oc.Order {
 				emojiGroups = append(emojiGroups, emojiGroup{oc.CategoryLabel, nil})
 				break
@@ -80,58 +80,40 @@ func main() {
 
 	num := 0
 
-	for i := 1; i <= len(jpEmojis); i++ {
+	for i := 1; i <= len(etEmojis); i++ {
 	l2:
-		for rawUcStr, oe := range jpEmojis {
-			if i == oe.Order {
-				if strings.Index(oe.Shortname, "_tone") != -1 ||
-					strings.Index(oe.Shortname, "man_") != -1 ||
-					strings.Index(oe.Shortname, "woman_") != -1 ||
-					strings.Index(oe.Shortname, "_man") != -1 ||
-					strings.Index(oe.Shortname, "_woman") != -1 {
+		for _, ete := range etEmojis {
+			if i == ete.Order {
+				if strings.Contains(ete.Shortname, "_tone") ||
+					strings.Contains(ete.Shortname, "man_") ||
+					strings.Contains(ete.Shortname, "woman_") ||
+					strings.Contains(ete.Shortname, "_man") ||
+					strings.Contains(ete.Shortname, "_woman") {
 					break l2
 				}
 
-				ucStr := strings.TrimLeft(rawUcStr, "0")
-
 				var runes []rune
-				hexs := strings.Split(ucStr, "-")
+				hexs := strings.Split(ete.CodePoints.FullyQualified, "-")
 				for _, hex := range hexs {
 					chr, _ := strconv.ParseUint(hex, 16, 64)
 					runes = append(runes, rune(chr))
 				}
 
-				twUcStr := ucStr
+				twUcStr := ete.CodePoints.FullyQualified
 				img, err := os.Open("../twemoji/assets/72x72/" + twUcStr + ".png")
 				if err != nil {
-					twUcStr = ""
-					for i, hex := range hexs {
-						if i > 0 {
-							twUcStr += "-200d-"
-						}
-						twUcStr += hex
-					}
+					twUcStr = strings.TrimLeft(twUcStr, "0")
 					img, err = os.Open("../twemoji/assets/72x72/" + twUcStr + ".png")
 					if err != nil {
-						for i := 0; i < len(hexs); i++ {
-							twUcStr = ""
-							for j, hex := range hexs {
-								if j > 0 {
-									twUcStr += "-200d-"
-								}
-								twUcStr += hex
-								if j <= i {
-									twUcStr += "-fe0f"
-								}
-							}
-							img, err = os.Open("../twemoji/assets/72x72/" + twUcStr + ".png")
-							if err == nil {
-								break
-							}
-						}
+						twUcStr = strings.ReplaceAll(twUcStr, "-fe0f", "")
+						img, err = os.Open("../twemoji/assets/72x72/" + twUcStr + ".png")
 						if err != nil {
-							fmt.Println("cannot find", ucStr+".png")
-							continue
+							twUcStr = strings.ReplaceAll(twUcStr, "-200d", "")
+							img, err = os.Open("../twemoji/assets/72x72/" + twUcStr + ".png")
+							if err != nil {
+								fmt.Println("cannot find", ete.CodePoints.FullyQualified + ".png")
+								continue
+							}
 						}
 					}
 				}
@@ -153,11 +135,11 @@ func main() {
 				img.Close()
 				enc.Close()
 
-				for _, oc := range jpCategorys {
-					if oc.Category == oe.Category {
+				for _, oc := range etCategorys {
+					if oc.Category == ete.Category {
 						for j := 0; j < len(emojiGroups); j++ {
 							if emojiGroups[j].Name == oc.CategoryLabel {
-								emojiGroups[j].Emojis = append(emojiGroups[j].Emojis, emoji{string(runes), oe.Shortname, oe.Name, imgDataUrl.String()})
+								emojiGroups[j].Emojis = append(emojiGroups[j].Emojis, emoji{string(runes), ete.Shortname, ete.Name, imgDataUrl.String()})
 								num++
 								break l2
 							}
