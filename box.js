@@ -77,7 +77,7 @@ function changePage(i) {
 		page.setAttribute("emoji-box", "page")
 		box.appendChild(page)
 
-		for (var j = 0; j < emojiGroups[i].emojis.length; j++) {
+		for (var j = 0; j < emojiGroups[i].emojis.length;) {
 			var line = document.createElement("p")
 			for (var c = 0; c < 10 && j < emojiGroups[i].emojis.length; c++) {
 				var ico = document.createElement("i")
