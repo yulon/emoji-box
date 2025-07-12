@@ -1,7 +1,7 @@
 {
 	"name": "Emoji Box",
-	"version": "1.5.94.1688",
-	"manifest_version": 2,
+	"version": "1.6.95.1688",
+	"manifest_version": 3,
 	"description": "Can be used to enter emojis, open from menu of the input box.",
 	"author": "Yulon",
 	"icons": {
@@ -10,13 +10,11 @@
 		"128": "128.png"
 	},
 	"permissions": [
+		"scripting",
 		"activeTab",
 		"contextMenus"
 	],
 	"background": {
-		"scripts": [
-			"bext.js",
-			"bg.js"
-		]
+		"service_worker": "bg.js"
 	}
 }

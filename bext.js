@@ -1,177 +1,261 @@
-const bext = new (function (g) {
-	if (typeof browser === 'undefined') {
-		if (typeof chrome === 'undefined') {
-			return
-		}
-		g.browser = chrome
-		this.isChrome = true
+function Bext(isListen, isV3) {
+	let bext = this
+
+	if (typeof chrome !== 'undefined') {
+		globalThis.browser = chrome
 	} else {
-		if (typeof chrome === 'undefined') {
-			if (typeof browser === 'undefined') {
+		if (typeof browser === 'undefined') {
+			return
+		}
+	}
+
+	if (isV3 === undefined) {
+		isV3 = !!browser.scripting
+	}
+	bext.isV3 = isV3
+
+	console.log('[Bext]', isV3 ? 'V3' : 'V2', location.href)
+
+	function rSend(extensionId, msg) {
+		if (isV3) {
+			return browser.runtime.sendMessage(extensionId, msg)
+		}
+		return new Promise((resolve, reject) => browser.runtime.sendMessage(extensionId, msg, (r) => {
+			if (r) {
+				resolve(r)
 				return
 			}
-			g.chrome = browser
-		}
-		this.isChrome = false
-	}
-
-	var insertCbs = {}
-
-	function callInsertCb(msg, sender, isRepeated) {
-		if (!(sender.tab.id in insertCbs)) {
-			return
-		}
-		var insertCbsOnThisTab = insertCbs[sender.tab.id]
-		if (!(msg.scriptName in insertCbsOnThisTab)) {
-			return
-		}
-		insertCbsOnThisTab[msg.scriptName](isRepeated)
-		delete insertCbsOnThisTab[msg.scriptName]
-	}
-
-	browser.runtime.onMessage.addListener(function (msg, sender, resp) {
-		switch (msg.type) {
-			case 'Bext.Message.Inserted':
-				callInsertCb(msg, sender, true)
-				return
-
-			case 'Bext.Message.ToBeInserted':
-				callInsertCb(msg, sender, false)
-				return
-
-			case 'Bext.Message.Call':
-				resp(g[msg.funcName](sender.tab.id))
-				return
-
-			case 'Bext.Message.Acall':
-				g[msg.funcName](sender.tab.id, resp)
-				return true
-		}
-	})
-
-	browser.runtime.onMessage.addListener(function (tabId, removeInfo) {
-		if (tabId in insertCbs) {
-			delete insertCbs[tabId]
-		}
-	})
-
-	function getHash(str) {
-		var hash = 0
-		for (var i = 0; i != str.length(); ++i) {
-			hash = 131 * hash + str.charCodeAt(i)
-		}
-		return hash
-	}
-
-	function basicInsert(tab, details, cb) {
-		if (!tab || !('id' in tab) || !('url' in tab)) {
-			return
-		}
-		if (typeof URL === 'undefined') {
-			console.log(tab)
-		}
-		var urlSlices = tab.url.split(':')
-		if (
-			urlSlices.length !== 2 ||
-			tab.url.substr(0, 4) !== 'http'
-		) {
-			return
-		}
-
-		var scriptName
-		if (!('file' in details) && !('code' in details)) {
-			return
-		} else if ('file' in details) {
-			scriptName = details.file
-		} else if ('code' in details) {
-			scriptName = '[' + getHash(details.code) + ']'
-		} else {
-			return
-		}
-
-		if (!(tab.id in insertCbs)) {
-			insertCbs[tab.id] = {}
-		}
-		insertCbs[tab.id][scriptName] = function (isRepeated) {
-			if (isRepeated) {
-				if (cb) {
-					cb(isRepeated)
-				}
+			if (browser.runtime.lastError) {
+				reject(browser.runtime.lastError)
 				return
 			}
-			browser.tabs.executeScript(tab.id, details, function () {
-				if (cb) {
-					cb(isRepeated)
-				}
-			})
+			resolve(r)
+		}))
+	}
+
+	const isBackend = !!browser.tabs
+	bext.isBackend = isBackend
+
+	function onCall(msg, resp) {
+		if (!(msg.funcName in globalThis)) {
+			return
+		}
+		let r = globalThis[msg.funcName].apply(globalThis, msg.args)
+		if (r && r.constructor === Promise) {
+			r.catch(() => null).then(resp)
+			return true
+		}
+		resp(r)
+	}
+
+	if (!isBackend) {
+		bext.callBackend = (funcName, args) => {
+			return rSend(null, { type: 'Call', funcName: funcName, args: args })
 		}
 
-		browser.tabs.executeScript(tab.id, {
-			code: `
-				if (typeof browser === 'undefined') {
-					this.browser = chrome
-				} else if (typeof chrome === 'undefined') {
-					this.chrome = browser
+		bext.callTab = (tabId, funcName, args) => {
+			return rSend(null, { type: 'CallTab', tabId: tabId, funcName: funcName, args: args })
+		}
+
+		bext.insertTab = (tabId, file, injectImmediately, allFrames) => {
+			return rSend(null, { type: 'InsertTab', tabId: tabId, file: file, injectImmediately: injectImmediately, allFrames: allFrames })
+		}
+
+		if (!isListen || globalThis._bext_listenned) {
+			return
+		}
+		globalThis._bext_listenned = true
+		browser.runtime.onMessage.addListener((msg, sender, resp) => {
+			switch (msg.type) {
+				case 'Call':
+					return onCall(msg, resp)
+
+				case 'Inserted':
+					resp(globalThis._bext_inserteds && msg.scriptName in _bext_inserteds)
+					return
+			}
+		})
+		return
+	}
+
+	function tSend(tabId, msg, options) {
+		if (isV3) {
+			return browser.tabs.sendMessage(tabId, msg, options)
+		}
+		return new Promise((resolve, reject) => browser.tabs.sendMessage(tabId, msg, options, (r) => {
+			if (r) {
+				resolve(r)
+				return
+			}
+			if (browser.runtime.lastError) {
+				reject(browser.runtime.lastError)
+				return
+			}
+			resolve(r)
+		}))
+	}
+
+	function tInsertV2(tabId, file, injectImmediately, allFrames) {
+		return new Promise((resolve, reject) => {
+			const inserted = (r) => {
+				if (!r) {
+					reject(browser.runtime.lastError)
+					return
 				}
-				if (!('bext' in this)) {
-					function basicCall(type, funcName, resultCb) {
-						browser.runtime.sendMessage(null, { type: type, funcName: funcName}, resultCb)
-					}
-					this.bext = {
-						call: function(funcName, resultCb) {
-							basicCall('Bext.Message.Call', funcName, resultCb)
-						},
-						acall: function(funcName, resultCb) {
-							basicCall('Bext.Message.Acall', funcName, resultCb)
+				browser.tabs.executeScript(tabId, {
+					code: `
+						if (!globalThis._bext_inserteds) {
+							globalThis._bext_inserteds = {}
 						}
-					}
-					var g = this
-					browser.runtime.onMessage.addListener(function(msg, sender, resp) {
-						switch (msg.type) {
-							case 'Bext.Message.Call':
-								resp(g[msg.funcName]())
-								return
-							case 'Bext.Message.Acall':
-								g[msg.funcName](resp)
-								return true
+						if (!('` + file + `' in _bext_inserteds)) {
+							_bext_inserteds['` + file + `'] = true
 						}
+					`,
+					runAt: 'document_start',
+					allFrames: allFrames
+				}, () => {
+					if (!r) {
+						reject(browser.runtime.lastError)
+						return
+					}
+					resolve(false)
+				})
+			}
+
+			if (file.endsWith('.css')) {
+				browser.tabs.insertCSS(tabId, {
+					file: file,
+					runAt: injectImmediately ? 'document_start' : 'document_idle',
+					allFrames: allFrames
+				}, inserted)
+				return
+			}
+
+			browser.tabs.executeScript(tabId, {
+				file: file,
+				runAt: injectImmediately ? 'document_start' : 'document_idle',
+				allFrames: allFrames
+			}, inserted)
+		})
+	}
+
+	function tInsertOnceV2(tabId, file, injectImmediately, allFrames) {
+		return tSend(tabId, {
+			type: 'Inserted',
+			scriptName: file
+		}).catch(() => {
+			return new Promise((resolve, reject) => {
+				browser.tabs.executeScript(tabId, {
+					file: 'bext.js',
+					runAt: 'document_start',
+					allFrames: allFrames
+				}, (r) => {
+					if (!r) {
+						reject(browser.runtime.lastError)
+						return
+					}
+					browser.tabs.executeScript(tabId, {
+						code: 'globalThis.bext = new Bext(true, false)',
+						runAt: 'document_start',
+						allFrames: allFrames
+					}, () => {
+						if (!r) {
+							reject(browser.runtime.lastError)
+							return
+						}
+						resolve(false)
 					})
-				}
-				if (!('InsertedScripts' in bext)) {
-					bext.InsertedScripts = {}
-				}
-				if ('` + scriptName + `' in bext.InsertedScripts) {
-					browser.runtime.sendMessage(null, { type: 'Bext.Message.Inserted', scriptName: \`` + scriptName + `\`})
-				} else {
-					bext.InsertedScripts['` + scriptName + `'] = true
-					browser.runtime.sendMessage(null, { type: 'Bext.Message.ToBeInserted', scriptName: \`` + scriptName + `\`})
-				}
-			`
+				})
+			})
+		}).then((inserted) => {
+			if (inserted) {
+				return Promise.resolve(true)
+			}
+			return tInsertV2(tabId, file, injectImmediately, allFrames)
 		})
 	}
 
-	this.insert = function (tabId, details, cb) {
-		if (tabId == null) {
-			browser.tabs.query({ active: true }, function (tabs) {
-				basicInsert(tabs[0], details, cb)
-			})
-			return
+	function tInitBextV3() {
+		globalThis.bext = new Bext(true, true)
+	}
+
+	function tIsInsertedV3(file) {
+		if (!globalThis._bext_inserteds) {
+			globalThis._bext_inserteds = {}
 		}
-		browser.tabs.get(tabId, function (tab) {
-			basicInsert(tab, details, cb)
+		if (!(file in _bext_inserteds)) {
+			_bext_inserteds[file] = true
+		}
+	}
+
+	function tInsertV3(tabId, file, injectImmediately, allFrames) {
+		const inserted = () => {
+			return browser.scripting.executeScript({
+				target: { tabId: tabId },
+				func: tIsInsertedV3,
+				args: [file],
+				injectImmediately: true
+			})
+		}
+
+		if (file.endsWith('.css')) {
+			return browser.scripting.insertCSS({
+				target: { tabId: tabId, allFrames: allFrames },
+				files: [file]
+			}).then(inserted)
+		}
+
+		return browser.scripting.executeScript({
+			target: { tabId: tabId, allFrames: allFrames },
+			files: [file],
+			injectImmediately: injectImmediately,
+		}).then(inserted)
+	}
+
+	function tInsertOnceV3(tabId, file, injectImmediately, allFrames) {
+		return tSend(tabId, {
+			type: 'Inserted',
+			scriptName: file
+		}).catch(() => {
+			return browser.scripting.executeScript({
+				target: { tabId: tabId },
+				files: ['bext.js'],
+				injectImmediately: true
+			}).then(() => {
+				return browser.scripting.executeScript({
+					target: { tabId: tabId },
+					func: tInitBextV3,
+					injectImmediately: true
+				})
+			}).then(() => false)
+		}).then((inserted) => {
+			if (inserted) {
+				return Promise.resolve(true)
+			}
+			return tInsertV3(tabId, file, injectImmediately, allFrames)
 		})
+	}
+
+	const tInsertOnce = isV3 ? tInsertOnceV3 : tInsertOnceV2
+
+	bext.insertTab = function tInsert(tabId, file, injectImmediately, allFrames) {
+		if (tabId === null || tabId === 'active') {
+			return new Promise((cb) => browser.tabs.query({ active: true }, cb)).then((tabs) => {
+				return tInsertOnce(tabs[0].id, file, injectImmediately, allFrames)
+			})
+		}
+		return tInsertOnce(tabId, file, injectImmediately, allFrames)
 	}
 
 	var onInitializedMap = {}
-
-	this.onInitialized = {
-		addListener: function (cb) {
+	bext.onInitialized = {
+		addListener: (cb) => {
 			var cbs = {
-				onActivated: function (activeInfo) {
+				onActivated: (activeInfo) => {
 					cb(activeInfo.tabId)
 				},
-				onUpdated: function (tabId, changeInfo, tab) {
-					if ('status' in changeInfo && changeInfo.status == 'loading') {
+				onUpdated: (tabId, changeInfo, tab) => {
+					if (changeInfo && changeInfo.status === 'loading') {
 						cb(tabId)
 					}
 				}
@@ -180,7 +264,7 @@ const bext = new (function (g) {
 			browser.tabs.onActivated.addListener(cbs.onActivated)
 			browser.tabs.onUpdated.addListener(cbs.onUpdated)
 		},
-		removeListener: function (cb) {
+		removeListener: (cb) => {
 			var cbs = onInitializedMap[cb]
 			browser.tabs.onActivated.removeListener(cbs.onActivated)
 			browser.tabs.onUpdated.removeListener(cbs.onUpdated)
@@ -188,21 +272,40 @@ const bext = new (function (g) {
 		}
 	}
 
-	function basicCall(tabId, type, funcName, resultCb) {
-		if (tabId == null) {
-			browser.tabs.query({ active: true }, function (tabs) {
-				basicCall(tabs[0].id, type, funcName, resultCb)
+	bext.callBackend = function (funcName, args) {
+		return rSend(null, { type: 'Call', funcName: funcName, args: args })
+	}
+
+	bext.callTab = function tCall(tabId, funcName, args) {
+		if (tabId === null || tabId === 'active') {
+			if (isV3) {
+				return browser.tabs.query({ active: true }).then((tabs) => {
+					return tCall(tabs[0].id, funcName, args)
+				})
+			}
+			return new Promise((cb) => browser.tabs.query({ active: true }, cb)).then((tabs) => {
+				return tCall(tabs[0].id, funcName, args)
 			})
-			return
 		}
-		browser.tabs.sendMessage(tabId, { type: type, funcName: funcName }, resultCb)
+		return tSend(tabId, { type: 'Call', funcName: funcName, args: args })
 	}
 
-	this.call = function (tabId, funcName, resultCb) {
-		basicCall(tabId, 'Bext.Message.Call', funcName, resultCb)
+	if (!isListen || globalThis._bext_listenned) {
+		return
 	}
+	globalThis._bext_listenned = true
+	browser.runtime.onMessage.addListener((msg, sender, resp) => {
+		switch (msg.type) {
+			case 'Call':
+				return onCall(msg, resp)
 
-	this.acall = function (tabId, funcName, resultCb) {
-		basicCall(tabId, 'Bext.Message.Acall', funcName, resultCb)
-	}
-})(this)
+			case 'CallTab':
+				tCall(msg.tabId, msg.funcName, msg.args).catch(() => null).then(resp)
+				return true
+
+			case 'InsertTab':
+				tInsert(msg.tabId, msg.file, msg.injectImmediately, msg.allFrames).catch(() => null).then(resp)
+				return true
+		}
+	})
+}
